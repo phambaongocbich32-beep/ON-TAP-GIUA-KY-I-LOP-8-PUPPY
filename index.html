@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ôn giữa kì KHTN 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;600;700&display=swap&subset=vietnamese">
+<style>/* Layout: sổ tay ô li. Thanh điều hướng trên, nội dung giữa, mỗi môn một màu bút. */
+:root{
+ --bg:#F3F6FB; --paper:#FFFFFF; --ink:#14213D; --muted:#56637E; --line:#D7DFEC; --grid:rgba(47,111,222,.07);
+ --hoa:#D9481F; --sinh:#128A5C; --ly:#2A62D0; --hi:#FFD84D; --ok:#0E8A63; --okbg:#E3F6EE; --bad:#C92F45; --badbg:#FDECEF;
+ --tint:#EEF3FB; --shadow:0 1px 0 rgba(20,33,61,.06),0 6px 20px rgba(20,33,61,.06);
+ --fd:'Baloo 2','Be Vietnam Pro',system-ui,sans-serif; --fb:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --bg:#0E1525; --paper:#162039; --ink:#E9EFFB; --muted:#9BA9C6; --line:#2B3A5C; --grid:rgba(120,160,255,.06);
+ --hoa:#FF8159; --sinh:#3BD39A; --ly:#7AA4FF; --ok:#3DD6A0; --okbg:#10352B; --bad:#FF7487; --badbg:#3A1822; --tint:#1B2746;
+ --shadow:0 1px 0 rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+ --bg:#0E1525; --paper:#162039; --ink:#E9EFFB; --muted:#9BA9C6; --line:#2B3A5C; --grid:rgba(120,160,255,.06);
+ --hoa:#FF8159; --sinh:#3BD39A; --ly:#7AA4FF; --ok:#3DD6A0; --okbg:#10352B; --bad:#FF7487; --badbg:#3A1822; --tint:#1B2746;
+ --shadow:0 1px 0 rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--fb);
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;
+ padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+h1,h2,h3,h4{font-family:var(--fd);line-height:1.2;margin:0 0 .4em;text-wrap:balance}
+h1{font-size:clamp(28px,5vw,44px);font-weight:800} h2{font-size:clamp(22px,3.4vw,30px);font-weight:700} h3{font-size:20px;font-weight:700} h4{font-size:17px}
+p{margin:.5em 0} a{color:var(--ly)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--hi);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto}
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:2px solid var(--ink);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.top .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--fd);font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);margin-right:auto}
+.brand i{width:30px;height:30px;border-radius:8px;background:var(--hi);color:#14213D;display:grid;place-items:center;font-style:normal;font-size:16px;border:2px solid #14213D}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px;border:2px solid transparent}
+nav a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+nav a:hover{border-color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--hi);color:#14213D;font-weight:700;font-size:13px;border:2px solid #14213D}
+.iconbtn{background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:4px 10px;font-weight:700;font-size:13px}
+main{padding-top:26px;display:block}
+.card{background:var(--paper);border:2px solid var(--ink);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:12px;border:2px solid var(--ink);background:var(--paper);font-weight:700;text-decoration:none;color:var(--ink);box-shadow:0 3px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.btn:hover{transform:translateY(1px);box-shadow:0 2px 0 var(--ink)}
+.btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--ink)}
+.btn.pri{background:var(--hi);color:#14213D;border-color:#14213D;box-shadow:0 3px 0 #14213D}
+.btn.sm{padding:5px 12px;font-size:14px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;border:2px solid currentColor}
+.t-hoa{color:var(--hoa)} .t-sinh{color:var(--sinh)} .t-ly{color:var(--ly)}
+.bar{height:10px;border-radius:99px;background:var(--tint);border:1.5px solid var(--ink);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--ok);transition:width .5s}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:center;margin-bottom:22px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.hl{background:linear-gradient(transparent 55%,var(--hi) 55%);padding:0 4px}
+.steps3{display:grid;gap:12px;counter-reset:s}
+.steps3 li{list-style:none;display:flex;gap:12px;align-items:flex-start}
+.steps3 b.n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:var(--fd)}
+ul.plain{padding:0;margin:0}
+.lcard{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;position:relative}
+.lcard:hover{transform:translateY(-2px)}
+.lcard .done{position:absolute;right:12px;top:12px;color:var(--ok);font-weight:700;font-size:13px}
+.subjhead{display:flex;align-items:center;gap:10px;margin:26px 0 12px;border-bottom:3px solid currentColor;padding-bottom:4px}
+/* lesson */
+.crumb{font-size:14px;margin-bottom:8px}
+.tabs{display:flex;gap:6px;margin:14px 0;flex-wrap:wrap}
+.tabs button{padding:7px 16px;border-radius:10px;border:2px solid var(--ink);background:var(--paper);font-weight:700}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.step{margin:14px 0}
+.step .sh{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.step .sh b{background:var(--hi);color:#14213D;border:2px solid #14213D;border-radius:8px;padding:0 9px;font-family:var(--fd)}
+.step ul,.step ol{padding-left:22px;margin:.4em 0} .step li{margin:.25em 0}
+.tb{border-collapse:collapse;width:100%;font-size:15px;display:block;overflow-x:auto}
+.tb th,.tb td{border:1.5px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.tb th{background:var(--tint)}
+.eq{font-family:var(--fd);font-size:20px;font-weight:700;background:var(--tint);border-left:6px solid var(--hi);padding:10px 14px;border-radius:8px;margin:10px 0;overflow-x:auto}
+.map{font-size:15px;background:var(--tint);padding:8px 12px;border-radius:8px;margin:8px 0;overflow-x:auto}
+.tip{background:var(--okbg);border-radius:8px;padding:8px 12px;font-size:15px}
+.signs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.signs span{background:var(--tint);border-radius:8px;padding:4px 10px;font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.two{grid-template-columns:1fr}}
+.two>div{background:var(--tint);border-radius:10px;padding:10px 14px}
+.chk{margin-top:14px;border:2px dashed var(--ink);border-radius:12px;padding:12px 14px;background:var(--paper)}
+.chk .q{font-weight:700;margin-bottom:8px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;padding:9px 12px;border-radius:10px;border:2px solid var(--line);background:var(--paper);transition:border-color .1s,background .1s}
+.opt:hover:not([disabled]){border-color:var(--ink)}
+.opt .k{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-weight:700;font-size:13px}
+.opt.ok{background:var(--okbg);border-color:var(--ok)} .opt.bad{background:var(--badbg);border-color:var(--bad)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.fb{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:15px;animation:pop .25s}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)} .fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb b.big{font-family:var(--fd);font-size:18px;display:block}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.fig{margin:8px 0}
+.q-num{font-family:var(--fd);font-weight:800;margin-right:6px}
+/* video */
+.screen{position:relative;aspect-ratio:16/9;max-width:100%;border:3px solid var(--ink);border-radius:16px;overflow:hidden;background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px;box-shadow:var(--shadow)}
+.scene{position:absolute;inset:0;padding:4% 6%;display:flex;flex-direction:column;justify-content:center;gap:2%;animation:sc .5s}
+@keyframes sc{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.scene .big{font-family:var(--fd);font-weight:800;font-size:clamp(24px,5.6cqw,54px);line-height:1.1}
+.screen{container-type:inline-size}
+.scene .sub{font-size:clamp(14px,2.6cqw,24px);color:var(--muted)}
+.scene ul{margin:0;padding:0;list-style:none;display:grid;gap:1.2cqw}
+.scene li{font-size:clamp(14px,3cqw,28px);font-weight:600;background:var(--tint);border-left:6px solid var(--hi);padding:.5cqw 1.6cqw;border-radius:8px;opacity:0;animation:li .5s forwards}
+@keyframes li{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+.scene .f{font-family:var(--fd);font-size:clamp(18px,4.2cqw,40px);font-weight:700;background:var(--tint);border-left:8px solid var(--hi);padding:1cqw 2cqw;border-radius:10px;opacity:0;animation:li .5s forwards}
+.scene .ct{font-family:var(--fd);font-size:clamp(16px,3.2cqw,30px);font-weight:700}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:3cqw}
+.cmp>div{background:var(--tint);border-radius:12px;padding:1.6cqw 2cqw;opacity:0;animation:li .5s forwards}
+.cmp h4{font-size:clamp(15px,3cqw,28px)} .cmp p{margin:.2em 0;font-size:clamp(13px,2.5cqw,23px)}
+.scene svg{width:100%;height:100%;max-height:100%}
+.cap{margin-top:10px;padding:10px 14px;background:var(--ink);color:var(--bg);border-radius:10px;font-size:16px;min-height:3.4em}
+.ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.dots{display:flex;gap:6px;flex:1;min-width:120px}.dots i{flex:1;height:8px;border-radius:5px;background:var(--line);border:1.5px solid var(--ink)}
+.dots i.on{background:var(--hi)} .dots i.past{background:var(--ok)}
+/* tests */
+.testrow{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.testrow .info{flex:1;min-width:220px}
+.qblock{margin:16px 0;padding:14px;border:2px solid var(--ink);border-radius:12px;background:var(--paper)}
+.qblock .qt{font-weight:600;margin-bottom:10px}
+.subq{margin:10px 0 0;padding-top:10px;border-top:1.5px dashed var(--line)}
+.subq label{font-weight:600;display:block;margin-bottom:4px}
+textarea,input[type=text]{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea:focus,input[type=text]:focus{border-color:var(--ink);outline:none}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.sticky{position:sticky;bottom:8px;z-index:5;margin-top:18px;padding-bottom:env(safe-area-inset-bottom,0px)}
+.score{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--ink);color:var(--bg);border-radius:14px;padding:10px 16px;border:2px solid var(--ink)}
+.score b{font-family:var(--fd);font-size:24px}
+.bigscore{font-family:var(--fd);font-size:64px;font-weight:800;line-height:1}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:12px;border:2px solid var(--ink);background:var(--paper);font-weight:600;font-size:14px;margin:4px 6px 0 0}
+.badge.lock{opacity:.4;filter:grayscale(1)}
+.pp{display:grid;gap:10px}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.confetti i{position:absolute;top:-20px;width:10px;height:16px;animation:fall 2.4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;font-weight:700;z-index:60;animation:pop .25s;max-width:90vw}
+.num{font-variant-numeric:tabular-nums}
+.sup{vertical-align:super;font-size:.7em}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}.scene li,.scene .f,.cmp>div{opacity:1}}
+/* svg visuals */
+.vis text{font-family:var(--fd);fill:var(--ink)}
+.fl{animation:fl 4s ease-in-out infinite alternate}
+@keyframes fl{from{transform:translateY(0)}to{transform:translateY(-22px)}}
+.sk{animation:sk 4s ease-in-out infinite alternate}
+@keyframes sk{from{transform:translateY(0)}to{transform:translateY(18px)}}
+.fi{opacity:0;animation:li 1s forwards}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>/* ===== 8 ĐỀ KIỂM TRA (chép từ file scan) ===== */
+const FIG = {
+  pipette:`<svg viewBox="0 0 120 60" width="150" role="img" aria-label="Hình dụng cụ có đầu cao su, ống thủy tinh nhỏ dài"><rect x="6" y="22" width="28" height="18" rx="9" fill="#2b2f3a"/><rect x="32" y="26" width="14" height="10" fill="#555b6b"/><polygon points="46,27 112,33 46,35" fill="#cfe3f1" stroke="#2b2f3a" stroke-width="1.5"/></svg>`,
+  electric:`<svg viewBox="0 0 100 90" width="120" role="img" aria-label="Biển báo tam giác có tia chớp"><polygon points="50,6 94,82 6,82" fill="#ffd23f" stroke="#111" stroke-width="5" stroke-linejoin="round"/><polygon points="55,26 38,52 50,52 44,72 64,44 52,44" fill="#111"/></svg>`,
+  oxidizer:`<svg viewBox="0 0 100 100" width="110" role="img" aria-label="Biển báo hình thoi viền đỏ: ngọn lửa phía trên vòng tròn"><polygon points="50,4 96,50 50,96 4,50" fill="#fff" stroke="#d62828" stroke-width="6"/><circle cx="50" cy="64" r="11" fill="none" stroke="#111" stroke-width="4"/><path d="M50 22c6 8 14 12 10 24-3 8-17 8-20 0-3-8 6-12 10-24z" fill="#111"/></svg>`,
+  biohazard:`<svg viewBox="0 0 100 100" width="100" role="img" aria-label="Ba vòng tròn lồng nhau"><g fill="none" stroke="#111" stroke-width="5"><circle cx="50" cy="36" r="20"/><circle cx="36" cy="60" r="20"/><circle cx="64" cy="60" r="20"/></g></svg>`
+};
+
+const TESTS = [
+/* ------------------------------------------------ ĐỀ 1 */
+{ id:'gk1', short:'Đề GK 1', title:'Đề kiểm tra giữa học kì 1 – KHTN 8', sub:'Lý + Hóa + Sinh · 60 phút · 16 trắc nghiệm + 5 tự luận', time:60, tnPts:4, tlPts:6, tag:'Tổng hợp',
+ mc:[
+ {q:'Biển báo nào sau đây cảnh báo về chất độc hại sinh học trong phòng thí nghiệm?', o:['Hình ngọn lửa.','Hình đầu lâu có hai xương chéo.','Hình ba lá cánh quạt tròn.','Hình ba vòng tròn lồng vào nhau có ba nhánh nhọn.'], a:3, why:'Biểu tượng chất độc hại sinh học (biohazard) gồm ba vòng tròn lồng vào nhau, ba nhánh nhọn. Đầu lâu = chất độc; ngọn lửa = dễ cháy; cánh quạt tròn = phóng xạ.', fig:'biohazard', lesson:'h1'},
+ {q:'Hiện tượng nào sau đây là hiện tượng hóa học?', o:['Thủy tinh nóng chảy được thổi thành bình cầu.','Đốt cháy mẫu gỗ trong không khí tạo thành than và khí carbon dioxide.','Cồn để trong lọ không kín bị bay hơi.','Hòa tan muối ăn vào nước thu được nước muối.'], a:1, why:'Đốt gỗ tạo ra chất mới (than, khí carbon dioxide) nên là biến đổi hóa học. Ba hiện tượng còn lại chỉ đổi trạng thái hoặc hòa tan, không tạo chất mới.', lesson:'h2'},
+ {q:'Đường kính pit-tông nhỏ của một máy thủy lực là 2,5 cm. Hỏi diện tích tối thiểu của pit-tông lớn là bao nhiêu để tác dụng một lực 100 N lên pit-tông nhỏ có thể nâng được một ô tô có trọng lượng 35 000 N?', o:['S = 171,5 cm².','S = 1 715 cm².','S = 17 150 cm².','Một giá trị khác.'], a:1, why:'Diện tích pit-tông nhỏ s = π·d²/4 = 3,14 × 2,5² / 4 ≈ 4,9 cm². Máy thủy lực: F/f = S/s ⇒ S = s · F/f = 4,9 × 35 000/100 = 4,9 × 350 ≈ 1 715 cm². (Bản scan khoanh C nhưng tính ra đáp án đúng là B.)', lesson:'l4'},
+ {q:'Cho các phát biểu sau về thiết bị điện:<br>(a) Công tắc (khóa K) dùng để đóng, ngắt mạch điện.<br>(b) Vôn kế là thiết bị dùng để đo cường độ dòng điện.<br>(c) Joulemeter là thiết bị dùng để đo công suất, điện áp, dòng điện, năng lượng điện cung cấp cho mạch điện.<br>(d) Máy đo pH dùng để đo pH của môi trường.<br>Số phát biểu đúng là', o:['2.','3.','4.','1.'], a:1, why:'(a), (c), (d) đúng. (b) sai vì vôn kế đo hiệu điện thế (điện áp); ampe kế mới đo cường độ dòng điện. Có 3 phát biểu đúng.', lesson:'h1'},
+ {q:'Phản ứng nào sau đây là phản ứng toả nhiệt?', o:['Phản ứng nung đá vôi CaCO₃.','Phản ứng đốt cháy khí gas.','Phản ứng hòa tan viên C sủi vào nước.','Phản ứng phân hủy đường.'], a:1, why:'Đốt cháy nhiên liệu luôn tỏa nhiệt. Nung đá vôi và phân hủy đường cần cung cấp nhiệt liên tục nên là phản ứng thu nhiệt.', lesson:'h2'},
+ {q:'Khí methane (CH₄) nặng hay nhẹ hơn không khí bao nhiêu lần?', o:['Nhẹ hơn không khí khoảng 0,55 lần.','Nặng hơn không khí khoảng 1,81 lần.','Nhẹ hơn không khí khoảng 1,21 lần.','Nặng hơn không khí khoảng 0,55 lần.'], a:0, why:'M(CH₄) = 12 + 4 = 16. Tỉ khối so với không khí d = 16/29 ≈ 0,55 < 1 nên CH₄ nhẹ hơn không khí, bằng khoảng 0,55 lần.', lesson:'h4'},
+ {q:'(Lý) Công thức tính khối lượng riêng của một chất là:', o:['D = m / V','D = m · V','D = V / m','D = P / V'], a:0, why:'Khối lượng riêng D = khối lượng m chia thể tích V. Đơn vị kg/m³ hoặc g/cm³. (Bản scan khoanh B nhưng đáp án đúng là A.)', lesson:'l1'},
+ {q:'Chọn cặp từ thích hợp để điền vào các chỗ trống: Xương to ra về bề ngang là nhờ các tế bào …(1)… tạo ra những tế bào mới đẩy …(2)… và hóa xương.', o:['(1): mô xương cứng ; (2): ra ngoài','(1): mô xương xốp ; (2): vào trong','(1): màng xương ; (2): ra ngoài','(1): màng xương ; (2): vào trong'], a:3, why:'Màng xương bọc ngoài xương. Các tế bào màng xương phân chia, tạo tế bào mới đẩy vào trong và hóa xương nên xương to ra bề ngang. (Bản scan khoanh A, đáp án đúng theo sách là D.)', lesson:'s31'},
+ {q:'Áp suất chất rắn phụ thuộc vào những yếu tố nào?', o:['Khối lượng riêng của chất rắn và thể tích vật.','Diện tích bề mặt bị ép và độ lớn của áp lực.','Độ cao của chất rắn và trọng lượng của vật.','Lực đẩy Archimedes tác dụng lên vật đứng yên.'], a:1, why:'p = F/S nên áp suất phụ thuộc áp lực F và diện tích bị ép S.', lesson:'l2'},
+ {q:'Phát biểu nào sau đây đúng khi nói về tác dụng của máy thủy lực?', o:['Máy thủy lực cho ta lợi về đường đi.','Máy thủy lực cho ta lợi về công.','Máy thủy lực cho ta lợi về lực.','Máy thủy lực cho ta lợi về diện tích mặt tiếp xúc.'], a:2, why:'Máy thủy lực cho lợi về lực: lực nâng lớn hơn lực tác dụng bấy nhiêu lần thì pit-tông nhỏ phải đi quãng đường dài hơn bấy nhiêu lần. Không có máy cơ nào cho lợi về công.', lesson:'l4'},
+ {q:'Một vật nhúng trong chất lỏng bị chất lỏng tác dụng một lực đẩy hướng thẳng đứng từ dưới lên. Lực này gọi là:', o:['Lực đàn hồi.','Lực ma sát.','Lực đẩy Archimedes.','Trọng lực.'], a:2, why:'Lực đẩy thẳng đứng từ dưới lên do chất lỏng (hoặc chất khí) tác dụng lên vật nhúng trong nó là lực đẩy Archimedes.', lesson:'l3'},
+ {q:'Cơ thể người được chia làm mấy phần chính? Đó là những phần nào?', o:['2 phần: Phần đầu và phần thân.','3 phần: Phần đầu, phần thân và các chi (tay, chân).','4 phần: Phần đầu, phần ngực, phần bụng và các chi.','2 phần: Phần ngực và phần bụng.'], a:1, why:'Cơ thể người gồm 3 phần: đầu, thân (ngực + bụng, ngăn cách bởi cơ hoành) và các chi.', lesson:'s30'},
+ {q:'Thành phần hóa học của xương gồm có:', o:['Chất hữu cơ (chất cốt giao) và chất vô cơ (muối khoáng).','Chỉ gồm chất hữu cơ (chất cốt giao).','Chỉ gồm chất vô cơ (muối khoáng).','Nước và chất béo.'], a:0, why:'Chất hữu cơ (cốt giao) làm xương mềm dẻo, chất vô cơ (muối calcium…) làm xương cứng chắc.', lesson:'s31'},
+ {q:'Hiện tượng mỏi cơ xảy ra chủ yếu là do:', o:['Cơ thể được nghỉ ngơi quá nhiều.','Cơ co liên tục, thiếu oxygen nên sinh ra acid lactic tích tụ đầu độc cơ.','Lượng đường trong máu tăng cao đột ngột.','Các mạch máu co lại làm tăng tốc độ tuần hoàn.'], a:1, why:'Cơ làm việc quá sức, máu không kịp cung cấp đủ oxygen, năng lượng thiếu và acid lactic tích tụ gây mỏi cơ.', lesson:'s31'},
+ {q:'Cơ quan nào sau đây không thuộc hệ tiêu hóa của người?', o:['Thực quản.','Dạ dày.','Khí quản.','Ruột non.'], a:2, why:'Khí quản thuộc hệ hô hấp (dẫn khí). Thực quản, dạ dày, ruột non thuộc ống tiêu hóa.', lesson:'s32'},
+ {q:'Chất dinh dưỡng nào sau đây bắt đầu được tiêu hóa hóa học ngay tại khoang miệng nhờ enzyme amylase?', o:['Lipid (chất béo).','Protein (chất đạm).','Carbohydrate (tinh bột).','Vitamin và khoáng chất.'], a:2, why:'Enzyme amylase trong nước bọt biến đổi tinh bột chín thành đường maltose ngay ở khoang miệng.', lesson:'s32'}
+ ],
+ tl:[
+ {w:1, q:'Một vật làm bằng gỗ có khối lượng riêng 800 kg/m³. Vật có thể tích 500 cm³.', subs:[
+   {l:'a', q:'Tính khối lượng của vật.', a:'Đổi V = 500 cm³ = 5·10⁻⁴ m³.<br>m = D · V = 800 × 5·10⁻⁴ = <b>0,4 kg</b> (= 400 g).', nums:[[0.4,400]], hint:'Đổi 500 cm³ ra m³ trước (1 m³ = 1 000 000 cm³). Công thức m = D·V.', lesson:'l1'},
+   {l:'b', q:'Tính trọng lượng của vật.', a:'P = 10 · m = 10 × 0,4 = <b>4 N</b>.', nums:[[4]], hint:'P = 10m (m tính bằng kg).', lesson:'l1'},
+   {l:'c', q:'Đặt vật lên mặt sàn nằm ngang, áp suất do vật gây ra lên mặt sàn là 10 000 Pa. Vật hình lập phương. Tính độ dài cạnh của vật?', a:'Áp lực F = P = 4 N. Từ p = F/S ⇒ S = F/p = 4 / 10 000 = 4·10⁻⁴ m² = 4 cm².<br>Cạnh a = √S = <b>2 cm</b> (0,02 m).', nums:[[2,0.02]], hint:'Tìm diện tích S = F/p, rồi lấy căn bậc hai để được cạnh hình vuông.', lesson:'l2'}]},
+ {w:1, q:'Tính thể tích ở điều kiện chuẩn (25 °C, 1 bar) của:', subs:[
+   {l:'a', q:'0,5 mol khí CO₂.', a:'V = n × 24,79 = 0,5 × 24,79 = <b>12,395 L</b>.', nums:[[12.395]], hint:'V = n × 24,79 (lít).', lesson:'h3'},
+   {l:'b', q:'6,4 gam khí O₂.', a:'n = m/M = 6,4/32 = 0,2 mol.<br>V = 0,2 × 24,79 = <b>4,958 L</b>.', nums:[[4.958]], hint:'Tính số mol trước: n = m/M, M(O₂) = 32.', lesson:'h3'}]},
+ {w:1, q:'', subs:[
+   {l:'a', q:'Khí carbon dioxide (CO₂) nặng hơn hay nhẹ hơn không khí bao nhiêu lần?', a:'M(CO₂) = 44. d = 44/29 ≈ <b>1,52</b>: CO₂ nặng hơn không khí khoảng 1,52 lần.', nums:[[1.52,1.517]], kw:[['nang hon']], hint:'d = M(CO₂)/29.', lesson:'h4'},
+   {l:'b', q:'Trong lòng hang sâu thường xảy ra quá trình phân hủy chất vô cơ hoặc hữu cơ, sinh ra khí carbon dioxide. Hãy cho biết khí carbon dioxide tích tụ ở trên nền hang, hay bị không khí đẩy bay lên trên?', a:'CO₂ nặng hơn không khí nên <b>tích tụ ở nền hang</b>, không bị đẩy bay lên trên.', kw:[['nen','duoi','thap','day','mat dat'],['nang hon','nang']], hint:'So sánh khối lượng của CO₂ với không khí vừa tính ở ý a.', lesson:'h4'}]},
+ {w:1, q:'Một người nặng 60 kg đứng thẳng bằng hai chân trên sàn nhà. Biết diện tích tiếp xúc của một bàn chân với sàn nhà là 0,015 m². Tính áp suất do người đó tác dụng lên sàn nhà.', subs:[
+   {l:'', q:'Áp suất (Pa)', a:'F = P = 10 × 60 = 600 N.<br>Hai bàn chân: S = 2 × 0,015 = 0,03 m².<br>p = F/S = 600/0,03 = <b>20 000 Pa</b>.', nums:[[20000]], hint:'Đứng bằng HAI chân nên S = 2 × 0,015. Áp lực F = trọng lượng = 10m.', lesson:'l2'}]},
+ {w:1, q:'', subs:[
+   {l:'', q:'Hệ vận động ở người gồm những cơ quan nào? Nêu các biện pháp chống cong vẹo cột sống ở học sinh khi ngồi học.', a:'Hệ vận động gồm <b>xương và cơ</b>.<br>Biện pháp: ngồi học đúng tư thế (lưng thẳng, không gù); bàn ghế phù hợp với chiều cao; không đeo cặp quá nặng hoặc lệch một bên; đủ ánh sáng; tập thể dục thể thao đều đặn; ăn uống đủ chất.', kw:[['xuong'],['co'],['tu the','ngoi dung','ngoi thang','lung thang','ban ghe','cap','the duc','the thao']], hint:'Nhớ 2 cơ quan chính của hệ vận động, rồi kể ít nhất 2 biện pháp (tư thế ngồi, bàn ghế, cặp sách, thể dục…).', lesson:'s31'}]}
+ ]},
+
+/* ------------------------------------------------ ĐỀ 2 */
+{ id:'gk2', short:'Đề GK 2', title:'Đề kiểm tra giữa kì I – Khoa học tự nhiên 8', sub:'Lý + Hóa + Sinh · 16 trắc nghiệm + 4 tự luận', time:60, tnPts:4, tlPts:6, tag:'Tổng hợp',
+ mc:[
+ {q:'Khi đun nóng hóa chất lỏng trong cốc thủy tinh phải dùng lưới thép dưới cốc để:', o:['Cốc không bị đổ','Tránh nứt vỡ cốc','Hóa chất không sôi mạnh','Dẫn nhiệt tốt'], a:1, why:'Lưới thép (lưới amiăng) làm nóng đều, tránh cốc bị nóng cục bộ rồi nứt vỡ.', lesson:'h1'},
+ {q:'Quá trình nào sau đây xảy ra biến đổi hóa học?', o:['Băng tan','Cồn để trong lọ không kín bị bay hơi','Hòa tan đường vào nước','Cháy rừng'], a:3, why:'Cháy rừng tạo ra chất mới (tro, khói, CO₂…) nên là biến đổi hóa học.', lesson:'h2'},
+ {q:'Quá trình nào sau đây là biến đổi vật lí?', o:['Đun nóng đường biến đổi thành than','Rượu để lâu bị chua','Thức ăn bị ôi thiu','Mặt trời lên sương tan dần'], a:3, why:'Sương tan dần chỉ là nước đổi trạng thái (lỏng → hơi), không tạo chất mới.', lesson:'h2'},
+ {q:'Công thức liên hệ giữa khối lượng m, thể tích V và khối lượng riêng D của một vật là', o:['D = m.V','m = D.V','V = m.D','m = D/V'], a:1, why:'Từ D = m/V suy ra m = D·V và V = m/D.', lesson:'l1'},
+ {q:'Nước đường để lâu bị chua. Dấu hiệu để biết có phản ứng hóa học đã xảy ra là:', o:['Nước đường bị đục hơn','Nước đường có vị chua','Nước đường bị biến đổi màu','Nước đường không thay đổi'], a:1, why:'Vị chua cho thấy đã có chất mới (acid) được tạo ra. Đây là dấu hiệu tạo chất mới có tính chất khác chất ban đầu.', lesson:'h2'},
+ {q:'(Vận dụng) Phản ứng tỏa nhiệt, thu nhiệt. Trong quá trình sản xuất và đời sống, các phản ứng tỏa nhiệt KHÔNG có ứng dụng nào?', o:['Cung cấp năng lượng cho động cơ điện','Cung cấp năng lượng cho đun nấu, thắp sáng và sưởi ấm','Cung cấp năng lượng cho vận hành máy móc, phương tiện giao thông: ô tô, xe máy…','Cung cấp năng lượng nhiệt cho các ngành công nghiệp: làm cho các động cơ hay máy phát điện hoạt động'], a:0, why:'Động cơ điện chạy bằng điện năng, không dùng trực tiếp nhiệt từ phản ứng tỏa nhiệt. Ba ứng dụng còn lại đều dùng nhiệt từ đốt cháy nhiên liệu.', lesson:'h2'},
+ {q:'Vai trò lưu trữ, xử lí thông tin và dẫn truyền xung thần kinh là của hệ cơ quan nào?', o:['Hệ vận động','Hệ tuần hoàn','Hệ bài tiết','Hệ thần kinh'], a:3, why:'Hệ thần kinh tiếp nhận, xử lí thông tin và điều khiển hoạt động của cơ thể.', lesson:'s30'},
+ {q:'Hệ vận động gồm các cơ quan chính là:', o:['Não bộ, tủy sống','Khoang miệng, hầu, thực quản, dạ dày, ruột non, ruột già, hậu môn','Xương, cơ vân','Thận, ống dẫn nước tiểu, bóng đái và ống đái'], a:2, why:'Hệ vận động gồm xương và cơ (cơ vân). A là hệ thần kinh, B là hệ tiêu hóa, D là hệ bài tiết nước tiểu.', lesson:'s31'},
+ {q:'Từ thí nghiệm về xương, ta chứng minh được xương có chứa nước và 2 thành phần hóa học là:', o:['Chất hữu cơ và vitamin','Chất vô cơ và muối khoáng','Chất hữu cơ và chất vô cơ','Chất cốt giao và chất hữu cơ'], a:2, why:'Đốt xương → còn chất vô cơ (cứng, giòn). Ngâm xương trong acid → còn chất hữu cơ (mềm, dẻo).', lesson:'s31'},
+ {q:'Đơn vị của áp suất là:', o:['N','Pa','m/s','kg'], a:1, why:'Áp suất đo bằng pascal (Pa), 1 Pa = 1 N/m².', lesson:'l2'},
+ {q:'Áp lực là', o:['lực ép có phương vuông góc với mặt bị ép.','lực ép có phương song song với mặt bị ép.','lực ép có phương tạo với mặt bị ép một góc bất kì.','lực ép có phương trùng với mặt bị ép.'], a:0, why:'Áp lực là lực ép có phương vuông góc với mặt bị ép.', lesson:'l2'},
+ {q:'Mối liên hệ giữa áp lực F, diện tích bị ép S và áp suất p là', o:['p = F.S','S = p.F','p = F/S','F = p/S'], a:2, why:'p = F/S. Suy ra F = p·S và S = F/p.', lesson:'l2'},
+ {q:'Áp suất tăng khi', o:['diện tích bị ép S không đổi, áp lực tác dụng lên diện tích bị ép S tăng.','diện tích bị ép S tăng, áp lực tác dụng lên diện tích bị ép S không đổi.','diện tích bị ép S không đổi, áp lực tác dụng lên diện tích bị ép S giảm.','áp lực tăng bao nhiêu lần thì diện tích bị ép S cũng tăng lên bấy nhiêu lần.'], a:0, why:'p = F/S: giữ S, tăng F thì p tăng. Nếu F và S cùng tăng gấp đôi thì p không đổi.', lesson:'l2'},
+ {q:'Vì sao cái áo phao không chìm trong nước?', o:['Vì khối lượng của áo phao nhỏ hơn khối lượng của nước.','Vì khối lượng riêng của áo phao nhỏ hơn khối lượng riêng của nước.','Vì áo phao nhẹ.','Vì thể tích của áo phao lớn hơn nước.'], a:1, why:'Vật nổi khi khối lượng riêng của vật nhỏ hơn khối lượng riêng của chất lỏng (D vật < D nước).', lesson:'l3'},
+ {q:'Lực đẩy Acsimet có độ lớn phụ thuộc vào', o:['lượng chất lỏng trong bình và khối lượng của vật.','thể tích của phần chất lỏng bị vật chiếm chỗ và bản chất của chất lỏng.','độ sâu của vật bị nhúng chìm so với đáy bình.','khối lượng riêng của vật.'], a:1, why:'F_A = d·V = 10·D·V, với V là thể tích phần chất lỏng bị vật chiếm chỗ, D (hay d) là đặc trưng của chất lỏng.', lesson:'l3'},
+ {q:'Cho khối lượng riêng của nhôm, sắt, chì, đá lần lượt là 2700 kg/m³, 7800 kg/m³, 11300 kg/m³, 2600 kg/m³. Một khối đồng chất có thể tích 300 cm³, nặng 810 g, đó là khối', o:['Nhôm','Sắt','Chì','Đá'], a:0, why:'D = m/V = 810/300 = 2,7 g/cm³ = 2 700 kg/m³, trùng với nhôm.', lesson:'l1'}
+ ],
+ tl:[
+ {w:1, q:'Khi cho sodium hydrogen carbonate (NaHCO₃) vào dung dịch acetic acid (CH₃COOH) có hiện tượng sủi bọt khí.', subs:[
+   {l:'a', q:'Chỉ ra dấu hiệu của phản ứng?', a:'Có <b>chất khí (bọt khí) thoát ra</b>, sủi bọt.', kw:[['khi','bot','sui']], hint:'Hiện tượng đề bài đã cho: sủi bọt khí.', lesson:'h2'},
+   {l:'b', q:'Viết sơ đồ phản ứng bằng chữ? Chỉ ra chất tham gia phản ứng và chất sản phẩm? (Biết rằng sau phản ứng tạo ra sodium acetate (CH₃COONa), nước và carbon dioxide).', a:'sodium hydrogen carbonate + acetic acid → sodium acetate + nước + carbon dioxide.<br>Chất tham gia: sodium hydrogen carbonate, acetic acid.<br>Sản phẩm: sodium acetate, nước, carbon dioxide.', kw:[['hydrogen carbonate','nahco3','natri hidrocacbonat'],['acetic','ch3cooh'],['sodium acetate','ch3coona','natri acetat'],['nuoc','h2o'],['carbon dioxide','co2','cacbon dioxit']], hint:'Chất tham gia nằm bên trái mũi tên (→), sản phẩm bên phải.', lesson:'h2'}]},
+ {w:1, q:'', subs:[
+   {l:'', q:'Móc 1 quả nặng vào lực kế ở ngoài không khí, lực kế chỉ 30 N. Nhúng chìm quả nặng đó vào trong nước, số chỉ của lực kế thay đổi như thế nào?', a:'Số chỉ lực kế <b>giảm</b> (nhỏ hơn 30 N) vì nước tác dụng lực đẩy Archimedes hướng lên: P₁ = P − F_A.', kw:[['giam','nho hon','it hon']], hint:'Khi nhúng vào nước có thêm lực đẩy hướng lên, ngược chiều trọng lực.', lesson:'l3'}]},
+ {w:1, q:'', subs:[
+   {l:'a', q:'Em hãy kể tên một số bệnh tật liên quan đến hệ vận động.', a:'Loãng xương, cong vẹo cột sống, còi xương, thoái hóa khớp, viêm khớp, gãy xương, bong gân…', kw:[['loang xuong','cong veo','coi xuong','thoai hoa','viem khop','gay xuong','bong gan','vet','gu','teo co']], hint:'Gợi ý: bệnh ở xương người già, bệnh ở cột sống học sinh…', lesson:'s31'},
+   {l:'b', q:'Từ đó hãy nêu những biện pháp phòng tránh bệnh tật liên quan đến hệ vận động.', a:'Ăn uống đủ chất (calcium, vitamin D); tập thể dục thể thao đều đặn, vừa sức; ngồi học, mang vác đúng tư thế; tắm nắng buổi sáng; tránh chấn thương, khởi động trước khi vận động.', kw:[['an uong','dinh duong','calcium','canxi','vitamin d','tam nang'],['the duc','the thao','tap luyen','van dong','tu the','ngoi dung','mang vac']], hint:'Nghĩ 3 nhóm: ăn uống – tập luyện – tư thế/an toàn.', lesson:'s31'}]},
+ {w:1, q:'Một bình kín chứa khí carbon dioxide (CO₂) và khí oxygen (O₂).', subs:[
+   {l:'a', q:'Tính khối lượng của 0,25 mol khí CO₂ và thể tích lượng khí này ở điều kiện chuẩn.', a:'m = n·M = 0,25 × 44 = <b>11 g</b>.<br>V = 0,25 × 24,79 = <b>6,1975 L</b> (≈ 6,2 L).', nums:[[11],[6.1975,6.2]], hint:'Hai kết quả: m = n·M (M = 44) và V = n·24,79.', lesson:'h3'},
+   {l:'b', q:'Giải thích vì sao khí CO₂ có xu hướng tập trung ở những vị trí thấp hơn trong không khí khi xảy ra hiện tượng rò rỉ khí CO₂ trong phòng kín.', a:'CO₂ có tỉ khối so với không khí d = 44/29 ≈ 1,52 > 1, tức là <b>nặng hơn không khí</b> nên chìm xuống, tập trung ở vị trí thấp.', kw:[['nang hon','44','1,52','1.52','lon hon 1'],['thap','chim','nen','duoi','xuong']], hint:'So sánh M(CO₂) = 44 với 29 của không khí.', lesson:'h4'}]}
+ ]},
+
+/* ------------------------------------------------ HÓA 1 */
+{ id:'h1', short:'Hóa số 1', title:'Đề kiểm tra giữa kì I KHTN 8 (phần Hóa) – Đề số 1', sub:'Hóa · 6 trắc nghiệm + 3 tự luận', time:30, tnPts:3, tlPts:7, tag:'Hóa',
+ mc:[
+ {q:'Khi đun nóng hóa chất lỏng trong cốc thủy tinh phải dùng lưới thép dưới cốc để:', o:['Cốc không bị đổ','Hóa chất không sôi mạnh','Tránh nứt vỡ cốc','Dẫn nhiệt tốt'], a:2, why:'Lưới thép giúp cốc thủy tinh nóng đều, tránh nứt vỡ.', lesson:'h1'},
+ {q:'Quá trình nào sau đây xảy ra biến đổi hóa học?', o:['Băng tan','Cồn để trong lọ không kín bị bay hơi','Hòa tan đường vào nước','Cháy rừng'], a:3, why:'Cháy rừng tạo chất mới nên là biến đổi hóa học.', lesson:'h2'},
+ {q:'Quá trình nào sau đây là biến đổi vật lí?', o:['Đun nóng đường biến đổi thành than','Rượu để lâu bị chua','Thức ăn bị ôi thiu','Mặt trời lên sương tan dần'], a:3, why:'Sương tan là sự đổi trạng thái của nước, không có chất mới.', lesson:'h2'},
+ {q:'Nước đường để lâu bị chua. Dấu hiệu để biết có phản ứng hóa học đã xảy ra là:', o:['Nước đường bị đục hơn','Nước đường có vị chua','Nước đường bị biến đổi màu','Nước đường không thay đổi'], a:1, why:'Có chất mới (vị chua) → đã có phản ứng hóa học.', lesson:'h2'},
+ {q:'Phản ứng tỏa nhiệt, thu nhiệt. Trong quá trình sản xuất và đời sống, các phản ứng tỏa nhiệt KHÔNG có ứng dụng nào?', o:['Cung cấp năng lượng cho động cơ điện','Cung cấp năng lượng cho đun nấu, thắp sáng và sưởi ấm','Cung cấp năng lượng cho vận hành máy móc, phương tiện giao thông: ô tô, xe máy…','Cung cấp năng lượng nhiệt cho các ngành công nghiệp: làm cho các động cơ hay máy phát điện hoạt động'], a:0, why:'Động cơ điện dùng điện năng, không phải nhiệt từ phản ứng tỏa nhiệt.', lesson:'h2'},
+ {q:'Cho các phát biểu sau:<br>1. Cho vôi sống vào nước tạo thành vôi tôi là biến đổi vật lí<br>2. Khi nung nóng đường là phản ứng thu nhiệt<br>3. Sắt tán nhỏ thành đinh là biến đổi vật lí<br>4. Khi đun mỡ quá lửa có mùi khét là biến đổi hóa học<br>Phát biểu đúng là:', o:['1, 3','2, 3, 4','3, 4','4, 2'], a:2, why:'(1) sai: vôi sống + nước tạo vôi tôi là biến đổi hóa học. (2) nung nóng đường cần cấp nhiệt, bản gốc đã sửa thành "thu nhiệt". (3) đúng: tán sắt chỉ đổi hình dạng. (4) đúng: mỡ cháy khét là chất mới. Đáp án của đề: 3, 4.', lesson:'h2', note:'Trong bản scan, phát biểu (2) được bút viết sửa lại thành "thu nhiệt". Đáp án khoanh của đề là C (3, 4).'}
+ ],
+ tl:[
+ {w:1, q:'Trong các hiện tượng sau đây, chỉ ra đâu là hiện tượng vật lý và đâu là hiện tượng hóa học?', subs:[
+   {l:'a', q:'Ủ cơm nếp với men rượu trong quá trình lên men rượu. (vật lý hay hóa học?)', a:'<b>Hóa học</b> (tạo ra rượu – chất mới).', kw:[['hoa hoc','hoa li']], hint:'Có tạo ra chất mới (rượu) không?', lesson:'h2'},
+   {l:'b', q:'Thanh sắt để lâu ngày trong không khí bị gỉ. (vật lý hay hóa học?)', a:'<b>Hóa học</b> (gỉ sắt là chất mới).', kw:[['hoa hoc','hoa li']], hint:'Gỉ là chất mới, khác sắt ban đầu.', lesson:'h2'},
+   {l:'c', q:'Hòa tan đường vào nước. (vật lý hay hóa học?)', a:'<b>Vật lý</b> (đường vẫn là đường, chỉ tan vào nước).', kw:[['vat ly','vat li']], hint:'Đường có biến thành chất khác không?', lesson:'h2'},
+   {l:'d', q:'Muối ăn hòa tan vào nước được dung dịch muối ăn. (vật lý hay hóa học?)', a:'<b>Vật lý</b> (chỉ là sự hòa tan, không tạo chất mới).', kw:[['vat ly','vat li']], hint:'Hòa tan thường là hiện tượng vật lý.', lesson:'h2'}]},
+ {w:1, q:'', subs:[
+   {l:'a', q:'Tính thể tích của 0,15 mol khí CO ở đkc?', a:'V = 0,15 × 24,79 = <b>3,7185 L</b> (≈ 3,72 L).', nums:[[3.7185,3.72]], hint:'V = n × 24,79.', lesson:'h3'},
+   {l:'b', q:'Tính khối lượng của 2,5 mol H₂SO₄?', a:'M(H₂SO₄) = 2×1 + 32 + 4×16 = 98 g/mol.<br>m = 2,5 × 98 = <b>245 g</b>.', nums:[[245]], hint:'Tính M(H₂SO₄) trước: H=1, S=32, O=16.', lesson:'h3'}]},
+ {w:1, q:'Cho Zinc tác dụng vừa đủ với dung dịch Hydrochloric acid (HCl) tạo thành Zinc chloride (ZnCl₂) và có khí hydrogen thoát ra. Hãy:', subs:[
+   {l:'a', q:'Chỉ ra dấu hiệu nhận biết phản ứng hoá học xảy ra?', a:'Có <b>bọt khí (khí hydrogen) thoát ra</b>; kẽm tan dần.', kw:[['khi','bot','sui','thoat']], hint:'Đề cho: "có khí hydrogen thoát ra".', lesson:'h2'},
+   {l:'b', q:'Viết phương trình dạng chữ của phản ứng trên.', a:'zinc + hydrochloric acid → zinc chloride + hydrogen.', kw:[['zinc','kem','zn'],['hydrochloric','hcl'],['zinc chloride','zncl2'],['hydrogen','h2']], hint:'Chất tham gia: zinc, hydrochloric acid. Sản phẩm: zinc chloride, hydrogen.', lesson:'h2'}]}
+ ]},
+
+/* ------------------------------------------------ HÓA 2 */
+{ id:'h2', short:'Hóa số 2', title:'Đề kiểm tra giữa kì I KHTN 8 (phần Hóa) – Đề số 2', sub:'Hóa · 8 trắc nghiệm + 2 tự luận', time:30, tnPts:4, tlPts:6, tag:'Hóa',
+ mc:[
+ {q:'Dụng cụ thí nghiệm nào dùng để lấy dung dịch hóa chất lỏng?', o:['Kẹp gỗ.','Bình tam giác.','Ống nghiệm.','Ống hút nhỏ giọt.'], a:3, why:'Ống hút nhỏ giọt dùng lấy một lượng nhỏ hóa chất lỏng.', lesson:'h1'},
+ {q:'Khi đun nóng hoá chất trong ống nghiệm cần kẹp ống nghiệm bằng kẹp ở khoảng bao nhiêu so với ống nghiệm tính từ miệng ống?', o:['1/2','1/4','1/6','1/3'], a:3, why:'Kẹp ống nghiệm ở khoảng 1/3 chiều dài tính từ miệng ống.', lesson:'h1'},
+ {q:'Thiết bị cung cấp điện là', o:['Pin 1,5 V.','Ampe kế.','Vôn kế.','Công tắc.'], a:0, why:'Pin, ắc quy, biến áp nguồn là thiết bị cung cấp điện. Ampe kế, vôn kế là thiết bị đo; công tắc là thiết bị đóng ngắt.', lesson:'h1'},
+ {q:'Dấu hiệu nhận ra có chất mới tạo thành là', o:['Sự thay đổi về màu sắc.','Xuất hiện chất khí.','Xuất hiện kết tủa.','Cả 3 dấu hiệu trên.'], a:3, why:'Đổi màu, tạo chất khí, tạo kết tủa… đều có thể là dấu hiệu có chất mới.', lesson:'h2'},
+ {q:'Mol là gì?', o:['Là khối lượng ban đầu của chất đó','Là khối lượng sau khi tham gia phản ứng hóa học','Bằng 6.10²³','Là lượng chất có chứa N_A (6,022.10²³) nguyên tử hoặc phân tử chất đó'], a:3, why:'1 mol chứa 6,022·10²³ hạt (nguyên tử, phân tử…).', lesson:'h3'},
+ {q:'Thể tích mol là', o:['Là thể tích của chất lỏng','Thể tích của 1 nguyên tử nào đó','Thể tích chiếm bởi N_A phân tử của chất khí đó','Thể tích ở đktc là 22,4 l'], a:2, why:'Thể tích mol của chất khí là thể tích chiếm bởi N_A phân tử (1 mol) chất khí đó. Ở đkc (25 °C, 1 bar) là 24,79 L.', lesson:'h3'},
+ {q:'Nồng độ phần trăm của một dung dịch cho ta biết', o:['số mol chất tan trong một lít dung dịch.','số gam chất tan có trong 100 gam dung dịch.','số mol chất tan có trong 150 gam dung dịch.','số gam chất tan có trong dung dịch.'], a:1, why:'C% = (m chất tan / m dung dịch) × 100%: số gam chất tan trong 100 g dung dịch.', lesson:'h3'},
+ {q:'Quá trình nào sau đây thể hiện sự biến đổi vật lí?', o:['Gỗ cháy thành than.','Đun nóng đường đến khi xuất hiện chất màu đen.','Cơm bị ôi thiu.','Hòa tan đường ăn vào nước.'], a:3, why:'Hòa tan đường vào nước không tạo chất mới.', lesson:'h2'}
+ ],
+ tl:[
+ {w:1, q:'Khi cho sodium hydrogen carbonate (NaHCO₃) vào dung dịch acetic acid (CH₃COOH) có hiện tượng sủi bọt khí.', subs:[
+   {l:'a', q:'Chỉ ra dấu hiệu của phản ứng?', a:'Có <b>chất khí (bọt khí) thoát ra</b>.', kw:[['khi','bot','sui']], hint:'Hiện tượng: sủi bọt khí.', lesson:'h2'},
+   {l:'b', q:'Viết sơ đồ phản ứng bằng chữ? Chỉ ra chất tham gia phản ứng và chất sản phẩm? (Biết rằng sau phản ứng tạo ra sodium acetate (CH₃COONa), nước và carbon dioxide).', a:'sodium hydrogen carbonate + acetic acid → sodium acetate + nước + carbon dioxide.<br>Chất tham gia: sodium hydrogen carbonate, acetic acid. Sản phẩm: sodium acetate, nước, carbon dioxide.', kw:[['hydrogen carbonate','nahco3','natri hidrocacbonat'],['acetic','ch3cooh'],['sodium acetate','ch3coona','natri acetat'],['nuoc','h2o'],['carbon dioxide','co2','cacbon dioxit']], hint:'Trái mũi tên = chất tham gia; phải = sản phẩm.', lesson:'h2'}]},
+ {w:1, q:'', subs:[
+   {l:'', q:'Xác định khối lượng mol của khí A biết tỉ khối của khí A so với khí B là 1,8 và khối lượng mol của khí B là 30.', a:'d(A/B) = M_A / M_B = 1,8 ⇒ M_A = 1,8 × 30 = <b>54 g/mol</b>.', nums:[[54]], hint:'d(A/B) = M_A / M_B.', lesson:'h4'}]}
+ ]},
+
+/* ------------------------------------------------ HÓA 3 */
+{ id:'h3', short:'Hóa số 3', title:'Đề kiểm tra giữa kì I KHTN 8 (phần Hóa) – Đề số 3', sub:'Hóa · 8 trắc nghiệm + 2 tự luận', time:30, tnPts:4, tlPts:6, tag:'Hóa',
+ mc:[
+ {q:'Dụng cụ nào dưới đây dùng để chứa hóa chất lượng nhỏ?', o:['Bình cầu','Cốc thủy tinh.','Ống đong.','Ống nghiệm.'], a:3, why:'Ống nghiệm dùng chứa lượng nhỏ hóa chất để làm thí nghiệm.', lesson:'h1'},
+ {q:'Chọn đáp án đúng cho ý nghĩa của kí hiệu sau.', o:['Cảnh báo khu vực hay có sét đánh','Nguy hiểm về điện','Khu vực có chất độc sinh học','Cảnh báo chất độc'], a:1, why:'Biển tam giác vàng có tia chớp là cảnh báo nguy hiểm về điện.', fig:'electric', lesson:'h1'},
+ {q:'Quá trình biến đổi hóa học là', o:['quá trình mà chất chỉ chuyển từ trạng thái này sang trạng thái khác, không tạo thành chất mới.','quá trình chất biến đổi có sự tạo thành chất mới.','quá trình chất biến đổi có sự tạo thành chất mới hoặc không tạo thành chất mới.','quá trình chất không biến đổi và không có sự hình thành chất mới.'], a:1, why:'Biến đổi hóa học (phản ứng hóa học) luôn tạo ra chất mới.', lesson:'h2'},
+ {q:'Bản chất của phản ứng hóa học là sự thay đổi về', o:['số lượng nguyên tử mỗi nguyên tố.','số lượng các nguyên tố.','số lượng các phân tử.','liên kết giữa các nguyên tử.'], a:3, why:'Trong phản ứng, liên kết giữa các nguyên tử bị phá vỡ rồi hình thành liên kết mới. Số nguyên tử mỗi nguyên tố được giữ nguyên.', lesson:'h2'},
+ {q:'Trong quá trình sản xuất và đời sống, các phản ứng tỏa nhiệt KHÔNG có ứng dụng nào?', o:['Cung cấp năng lượng cho động cơ điện','Cung cấp năng lượng cho đun nấu, thắp sáng và sưởi ấm','Cung cấp năng lượng cho vận hành máy móc, phương tiện giao thông: ô tô, xe máy…','Cung cấp năng lượng nhiệt cho các ngành công nghiệp: làm cho các động cơ hay máy phát điện hoạt động'], a:0, why:'Động cơ điện chạy bằng điện năng.', lesson:'h2'},
+ {q:'Số mol nguyên tử Zn tương ứng 3,0.10²³ nguyên tử Zn là', o:['0,2 mol.','0,3 mol.','0,5 mol.','0,6 mol'], a:2, why:'n = số hạt / (6·10²³) = 3,0·10²³ / 6·10²³ = 0,5 mol.', lesson:'h3'},
+ {q:'Có thể thu khí N₂ bằng cách nào?', o:['Đặt đứng bình.','Đặt úp bình.','Đặt ngang bình.','Cách nào cũng được.'], a:1, why:'M(N₂) = 28 < 29 nên N₂ nhẹ hơn không khí, bay lên trên. Muốn thu khí nhẹ hơn không khí phải đặt úp bình để khí dồn lên đáy bình.', lesson:'h4'},
+ {q:'Enzim trong nước bọt hoạt động tốt nhất trong điều kiện pH và nhiệt độ nào?', o:['pH = 5 và t = 37 °C.','pH = 7,2 và t = 37 °C.','pH = 7 và t = 31,9 °C.','pH = 8 và t = 32,6 °C.'], a:1, why:'Enzyme amylase trong nước bọt hoạt động tốt nhất ở pH ≈ 7,2 và nhiệt độ cơ thể 37 °C.', lesson:'s32'}
+ ],
+ tl:[
+ {w:1, q:'Xét các hiện tượng sau đây, hiện tượng nào là hiện tượng vật lý, hiện tượng nào là hiện tượng hóa học?', subs:[
+   {l:'a', q:'Hòa tan vôi sống (CaO) vào nước. (vật lý hay hóa học?)', a:'<b>Hóa học</b> (tạo vôi tôi Ca(OH)₂, tỏa nhiều nhiệt).', kw:[['hoa hoc','hoa li']], hint:'Vôi sống + nước tạo vôi tôi (chất mới).', lesson:'h2'},
+   {l:'b', q:'Dây sắt cắt nhỏ và tán thành đinh. (vật lý hay hóa học?)', a:'<b>Vật lý</b> (chỉ đổi hình dạng).', kw:[['vat ly','vat li']], hint:'Sắt vẫn là sắt, chỉ đổi hình dạng.', lesson:'h2'},
+   {l:'c', q:'Thức ăn để lâu bị ôi thiu. (vật lý hay hóa học?)', a:'<b>Hóa học</b> (tạo chất mới có mùi, vị khác).', kw:[['hoa hoc','hoa li']], hint:'Ôi thiu: có mùi lạ, chất mới.', lesson:'h2'},
+   {l:'d', q:'Hoà tan muối ăn vào nước tạo thành nước muối. (vật lý hay hóa học?)', a:'<b>Vật lý</b> (chỉ là sự hòa tan).', kw:[['vat ly','vat li']], hint:'Hòa tan không tạo chất mới.', lesson:'h2'}]},
+ {w:1, q:'', subs:[
+   {l:'a', q:'Tính khối lượng của 3,875 lít khí CO₂ ở đkc?', a:'n = 3,875 / 24,79 ≈ 0,156 mol.<br>m = 0,156 × 44 ≈ <b>6,88 g</b>.', nums:[[6.88,6.87,6.9]], hint:'n = V/24,79 rồi m = n·M, M(CO₂) = 44.', lesson:'h3'},
+   {l:'b', q:'Tính thể tích của 3,011.10²³ phân tử O₂?', a:'n = 3,011·10²³ / 6,022·10²³ = 0,5 mol.<br>V = 0,5 × 24,79 = <b>12,395 L</b>.', nums:[[12.395,12.4]], hint:'Số mol = số hạt / 6,022·10²³, rồi V = n·24,79.', lesson:'h3'},
+   {l:'c', q:'Vì sao người ta thường nạp khí H₂ vào bóng bay hay khinh khí cầu?', a:'H₂ có M = 2, d = 2/29 ≈ 0,07 < 1, tức <b>nhẹ hơn không khí</b> rất nhiều nên bóng bay lên được.', kw:[['nhe hon','nhe'],['khong khi']], hint:'So sánh khối lượng mol của H₂ (2) với không khí (29).', lesson:'h4'}]}
+ ]},
+
+/* ------------------------------------------------ HÓA 4 */
+{ id:'h4', short:'Hóa số 4', title:'Đề kiểm tra giữa kì I KHTN 8 (phần Hóa) – Đề số 4', sub:'Hóa · 8 trắc nghiệm (4 điểm) + 3 tự luận', time:30, tnPts:4, tlPts:6, tag:'Hóa',
+ mc:[
+ {q:'Dụng cụ ở hình bên có tên gọi là gì và thường dùng để làm gì?', o:['Pipette, dùng lấy hóa chất.','Bơm tiêm, dùng truyền hóa chất cho cây.','Bơm hóa chất, dùng để làm thí nghiệm.','Bơm khí dùng để bơm không khí vào ống nghiệm.'], a:0, why:'Đó là pipette (ống hút nhỏ giọt) dùng lấy một lượng nhỏ hóa chất lỏng.', fig:'pipette', lesson:'h1'},
+ {q:'Cách bảo quản hóa chất trong phòng thí nghiệm:', o:['Hóa chất trong phòng thí nghiệm thường đựng trong lọ có dán nhãn ghi tên hóa chất.','Hóa chất dùng xong nếu còn thừa, phải đổ trở lại bình chứa.','Hóa chất trong phòng thí nghiệm thường đựng trong lọ có nút đậy kín, phía ngoài có dán nhãn ghi tên hóa chất.','Nếu hóa chất có tính độc hại không cần ghi chú trên nhãn riêng nhưng phải đặt ở khu vực riêng'], a:2, why:'Lọ phải đậy kín và có nhãn. Không đổ hóa chất thừa trở lại bình chứa; hóa chất độc hại cần ghi chú trên nhãn.', lesson:'h1'},
+ {q:'Biện pháp an toàn khi sử dụng điện là:', o:['Sử dụng dây dẫn không có vỏ bọc cách điện; kiểm tra cách điện của đồ dùng điện; nối đất các thiết bị, đồ dùng điện.','Thực hiện tốt cách điện dây dẫn điện, kiểm tra cách điện của đồ dùng điện; sử dụng đồ dùng điện với hiệu điện thế 380V.','Thực hiện tốt cách điện dây dẫn điện; kiểm tra cách điện của đồ dùng điện; không sử dụng đồ dùng điện có vỏ bằng kim loại.','Thực hiện tốt cách điện dây dẫn điện; kiểm tra cách điện của đồ dùng điện; nối đất các thiết bị, đồ dùng điện.'], a:3, why:'An toàn điện: cách điện tốt dây dẫn, kiểm tra cách điện đồ dùng và nối đất thiết bị. Dây không vỏ bọc, hiệu điện thế 380 V hay cấm đồ vỏ kim loại đều không đúng. (Bản scan khoanh C, đáp án chuẩn là D.)', lesson:'h1'},
+ {q:'Biến đổi hóa học là', o:['chất biến đổi mà vẫn giữ nguyên là chất ban đầu.','chất biến đổi có tạo ra chất khác.','chất bị biến đổi về trạng thái, màu sắc.','chất bị hòa tan trong nước.'], a:1, why:'Biến đổi hóa học: chất biến đổi tạo ra chất khác.', lesson:'h2'},
+ {q:'Quá trình đốt cháy dầu là phản ứng toả nhiệt được ứng dụng để:', o:['đun nấu, sưởi ấm, nung gốm sứ.','chạy động cơ, đun nấu.','hàn cắt kim loại, để chạy động cơ.','đun nấu, sưởi ấm, hàn cắt kim loại.'], a:0, why:'Nhiệt tỏa ra khi đốt dầu được dùng để đun nấu, sưởi ấm, nung gốm sứ. (Trên bản scan, A được khoanh và D bị gạch.)', lesson:'h2'},
+ {q:'Biến đổi nào sau đây là biến đổi hóa học?', o:['Cơm bị ôi thiu.','Rửa rau bằng nước lạnh.','Cầu vồng xuất hiện sau mưa.','Hoà tan muối ăn vào nước.'], a:0, why:'Cơm ôi thiu có chất mới → biến đổi hóa học. Các hiện tượng còn lại không tạo chất mới.', lesson:'h2'},
+ {q:'Khi thổi hơi thở vào dung dịch calcium hydroxide (nước vôi trong). Hiện tượng quan sát được trong ống nghiệm chứa dung dịch calcium hydroxide là', o:['dung dịch chuyển màu đỏ.','dung dịch không có hiện tượng.','dung dịch bị vẩn đục.','dung dịch chuyển màu xanh.'], a:2, why:'Hơi thở chứa CO₂. CO₂ + nước vôi trong → calcium carbonate (CaCO₃) không tan nên nước vôi bị vẩn đục.', lesson:'h2'},
+ {q:'Phản ứng thu nhiệt là phản ứng hoá học có sự cung cấp nhiệt cho phản ứng. Trong các quá trình sau, quá trình nào xảy ra phản ứng thu nhiệt?', o:['Phản ứng đốt cháy xăng dầu trong động cơ tạo ra năng lượng dưới dạng nhiệt để vận hành xe cộ, máy móc,..','Khi sản xuất vôi, người ta phải liên tục cung cấp nhiệt để thực hiện phản ứng phân hủy đá vôi.','Phản ứng khi cho một ít vôi sống vào cốc nước, vôi sống trở nên dẻo quánh và thấy cốc nước nóng lên.','Quá trình hô hấp tạo ra phản ứng tỏa nhiệt bên trong các tế bào trong quá trình trao đổi khí.'], a:1, why:'Sản xuất vôi phải liên tục cung cấp nhiệt để phân hủy đá vôi: phản ứng thu nhiệt. Ba trường hợp còn lại đều tỏa nhiệt. (Bản scan khoanh C nhưng C là phản ứng tỏa nhiệt.)', lesson:'h2'}
+ ],
+ tl:[
+ {w:1, q:'', subs:[
+   {l:'', q:'Nêu chức năng của các thiết bị sau: máy đo pH, ampe kế, vôn kế, huyết áp kế?', a:'Máy đo pH: đo độ pH của dung dịch/môi trường.<br>Ampe kế: đo cường độ dòng điện.<br>Vôn kế: đo hiệu điện thế (điện áp).<br>Huyết áp kế: đo huyết áp.', kw:[['ph'],['cuong do','dong dien'],['hieu dien the','dien ap'],['huyet ap']], hint:'4 thiết bị = 4 ý: pH / dòng điện / hiệu điện thế / huyết áp.', lesson:'h1'}]},
+ {w:1, q:'', subs:[
+   {l:'a', q:'Khí CH₄, O₂, H₂, CO₂ khí nào nặng hơn không khí?', a:'M: CH₄ = 16, O₂ = 32, H₂ = 2, CO₂ = 44. Khí nặng hơn không khí (M > 29) là <b>O₂ và CO₂</b>.', kw:[['o2','oxygen','oxi'],['co2','carbon dioxide','cacbon dioxit']], hint:'Tính M của từng khí rồi so với 29.', lesson:'h4'},
+   {l:'b', q:'Tính khối lượng (gam) của 7,437 L khí SO₂, khí được đo ở đkc.', a:'n = 7,437/24,79 = 0,3 mol.<br>M(SO₂) = 32 + 2×16 = 64.<br>m = 0,3 × 64 = <b>19,2 g</b>.', nums:[[19.2]], hint:'n = V/24,79 = 0,3 mol; M(SO₂) = 64.', lesson:'h3'}]},
+ {w:1, q:'', subs:[
+   {l:'', q:'Xác định tên gọi của chất A, biết ở điều kiện thường A tồn tại ở trạng thái khí có công thức là A₂, tỉ khối của A₂ so với khí oxygen là 5.', a:'d(A₂/O₂) = M(A₂)/32 = 5 ⇒ M(A₂) = 160 ⇒ M(A) = 160/2 = <b>80</b> ⇒ A là bromine (Br).<br><i>Lưu ý: đề gốc cho dữ kiện như vậy; thực tế Br₂ ở điều kiện thường là chất lỏng.</i>', nums:[[160],[80]], kw:[['brom','br']], hint:'M(A₂) = 5 × 32. Sau đó chia 2 để ra M(A) và tra bảng nguyên tử khối.', lesson:'h4', anyOf:true}]}
+ ]},
+
+/* ------------------------------------------------ HÓA 5 */
+{ id:'h5', short:'Hóa số 5', title:'Đề kiểm tra giữa kì I KHTN 8 (phần Hóa) – Đề số 5', sub:'Hóa · 8 trắc nghiệm + 2 tự luận', time:30, tnPts:4, tlPts:6, tag:'Hóa',
+ mc:[
+ {q:'Khi đun nóng hóa chất lỏng trong cốc thủy tinh phải dùng lưới thép dưới cốc để:', o:['Cốc không bị đổ.','Hóa chất không sôi mạnh.','Tránh nứt vỡ cốc.','Dẫn nhiệt tốt.'], a:2, why:'Lưới thép làm cốc nóng đều, tránh nứt vỡ.', lesson:'h1'},
+ {q:'Quá trình nào sau đây xảy ra biến đổi hóa học?', o:['Băng tan','Cồn để trong lọ không kín bị bay hơi','Hòa tan đường vào nước','Cháy rừng'], a:3, why:'Cháy rừng tạo chất mới.', lesson:'h2'},
+ {q:'Nước đường để lâu bị chua. Dấu hiệu để biết có phản ứng hóa học đã xảy ra là:', o:['Nước đường bị đục hơn','Nước đường có vị chua','Nước đường không thay đổi','Nước đường bị biến đổi màu'], a:1, why:'Vị chua = chất mới được tạo ra.', lesson:'h2'},
+ {q:'Cho các phát biểu sau:<br>(1) Cho vôi sống vào nước tạo thành vôi tôi là biến đổi vật lí<br>(2) Khi nung nóng đường là phản ứng tỏa nhiệt<br>(3) Sắt tán nhỏ thành đinh là biến đổi vật lí<br>(4) Khi đun mỡ quá lửa có mùi khét là biến đổi hóa học<br>Số phát biểu đúng là:', o:['1','2','3','4'], a:1, why:'(1) sai: là biến đổi hóa học. (2) sai: nung đường cần cung cấp nhiệt nên là thu nhiệt. (3) đúng. (4) đúng. Có 2 phát biểu đúng.', lesson:'h2'},
+ {q:'Kí hiệu cảnh báo dưới đây được in trên nhãn chai hoá chất. Kí hiệu này có nghĩa là', o:['hoá chất dễ cháy.','hoá chất độc với môi trường.','hoá chất kích ứng đường hô hấp.','hoá chất gây hại cho sức khoẻ.'], a:0, why:'Biểu tượng ngọn lửa là cảnh báo hóa chất dễ cháy (ngọn lửa trên vòng tròn là hóa chất có tính oxi hóa, gây cháy). Theo đáp án của đề chọn A.', fig:'oxidizer', lesson:'h1'},
+ {q:'Trong phản ứng tổng hợp ammonia từ nitrogen và hydrogen, các liên kết giữa các nguyên tử …(1)… bị phá vỡ, liên kết giữa các nguyên tử …(2)… được hình thành.<br><i>nitrogen (N₂) + hydrogen (H₂) → ammonia (NH₃)</i><br>Các từ thích hợp để điền vào vị trí (1), (2) lần lượt là:', o:['cùng loại, cùng loại.','khác loại, khác loại.','khác loại, cùng loại.','cùng loại, khác loại.'], a:3, why:'Ở chất đầu, liên kết N–N, H–H giữa các nguyên tử cùng loại bị phá vỡ. Ở sản phẩm NH₃, liên kết N–H giữa các nguyên tử khác loại được hình thành.', lesson:'h2'},
+ {q:'Đâu không phải nút chức năng trên thiết bị Joulemeter là?', o:['Nút start để khởi động.','Nút on để bật','Nút reset để cài lại.','Nút cài đặt để lựa chọn'], a:3, why:'Joulemeter có các nút: on/off, start, reset. Không có "nút cài đặt để lựa chọn".', lesson:'h1'},
+ {q:'Đâu là thiết bị hỗ trợ điện', o:['Biến trở.','Bóng đèn pin kèm đui 3V','Điot phát quang','Công tắc'], a:3, why:'Theo bài 1 (KHTN 8): công tắc là thiết bị hỗ trợ (đóng ngắt mạch). Biến trở, bóng đèn, điot là thiết bị tiêu thụ/điều chỉnh trong mạch.', lesson:'h1'}
+ ],
+ tl:[
+ {w:1, q:'', subs:[
+   {l:'a1', q:'Khí sulfur dioxide (SO₂) nặng hay nhẹ hơn không khí bao nhiêu lần?', a:'M(SO₂) = 64 ⇒ d = 64/29 ≈ <b>2,21</b>: SO₂ nặng hơn không khí khoảng 2,21 lần.', nums:[[2.21,2.2]], hint:'d = M/29, M(SO₂) = 64.', lesson:'h4'},
+   {l:'a2', q:'Khí methane (CH₄) nặng hay nhẹ hơn không khí bao nhiêu lần?', a:'M(CH₄) = 16 ⇒ d = 16/29 ≈ <b>0,55</b>: CH₄ nhẹ hơn không khí (bằng khoảng 0,55 lần).', nums:[[0.55]], kw:[['nhe']], hint:'d = 16/29.', lesson:'h4'},
+   {l:'b', q:'Lưu huỳnh cháy trong oxi không khí tạo ra chất khí mùi hắc (sulfur dioxide). Chỉ ra dấu hiệu của phản ứng và viết phương trình chữ.', a:'Dấu hiệu: <b>có chất khí mùi hắc</b> (sulfur dioxide) sinh ra.<br>sulfur + oxygen → sulfur dioxide.', kw:[['khi','mui hac'],['sulfur','luu huynh','s '],['oxygen','oxi','o2'],['sulfur dioxide','so2']], hint:'Dấu hiệu là chất khí có mùi hắc. Chất đầu: sulfur, oxygen.', lesson:'h2'}]},
+ {w:1, q:'', subs:[
+   {l:'a', q:'Ở đkc 0,5 lít khí X có khối lượng là 0,48 gam. Khối lượng mol phân tử của khí X là bao nhiêu?', a:'n = 0,5/24,79 ≈ 0,0202 mol.<br>M = m/n = 0,48 / 0,0202 ≈ <b>24 g/mol</b> (23,8).', nums:[[24,23.8,23.79]], hint:'n = V/24,79 rồi M = m/n.', lesson:'h3'},
+   {l:'b', q:'0,35 mol khí SO₂ ở điều kiện chuẩn có thể tích bằng bao nhiêu?', a:'V = 0,35 × 24,79 = <b>8,6765 L</b> (≈ 8,68 L).', nums:[[8.6765,8.68]], hint:'V = n × 24,79.', lesson:'h3'}]}
+ ]},
+
+/* ------------------------------------------------ TEAM CÔ OANH */
+{ id:'oanh', short:'Đề cô Oanh', title:'Đề kiểm tra Khoa học tự nhiên 8 – Team cô Oanh', sub:'Hóa · 4 trắc nghiệm (2 điểm) + 3 tự luận (8 điểm)', time:30, tnPts:2, tlPts:8, tag:'Hóa',
+ mc:[
+ {q:'Khi sử dụng hóa chất trong phòng thực hành, học sinh cần thực hiện việc nào sau đây?', o:['Nếm thử hóa chất để nhận biết.','Ngửi trực tiếp hóa chất để xác định mùi.','Đọc kĩ nhãn hóa chất và tuân thủ hướng dẫn an toàn.','Tự ý trộn các hóa chất với nhau.'], a:2, why:'Luôn đọc nhãn và tuân thủ hướng dẫn an toàn. Không nếm, không ngửi trực tiếp, không tự ý trộn hóa chất.', lesson:'h1'},
+ {q:'Hiện tượng nào sau đây là dấu hiệu cho thấy có thể đã xảy ra phản ứng hóa học?', o:['Nước đá tan thành nước lỏng.','Đường được nghiền thành bột mịn.','Nước bay hơi khi đun nóng.','Xuất hiện chất khí khi cho viên sủi vào nước.'], a:3, why:'Xuất hiện chất khí (bọt khí) là dấu hiệu có chất mới. Ba hiện tượng còn lại là biến đổi vật lí.', lesson:'h2'},
+ {q:'Quá trình nào sau đây là phản ứng tỏa nhiệt?', o:['Nước đá tan thành nước.','Đốt cháy than trong không khí.','Nước lỏng hóa hơi.','Làm nóng một cốc nước bằng bếp điện.'], a:1, why:'Đốt than là phản ứng cháy, tỏa nhiệt. Các quá trình khác không phải phản ứng hóa học.', lesson:'h2'},
+ {q:'Phát biểu nào sau đây đúng về mol?', o:['Mol là đơn vị đo thể tích chất khí.','Mol là đơn vị đo khối lượng chất.','Mol là đơn vị dùng để đo lượng chất.','Mol chỉ được dùng để biểu diễn lượng chất lỏng.'], a:2, why:'Mol là đơn vị đo lượng chất (1 mol chứa 6,022·10²³ hạt).', lesson:'h3'}
+ ],
+ tl:[
+ {w:2.5, q:'Đốt cháy magnesium (Mg) trong khí oxygen (O₂), tạo thành magnesium oxide (MgO), đồng thời phát ra ánh sáng chói và tỏa nhiều nhiệt.', subs:[
+   {l:'a', q:'Viết phương trình chữ của phản ứng hóa học trên.', a:'magnesium + oxygen → magnesium oxide.', kw:[['magnesium','magie','mg'],['oxygen','oxi','o2'],['magnesium oxide','mgo','magie oxit']], hint:'Chất tham gia: Mg và O₂. Sản phẩm: MgO.', lesson:'h2'},
+   {l:'b', q:'Phản ứng trên là phản ứng tỏa nhiệt hay thu nhiệt? Giải thích.', a:'Là phản ứng <b>tỏa nhiệt</b> vì phản ứng phát ra ánh sáng chói và tỏa nhiều nhiệt ra môi trường xung quanh.', kw:[['toa nhiet'],['nhiet','anh sang','toa']], hint:'Đề nói "tỏa nhiều nhiệt".', lesson:'h2'},
+   {l:'c', q:'Nêu một dấu hiệu chứng tỏ phản ứng hóa học đã xảy ra.', a:'Phát ra ánh sáng chói và tỏa nhiều nhiệt; tạo chất rắn màu trắng (MgO).', kw:[['anh sang','toa nhiet','nhiet','chat ran','trang','phat sang','chay']], hint:'Quan sát: ánh sáng, nhiệt, chất mới…', lesson:'h2'}]},
+ {w:3.5, q:'', subs:[
+   {l:'a', q:'Tính khối lượng của 0,3 mol H₂SO₄.', a:'M(H₂SO₄) = 2×1 + 32 + 4×16 = 98 g/mol.<br>m = 0,3 × 98 = <b>29,4 g</b>.', nums:[[29.4]], hint:'m = n × M, M = 98.', lesson:'h3'},
+   {l:'b', q:'Tính khối lượng của 4,958 lít khí carbon dioxide (CO₂) ở điều kiện chuẩn (25 °C, 1 bar).', a:'n = 4,958/24,79 = 0,2 mol.<br>m = 0,2 × 44 = <b>8,8 g</b>.', nums:[[8.8]], hint:'n = V/24,79, rồi m = n·44.', lesson:'h3'},
+   {l:'c', q:'Tính thể tích 0,25 mol khí hydrogen ở điều kiện chuẩn (25 °C, 1 bar).', a:'V = 0,25 × 24,79 = <b>6,1975 L</b> (≈ 6,2 L).', nums:[[6.1975,6.2]], hint:'V = n × 24,79.', lesson:'h3'}]},
+ {w:2, q:'Cho biết: C = 12; O = 16; Fe = 56; S = 32; Ca = 40; H = 1; He = 2 (theo đề).', subs:[
+   {l:'', q:'Khí helium (He) được sử dụng để bơm bóng bay. Giải thích vì sao bóng bay được bơm khí helium có thể bay lên trong không khí.', a:'Khí He rất nhẹ: tỉ khối so với không khí d = M(He)/29 = 4/29 ≈ 0,14 (theo đề He = 2 thì ≈ 0,07), đều nhỏ hơn 1. Vậy He <b>nhẹ hơn không khí</b> nên bóng bay lên cao trong không khí.', kw:[['nhe hon','nhe'],['khong khi'],['29','ti khoi','khoi luong mol','nho hon 1','d']], hint:'So sánh khối lượng mol của He với không khí (29).', lesson:'h4'}]}
+ ]}
+];
+
+FIG.ubranch = `<svg viewBox="0 0 260 190" width="260" role="img" aria-label="Bình chứa chất lỏng gồm hai nhánh thông nhau, điểm K ở nhánh trái, điểm I ở giữa nhánh phải, điểm H ở sâu nhất"><g fill="none" stroke="#555" stroke-width="2"><path d="M30 10 V120 H110 V10"/><path d="M110 10 V86 H168 V10"/><path d="M168 10 V120 H110"/><path d="M30 120 H168"/></g><rect x="31" y="30" width="78" height="89" fill="#bfe3f5" opacity=".7"/><rect x="111" y="30" width="56" height="55" fill="#bfe3f5" opacity=".7"/><rect x="111" y="87" width="56" height="32" fill="#bfe3f5" opacity=".7"/><path d="M26 124 H172" stroke="#555" stroke-width="5"/><circle cx="62" cy="96" r="4" fill="#111"/><text x="46" y="94" font-size="14" font-weight="700" fill="#111">K</text><circle cx="140" cy="58" r="4" fill="#111"/><text x="146" y="62" font-size="14" font-weight="700" fill="#111">I</text><circle cx="140" cy="112" r="4" fill="#111"/><text x="124" y="148" font-size="14" font-weight="700" fill="#111">H</text><line x1="30" y1="30" x2="168" y2="30" stroke="#2a7fb8" stroke-dasharray="4 3"/></svg>`;
+
+TESTS.push({ id:'ly1', short:'Đề Lý (Kim Hoàng)', title:'Đề KTGKI – Vật lí 8 (Kim Hoàng)', sub:'Lý · 4 trắc nghiệm (1,0 điểm) + 3 tự luận (2,0 điểm)', time:20, tnPts:1, tlPts:2, tag:'Lý',
+ mc:[
+ {q:'Đại lượng nào được xác định bằng thương số giữa khối lượng và thể tích của một vật?', o:['Trọng lượng','Khối lượng riêng','Áp suất','Lực đẩy'], a:1, why:'D = m/V: khối lượng chia thể tích là khối lượng riêng.', lesson:'l1'},
+ {q:'Muốn xác định khối lượng riêng của một viên đá nhỏ có hình dạng bất kì, bộ dụng cụ phù hợp nhất là:', o:['Lực kế và thước thẳng','Cân và bình chia độ','Nhiệt kế và đồng hồ','Thước dây và lực kế'], a:1, why:'Cân đo khối lượng m. Bình chia độ đo thể tích V của vật có hình dạng bất kì (độ tăng mực nước). Sau đó D = m/V.', lesson:'l1'},
+ {q:'Hai khối nhôm cùng chất, khối thứ nhất có thể tích lớn gấp 2 lần khối thứ hai. So sánh khối lượng riêng của chúng:', o:['Khối thứ nhất lớn gấp 2 lần','Khối thứ hai lớn gấp 2 lần','Hai khối có khối lượng riêng bằng nhau','Không thể so sánh'], a:2, why:'Khối lượng riêng là đặc trưng của chất. Cùng là nhôm thì D bằng nhau, dù thể tích khác nhau (khối lớn hơn có khối lượng lớn hơn tương ứng).', lesson:'l1'},
+ {q:'Một kích thủy lực hoạt động dựa trên tính chất nào của chất lỏng?', o:['Áp suất trong chất lỏng luôn bằng không','Áp suất tác dụng lên chất lỏng kín được truyền nguyên vẹn theo mọi hướng','Chất lỏng chỉ truyền áp suất xuống dưới','Áp suất không truyền qua chất lỏng'], a:1, why:'Nguyên lí Pascal: áp suất tác dụng lên chất lỏng đựng trong bình kín được chất lỏng truyền nguyên vẹn theo mọi hướng.', lesson:'l4'}
+ ],
+ tl:[
+ {w:0.25, q:'Hãy so sánh áp suất tại các điểm H, I, K trong hình sau và giải thích.', fig:'ubranch', subs:[
+   {l:'', q:'So sánh p_H, p_I, p_K và giải thích', a:'Các điểm cùng nằm trong một chất lỏng đứng yên nên áp suất p = d·h phụ thuộc độ sâu h. Theo hình: H sâu nhất, K ở giữa, I nông nhất. Vậy <b>p_H > p_K > p_I</b>.', kw:[['h'],['sau','do sau','chieu cao','d.h','d*h','h.d'],['>','lon hon','nho hon','<']], hint:'Trong cùng một chất lỏng, điểm càng sâu thì áp suất càng lớn (p = d·h).', lesson:'l2'}]},
+ {w:0.75, q:'', subs:[
+   {l:'', q:'Vì sao người ta thường làm bản lưỡi dao mỏng và mài dao sắc khi sử dụng để cắt thực phẩm? Hãy giải thích dựa vào kiến thức về áp suất.', a:'Lưỡi dao mỏng và sắc làm <b>diện tích bị ép S rất nhỏ</b>. Với cùng một áp lực F, áp suất p = F/S sẽ rất <b>lớn</b>, nên dao dễ cắt vào thực phẩm.', kw:[['dien tich'],['nho','giam','mong','sac'],['ap suat'],['lon','tang','de cat']], hint:'p = F/S. Nếu S nhỏ thì p thế nào?', lesson:'l2'}]},
+ {w:1, q:'Một lọ hoa nhỏ bằng kim loại có thể tích ngoài là 65 cm³. Bên trong lọ hoa có một khoảng rỗng kín với thể tích 10 cm³. Đem lọ hoa đặt lên cân điện tử thì thấy cân hiện 429 g.<br><i>(Biết: Nhôm có D₁ = 2700 kg/m³, Sắt có D₂ = 7800 kg/m³, Đồng có D₃ = 8900 kg/m³)</i>', subs:[
+   {l:'a', q:'Tính thể tích phần kim loại thực tế dùng để đúc nên lọ hoa.', a:'V = 65 − 10 = <b>55 cm³</b>.', nums:[[55]], hint:'Lấy thể tích ngoài trừ phần rỗng.', lesson:'l1'},
+   {l:'b', q:'Tính khối lượng riêng của chất kim loại dùng làm lọ hoa và cho biết lọ hoa được làm bằng kim loại gì.', a:'D = m/V = 429/55 = 7,8 g/cm³ = <b>7 800 kg/m³</b> ⇒ kim loại là <b>sắt</b>.', nums:[[7.8,7800]], kw:[['sat','fe']], hint:'D = 429 g / 55 cm³, rồi đối chiếu bảng.', lesson:'l1'}]}
+ ]});
+
+/* ===== BÀI GIẢNG ===== */
+const SUBJ = {hoa:{name:'Hóa học',color:'var(--hoa)'}, sinh:{name:'Sinh học',color:'var(--sinh)'}, ly:{name:'Vật lí',color:'var(--ly)'}};
+const LESSONS = [
+/* ================= HÓA ================= */
+{id:'h1', s:'hoa', n:'Bài 1', title:'Dụng cụ, hóa chất, thiết bị điện', goal:'Gọi tên dụng cụ, biết quy tắc an toàn, đọc biển cảnh báo, phân loại thiết bị điện.',
+ steps:[
+ {h:'Dụng cụ thí nghiệm thông dụng', html:`<ul>
+ <li><b>Ống nghiệm</b>: chứa lượng nhỏ hóa chất để làm phản ứng.</li>
+ <li><b>Ống hút nhỏ giọt (pipette)</b>: lấy một lượng nhỏ hóa chất lỏng.</li>
+ <li><b>Ống đong</b>: đo thể tích chất lỏng. <b>Cốc thủy tinh, bình tam giác</b>: chứa, pha, đun hóa chất.</li>
+ <li><b>Đèn cồn</b>: đun nóng. <b>Kẹp ống nghiệm</b>: kẹp ở khoảng <b>1/3 từ miệng ống</b>.</li>
+ <li><b>Lưới thép</b> đặt dưới cốc khi đun: làm nóng đều, <b>tránh nứt vỡ cốc</b>.</li></ul>
+ <p class="tip">Mẹo nhớ: ống hút = <b>lấy</b>, ống đong = <b>đo</b>, ống nghiệm = <b>chứa</b>.</p>`,
+  chk:{q:'Dụng cụ nào dùng để lấy một lượng nhỏ hóa chất lỏng?', o:['Ống đong','Ống hút nhỏ giọt','Kẹp ống nghiệm','Lưới thép'], a:1, why:'Ống hút nhỏ giọt (pipette) dùng để lấy lượng nhỏ hóa chất lỏng.'}},
+ {h:'Quy tắc an toàn với hóa chất', html:`<ol><li><b>Không nếm, không ngửi trực tiếp</b>, không tự ý trộn hóa chất.</li>
+ <li>Đọc kĩ <b>nhãn</b>, dùng hóa chất rõ nguồn gốc; lọ <b>đậy kín, dán nhãn</b>.</li>
+ <li>Hóa chất thừa <b>không đổ trở lại</b> bình chứa.</li>
+ <li>Đeo kính, găng tay, áo choàng; khi hóa chất đổ ra ngoài phải <b>báo giáo viên</b>.</li></ol>
+ <div class="signs"><span>🔥 Dễ cháy</span><span>☠ Độc</span><span>⚡ Nguy hiểm về điện (tam giác vàng, tia chớp)</span><span>☣ Chất độc sinh học (3 vòng tròn lồng nhau)</span></div>`,
+  chk:{q:'Hành động nào ĐÚNG khi dùng hóa chất?', o:['Nếm thử để nhận biết','Ngửi trực tiếp','Đọc kĩ nhãn và tuân thủ hướng dẫn','Đổ hóa chất thừa trở lại bình'], a:2, why:'Chỉ có đọc nhãn và tuân thủ hướng dẫn là đúng.'}},
+ {h:'Thiết bị điện', html:`<table class="tb"><tr><th>Nhóm</th><th>Ví dụ</th></tr>
+ <tr><td>Cung cấp điện</td><td>Pin, ắc quy, biến áp nguồn</td></tr>
+ <tr><td>Đo</td><td>Ampe kế (đo <b>cường độ dòng điện</b>), Vôn kế (đo <b>hiệu điện thế</b>), Joulemeter (đo năng lượng, công suất, điện áp, dòng điện), máy đo pH, huyết áp kế</td></tr>
+ <tr><td>Hỗ trợ</td><td>Công tắc (đóng/ngắt mạch), dây nối</td></tr></table>
+ <p>Joulemeter có các nút <b>on, start, reset</b>.</p>
+ <p><b>An toàn điện:</b> cách điện dây dẫn tốt, kiểm tra cách điện đồ dùng, <b>nối đất</b> thiết bị.</p>`,
+  chk:{q:'Vôn kế dùng để đo đại lượng nào?', o:['Cường độ dòng điện','Hiệu điện thế','Độ pH','Huyết áp'], a:1, why:'Vôn kế đo hiệu điện thế (điện áp). Cường độ dòng điện do ampe kế đo.'}}
+ ],
+ video:[{t:'title',big:'Bài 1: Dụng cụ & an toàn',sub:'Hóa học 8',say:'Chào em! Hôm nay mình ôn dụng cụ thí nghiệm, an toàn hóa chất và thiết bị điện.'},
+ {t:'list',items:['Ống nghiệm: chứa hóa chất','Ống hút nhỏ giọt: lấy hóa chất','Ống đong: đo thể tích','Kẹp ống nghiệm: ở một phần ba từ miệng ống'],say:'Ống nghiệm để chứa, ống hút nhỏ giọt để lấy, ống đong để đo. Khi đun, kẹp ống nghiệm ở khoảng một phần ba từ miệng ống.'},
+ {t:'list',items:['Không nếm, không ngửi trực tiếp','Đọc kĩ nhãn hóa chất','Không đổ hóa chất thừa lại bình','Lưới thép dưới cốc: tránh nứt vỡ'],say:'Quy tắc vàng: không nếm, không ngửi trực tiếp, đọc kĩ nhãn, không đổ hóa chất thừa trở lại bình. Lưới thép giúp cốc không nứt vỡ.'},
+ {t:'compare',a:{h:'Thiết bị đo',l:['Ampe kế → dòng điện','Vôn kế → hiệu điện thế','Máy đo pH → độ pH','Huyết áp kế → huyết áp']},b:{h:'Cung cấp & hỗ trợ',l:['Pin, ắc quy, biến áp nguồn','Công tắc: đóng ngắt mạch','Joulemeter: nút on, start, reset']},say:'Ampe kế đo dòng điện, vôn kế đo hiệu điện thế. Pin và biến áp nguồn cung cấp điện, còn công tắc dùng đóng ngắt mạch.'}]},
+
+{id:'h2', s:'hoa', n:'Bài 2', title:'Phản ứng hóa học', goal:'Phân biệt biến đổi vật lí/hóa học, nhận biết phản ứng, tỏa/thu nhiệt, viết phương trình chữ.',
+ steps:[
+ {h:'Biến đổi vật lí và biến đổi hóa học', html:`<div class="two"><div><h4>Vật lí</h4><p>Chỉ đổi <b>trạng thái, hình dạng, hòa tan</b>. <b>Không tạo chất mới.</b></p><p>VD: băng tan, cồn bay hơi, hòa tan đường/muối, tán sắt thành đinh, sương tan.</p></div>
+ <div><h4>Hóa học</h4><p><b>Có chất mới</b> tạo thành (phản ứng hóa học).</p><p>VD: cháy rừng, sắt gỉ, thức ăn ôi thiu, rượu bị chua, lên men, đốt gỗ, vôi sống + nước.</p></div></div>
+ <p class="tip">Câu hỏi vàng: <b>“Có chất mới không?”</b> Có → hóa học. Không → vật lí.</p>`,
+  chk:{q:'Hiện tượng nào là biến đổi hóa học?', o:['Băng tan','Hòa tan muối vào nước','Thanh sắt để lâu bị gỉ','Cồn bay hơi'], a:2, why:'Gỉ sắt tạo chất mới.'}},
+ {h:'Phản ứng hóa học & phương trình chữ', html:`<p>Phản ứng hóa học: quá trình biến đổi <b>chất này thành chất khác</b>. Chất ban đầu = <b>chất tham gia (chất phản ứng)</b>; chất mới = <b>sản phẩm</b>.</p>
+ <div class="eq">chất tham gia &nbsp;→&nbsp; sản phẩm</div>
+ <p>Ví dụ: <b>magnesium + oxygen → magnesium oxide</b>.</p>
+ <p><b>Bản chất:</b> liên kết giữa các nguyên tử bị <b>phá vỡ</b> rồi <b>hình thành liên kết mới</b>; số nguyên tử mỗi nguyên tố được giữ nguyên.</p>
+ <p>Ví dụ NaHCO₃ + CH₃COOH: sodium hydrogen carbonate + acetic acid → sodium acetate + nước + carbon dioxide.</p>`,
+  chk:{q:'Trong “zinc + hydrochloric acid → zinc chloride + hydrogen”, sản phẩm là:', o:['zinc, hydrochloric acid','zinc chloride, hydrogen','zinc, hydrogen','hydrochloric acid, zinc chloride'], a:1, why:'Sản phẩm đứng bên phải mũi tên.'}},
+ {h:'Dấu hiệu nhận biết phản ứng', html:`<ul><li>Có <b>chất khí</b> thoát ra (sủi bọt).</li><li>Có <b>chất kết tủa</b> (chất rắn không tan).</li><li><b>Đổi màu</b>, đổi mùi vị (vị chua…).</li><li>Phát sáng, tỏa/thu nhiệt.</li></ul>
+ <p>VD: thổi hơi thở vào nước vôi trong → <b>vẩn đục</b> (CO₂ + Ca(OH)₂ → CaCO₃ không tan).</p>
+ <p>Lưu huỳnh cháy → chất khí <b>mùi hắc</b> (SO₂).</p>`,
+  chk:{q:'Cho viên sủi vào nước thấy bọt khí. Đó là dấu hiệu:', o:['Chỉ là hòa tan','Có phản ứng hóa học (tạo chất khí)','Biến đổi vật lí','Không có gì'], a:1, why:'Bọt khí là chất mới sinh ra.'}},
+ {h:'Phản ứng tỏa nhiệt và thu nhiệt', html:`<div class="two"><div><h4>Tỏa nhiệt</h4><p>Giải phóng nhiệt ra môi trường.</p><p>Đốt than, gas, xăng dầu; vôi sống + nước; hô hấp tế bào; Mg cháy.</p><p>Ứng dụng: đun nấu, sưởi ấm, chạy động cơ nhiệt, hàn cắt kim loại.</p></div>
+ <div><h4>Thu nhiệt</h4><p>Phải <b>liên tục cung cấp nhiệt</b>.</p><p>Nung đá vôi CaCO₃, nhiệt phân đường, nung KMnO₄.</p></div></div>
+ <p class="tip">Động cơ điện chạy bằng điện năng nên không phải ứng dụng của phản ứng tỏa nhiệt.</p>`,
+  chk:{q:'Phản ứng nào thu nhiệt?', o:['Đốt khí gas','Sản xuất vôi (nung đá vôi)','Vôi sống + nước','Đốt than'], a:1, why:'Nung đá vôi cần cấp nhiệt liên tục.'}}
+ ],
+ video:[{t:'title',big:'Phản ứng hóa học',sub:'Bài 2',say:'Phản ứng hóa học là gì? Cùng xem nhé.'},
+ {t:'svg',key:'reaction',say:'Trong phản ứng, các liên kết giữa nguyên tử bị phá vỡ, rồi nguyên tử sắp xếp lại tạo liên kết mới, thành chất mới. Số nguyên tử mỗi loại vẫn giữ nguyên.'},
+ {t:'compare',a:{h:'Biến đổi vật lí',l:['Không tạo chất mới','Băng tan','Hòa tan muối','Cồn bay hơi']},b:{h:'Biến đổi hóa học',l:['Có chất mới','Cháy rừng','Sắt gỉ','Thức ăn ôi thiu']},say:'Em chỉ cần hỏi: có chất mới không? Có là hóa học, không là vật lí.'},
+ {t:'list',items:['Có chất khí thoát ra','Có kết tủa','Đổi màu, đổi mùi vị','Phát sáng, tỏa hoặc thu nhiệt'],say:'Dấu hiệu nhận biết phản ứng: chất khí, kết tủa, đổi màu hoặc mùi vị, phát sáng, tỏa hoặc thu nhiệt.'},
+ {t:'compare',a:{h:'Tỏa nhiệt 🔥',l:['Đốt than, gas, xăng','Vôi sống + nước','Magnesium cháy']},b:{h:'Thu nhiệt ❄',l:['Nung đá vôi','Nhiệt phân đường']},say:'Tỏa nhiệt là giải phóng nhiệt, như đốt gas. Thu nhiệt phải liên tục cung cấp nhiệt, như nung đá vôi.'},
+ {t:'formula',lines:['magnesium + oxygen','→ magnesium oxide','Chất tham gia → Sản phẩm'],say:'Phương trình chữ: chất tham gia viết bên trái, sản phẩm bên phải mũi tên.'}]},
+
+{id:'h3', s:'hoa', n:'Bài 3', title:'Mol và thể tích chất khí', goal:'Dùng thành thạo n, m, M, V (đkc), số hạt; nhớ 24,79 L.',
+ steps:[
+ {h:'Mol là gì?', html:`<p><b>1 mol</b> = lượng chất chứa <b>N<sub>A</sub> = 6,022·10²³</b> hạt (nguyên tử hoặc phân tử).</p>
+ <div class="eq">Số hạt = n × 6,022·10²³ &nbsp;&nbsp; ⇔ &nbsp;&nbsp; n = Số hạt / 6,022·10²³</div>
+ <p>VD: 3,011·10²³ phân tử O₂ → n = 0,5 mol. 3,0·10²³ nguyên tử Zn → n = 0,5 mol.</p>`,
+  chk:{q:'6,022·10²³ nguyên tử Fe là bao nhiêu mol?', o:['0,5 mol','1 mol','2 mol','6 mol'], a:1, why:'Đúng 1 N_A hạt = 1 mol.'}},
+ {h:'Khối lượng mol M và công thức m = n·M', html:`<p><b>Khối lượng mol M</b>: khối lượng của 1 mol chất (g/mol), có số trị bằng <b>phân tử khối / nguyên tử khối</b>.</p>
+ <div class="eq">n = m / M &nbsp;&nbsp;|&nbsp;&nbsp; m = n · M</div>
+ <table class="tb"><tr><th>Chất</th><th>M (g/mol)</th></tr><tr><td>H₂</td><td>2</td></tr><tr><td>O₂</td><td>32</td></tr><tr><td>N₂</td><td>28</td></tr><tr><td>CO₂</td><td>44</td></tr><tr><td>SO₂</td><td>64</td></tr><tr><td>H₂SO₄</td><td>98</td></tr><tr><td>NaCl</td><td>58,5</td></tr><tr><td>NaOH</td><td>40</td></tr><tr><td>Cu</td><td>64</td></tr></table>
+ <p><b>Ví dụ:</b> m của 0,3 mol H₂SO₄ = 0,3 × 98 = 29,4 g.</p>`,
+  chk:{q:'Số mol của 11,7 g NaCl (M = 58,5)?', o:['0,1 mol','0,2 mol','0,5 mol','2 mol'], a:1, why:'n = 11,7/58,5 = 0,2 mol.'}},
+ {h:'Thể tích mol chất khí ở đkc', html:`<p>Ở <b>điều kiện chuẩn (25 °C, 1 bar)</b>, 1 mol bất kì chất khí chiếm <b>24,79 L</b>.</p>
+ <div class="eq">V = n × 24,79 &nbsp;&nbsp;|&nbsp;&nbsp; n = V / 24,79</div>
+ <p><b>Ví dụ:</b> 6,4 g O₂ → n = 6,4/32 = 0,2 mol → V = 0,2 × 24,79 = 4,958 L.</p>
+ <p>Ngược lại: 7,437 L SO₂ → n = 0,3 mol → m = 0,3 × 64 = 19,2 g.</p>
+ <div class="map">m ⇄(÷M, ×M) n ⇄(×24,79, ÷24,79) V &nbsp;|&nbsp; n ⇄(×N<sub>A</sub>) số hạt</div>`,
+  chk:{q:'Thể tích của 0,5 mol CO₂ ở đkc?', o:['11,2 L','12,395 L','24,79 L','22 L'], a:1, why:'0,5 × 24,79 = 12,395 L.'}},
+ {h:'Nồng độ phần trăm (bổ sung)', html:`<p>C% = <b>m chất tan / m dung dịch × 100%</b>. Cho biết số gam chất tan trong <b>100 g dung dịch</b>.</p>`,
+  chk:{q:'Nồng độ phần trăm cho biết:', o:['Số mol chất tan trong 1 L dung dịch','Số gam chất tan trong 100 g dung dịch','Thể tích dung dịch','Khối lượng mol'], a:1, why:'Đó là định nghĩa C%.'}}
+ ],
+ video:[{t:'title',big:'Mol & thể tích khí',sub:'Bài 3',say:'Mol là đơn vị đo lượng chất. Em sẽ nhớ ba công thức là giải được mọi bài.'},
+ {t:'svg',key:'mol',say:'Một mol chứa sáu phẩy không hai hai nhân mười mũ hai mươi ba hạt, ký hiệu N A.'},
+ {t:'formula',lines:['n = m / M','m = n × M','V = n × 24,79 (L, đkc)'],say:'Ba công thức: n bằng m chia M. m bằng n nhân M. V bằng n nhân hai mươi bốn phẩy bảy chín.'},
+ {t:'calc',title:'Ví dụ: 6,4 g O₂ → V ?',lines:['M(O₂) = 32','n = 6,4 / 32 = 0,2 mol','V = 0,2 × 24,79 = 4,958 L'],say:'Ví dụ: sáu phẩy bốn gam oxygen. Tính số mol: sáu phẩy bốn chia ba mươi hai bằng không phẩy hai. Thể tích bằng không phẩy hai nhân hai mươi bốn phẩy bảy chín, được bốn phẩy chín năm tám lít.'},
+ {t:'list',items:['Đổi ra mol trước','Rồi mới đổi sang m, V hoặc số hạt','Nhớ M của H₂ 2, O₂ 32, CO₂ 44, SO₂ 64'],say:'Mẹo: luôn đổi ra mol trước, mol là cầu nối giữa khối lượng, thể tích và số hạt.'}]},
+
+{id:'h4', s:'hoa', n:'Bài 3 (tiếp)', title:'Tỉ khối chất khí', goal:'So sánh khí nặng/nhẹ, tìm M qua tỉ khối, giải thích thực tế.',
+ steps:[
+ {h:'Công thức tỉ khối', html:`<div class="eq">d(A/B) = M<sub>A</sub> / M<sub>B</sub> &nbsp;&nbsp;|&nbsp;&nbsp; d(A/kk) = M<sub>A</sub> / 29</div>
+ <p>d &gt; 1: A <b>nặng hơn</b> B (d lần). d &lt; 1: A <b>nhẹ hơn</b> B.</p>
+ <p>Khối lượng mol trung bình của không khí ≈ <b>29 g/mol</b>.</p>`,
+  chk:{q:'d(CO₂/kk) bằng bao nhiêu?', o:['0,55','1,52','2,21','0,07'], a:1, why:'44/29 ≈ 1,52 → nặng hơn không khí.'}},
+ {h:'So sánh nhanh', html:`<table class="tb"><tr><th>Khí</th><th>M</th><th>So với không khí (29)</th></tr><tr><td>H₂</td><td>2</td><td>nhẹ (0,07)</td></tr><tr><td>He</td><td>4</td><td>nhẹ (0,14)</td></tr><tr><td>CH₄</td><td>16</td><td>nhẹ (0,55)</td></tr><tr><td>N₂</td><td>28</td><td>nhẹ (0,97)</td></tr><tr><td>O₂</td><td>32</td><td>nặng (1,10)</td></tr><tr><td>CO₂</td><td>44</td><td>nặng (1,52)</td></tr><tr><td>SO₂</td><td>64</td><td>nặng (2,21)</td></tr></table>
+ <p>Khí có M &lt; 29 nhẹ hơn không khí; M &gt; 29 nặng hơn.</p>`,
+  chk:{q:'Khí nào nặng hơn không khí?', o:['H₂','CH₄','O₂','He'], a:2, why:'M(O₂) = 32 > 29.'}},
+ {h:'Ứng dụng thực tế', html:`<ul><li><b>Bóng bay, khinh khí cầu</b> bơm H₂ hoặc He vì nhẹ hơn không khí nên bay lên.</li>
+ <li><b>Hang sâu, giếng cạn</b>: CO₂ nặng hơn không khí nên tích tụ dưới nền, rất nguy hiểm.</li>
+ <li><b>Thu khí:</b> khí nhẹ hơn không khí (H₂, N₂…) → <b>đặt úp bình</b>; khí nặng hơn (CO₂, O₂…) → <b>đặt đứng bình</b>.</li></ul>
+ <p><b>Tìm M:</b> d(A/O₂) = 5 → M<sub>A</sub> = 5 × 32 = 160.</p>`,
+  chk:{q:'Vì sao bóng bay bơm helium bay lên?', o:['He có màu nhạt','He nhẹ hơn không khí (d < 1)','He tỏa nhiệt','He dễ cháy'], a:1, why:'d(He/kk) = 4/29 < 1.'}}
+ ],
+ video:[{t:'title',big:'Tỉ khối chất khí',sub:'Khí nào nặng, khí nào nhẹ?',say:'Muốn biết khí này nặng hay nhẹ hơn khí kia, em dùng tỉ khối.'},
+ {t:'formula',lines:['d(A/B) = M_A / M_B','d(A/không khí) = M_A / 29'],say:'Tỉ khối của A so với B bằng khối lượng mol A chia khối lượng mol B. Với không khí thì chia cho hai mươi chín.'},
+ {t:'svg',key:'balloon',say:'Helium có khối lượng mol bốn, nhỏ hơn hai mươi chín nên nhẹ hơn không khí, bóng bay lên. Carbon dioxide bốn mươi bốn, nặng hơn nên chìm xuống.'},
+ {t:'list',items:['Khí nhẹ → đặt úp bình','Khí nặng → đặt đứng bình','CO₂ tích tụ ở nền hang sâu'],say:'Thu khí nhẹ thì úp bình, thu khí nặng thì đặt đứng bình. Khí CO₂ nặng nên tích tụ ở nền hang sâu.'}]},
+
+/* ================= SINH ================= */
+{id:'s30', s:'sinh', n:'Bài 30', title:'Khái quát về cơ thể người', goal:'Nêu tên, vai trò các hệ cơ quan.',
+ steps:[
+ {h:'Cơ thể gồm 3 phần', html:`<p>Cơ thể người gồm <b>3 phần: đầu, thân, các chi</b>. Phần thân có <b>khoang ngực</b> (tim, phổi) và <b>khoang bụng</b> (dạ dày, ruột, gan, thận…), ngăn cách bởi <b>cơ hoành</b>.</p>`,
+  chk:{q:'Cơ thể người chia làm mấy phần?', o:['2','3','4','5'], a:1, why:'Đầu, thân, các chi.'}},
+ {h:'Các hệ cơ quan và vai trò', html:`<table class="tb"><tr><th>Hệ</th><th>Cơ quan chính</th><th>Vai trò</th></tr>
+ <tr><td>Vận động</td><td>Xương, cơ</td><td>Nâng đỡ, bảo vệ, vận động</td></tr>
+ <tr><td>Tiêu hóa</td><td>Miệng, thực quản, dạ dày, ruột, gan, tụy…</td><td>Biến đổi thức ăn, hấp thụ chất dinh dưỡng</td></tr>
+ <tr><td>Tuần hoàn</td><td>Tim, mạch máu</td><td>Vận chuyển máu, chất dinh dưỡng, O₂, CO₂</td></tr>
+ <tr><td>Hô hấp</td><td>Mũi, khí quản, phế quản, phổi</td><td>Trao đổi khí O₂ / CO₂</td></tr>
+ <tr><td>Bài tiết</td><td>Thận, ống dẫn nước tiểu, bóng đái, ống đái</td><td>Lọc máu, thải nước tiểu</td></tr>
+ <tr><td>Thần kinh</td><td>Não, tủy sống, dây thần kinh</td><td>Tiếp nhận, xử lí thông tin, điều khiển</td></tr>
+ <tr><td>Sinh sản, nội tiết</td><td>Cơ quan sinh sản, tuyến nội tiết</td><td>Duy trì nòi giống, điều hòa bằng hormone</td></tr></table>`,
+  chk:{q:'Hệ nào lưu trữ, xử lí thông tin và dẫn truyền xung thần kinh?', o:['Vận động','Tuần hoàn','Bài tiết','Thần kinh'], a:3, why:'Hệ thần kinh.'}}
+ ],
+ video:[{t:'title',big:'Cơ thể người',sub:'Bài 30',say:'Cơ thể người là một thể thống nhất, gồm nhiều hệ cơ quan phối hợp.'},
+ {t:'list',items:['3 phần: đầu, thân, các chi','Cơ hoành ngăn ngực và bụng'],say:'Cơ thể có ba phần: đầu, thân và các chi. Cơ hoành ngăn khoang ngực với khoang bụng.'},
+ {t:'compare',a:{h:'Hệ cơ quan',l:['Vận động','Tiêu hóa','Tuần hoàn','Hô hấp']},b:{h:'Vai trò',l:['Nâng đỡ, vận động','Lấy chất dinh dưỡng','Vận chuyển máu','Trao đổi khí']},say:'Hệ vận động nâng đỡ, tiêu hóa lấy chất dinh dưỡng, tuần hoàn vận chuyển máu, hô hấp trao đổi khí.'},
+ {t:'compare',a:{h:'Bài tiết',l:['Thận, bóng đái','Lọc máu, thải nước tiểu']},b:{h:'Thần kinh',l:['Não, tủy sống','Điều khiển cơ thể']},say:'Hệ bài tiết lọc máu và thải nước tiểu. Hệ thần kinh điều khiển mọi hoạt động.'}]},
+
+{id:'s31', s:'sinh', n:'Bài 31', title:'Hệ vận động ở người', goal:'Chức năng, bệnh loãng xương, phòng chống bệnh tật.',
+ steps:[
+ {h:'Cấu tạo và chức năng', html:`<p>Hệ vận động gồm <b>xương</b> và <b>cơ</b>. Chức năng:</p><ul><li><b>Nâng đỡ</b> cơ thể, tạo hình dáng.</li><li><b>Bảo vệ</b> nội quan (sọ bảo vệ não, lồng ngực bảo vệ tim phổi).</li><li><b>Giúp cơ thể vận động</b> (cơ co, kéo xương).</li></ul>
+ <p>Thành phần xương: <b>chất hữu cơ (cốt giao)</b> → mềm dẻo; <b>chất vô cơ (muối calcium)</b> → cứng chắc. Trẻ em nhiều chất hữu cơ; người già nhiều chất vô cơ → xương giòn, dễ gãy.</p>`,
+  chk:{q:'Hệ vận động gồm:', o:['Não, tủy sống','Xương, cơ','Tim, mạch','Thận, bóng đái'], a:1, why:'Xương và cơ.'}},
+ {h:'Xương to ra, dài ra, cơ mỏi', html:`<ul><li>Xương <b>to ra bề ngang</b> nhờ tế bào <b>màng xương</b> phân chia, tạo tế bào mới đẩy <b>vào trong</b> và hóa xương.</li>
+ <li>Xương <b>dài ra</b> nhờ sụn tăng trưởng ở hai đầu xương.</li>
+ <li><b>Mỏi cơ:</b> cơ co liên tục, thiếu oxygen → tích tụ <b>acid lactic</b> đầu độc cơ.</li></ul>`,
+  chk:{q:'Xương to ra về bề ngang nhờ:', o:['Sụn tăng trưởng','Màng xương','Mô xương cứng','Tủy đỏ'], a:1, why:'Màng xương.'}},
+ {h:'Loãng xương và phòng bệnh', html:`<p><b>Loãng xương:</b> xương mất calcium, trở nên <b>xốp, giòn, dễ gãy</b> (đau lưng, gù, lùn đi, gãy xương khi va chạm nhẹ). Nguyên nhân: tuổi già, thiếu calcium/vitamin D, ít vận động.</p>
+ <p><b>Bệnh, tật khác:</b> cong vẹo cột sống, còi xương, thoái hóa khớp, gãy xương.</p>
+ <p><b>Phòng tránh:</b> ăn đủ calcium, vitamin D; tắm nắng buổi sáng; tập thể dục vừa sức; ngồi học, mang vác <b>đúng tư thế</b>; bàn ghế phù hợp; cặp không quá nặng.</p>`,
+  chk:{q:'Biện pháp chống cong vẹo cột sống ở học sinh?', o:['Ngồi học lệch người','Đeo cặp nặng một bên','Ngồi học đúng tư thế, bàn ghế phù hợp','Ít vận động'], a:2, why:'Ngồi đúng tư thế và bàn ghế phù hợp.'}}
+ ],
+ video:[{t:'title',big:'Hệ vận động',sub:'Bài 31',say:'Hệ vận động gồm xương và cơ.'},
+ {t:'list',items:['Nâng đỡ cơ thể','Bảo vệ nội quan','Giúp cơ thể vận động'],say:'Chức năng: nâng đỡ, bảo vệ nội quan và giúp cơ thể vận động.'},
+ {t:'compare',a:{h:'Chất hữu cơ (cốt giao)',l:['Mềm dẻo']},b:{h:'Chất vô cơ (muối calcium)',l:['Cứng chắc']},say:'Chất hữu cơ làm xương mềm dẻo, chất vô cơ làm xương cứng chắc. Người già nhiều chất vô cơ nên xương dễ gãy.'},
+ {t:'list',items:['Loãng xương: xương xốp, giòn, dễ gãy','Ăn đủ calcium, vitamin D, tắm nắng','Tập thể dục, ngồi đúng tư thế'],say:'Loãng xương làm xương xốp, giòn, dễ gãy. Phòng bằng ăn đủ calcium, vitamin D, tắm nắng, tập thể dục và ngồi đúng tư thế.'}]},
+
+{id:'s32', s:'sinh', n:'Bài 32', title:'Dinh dưỡng và tiêu hóa', goal:'Khái niệm dinh dưỡng, tiêu hóa, bệnh tiêu hóa.',
+ steps:[
+ {h:'Dinh dưỡng và chất dinh dưỡng', html:`<p><b>Dinh dưỡng</b>: quá trình cơ thể lấy thức ăn, biến đổi, hấp thụ chất dinh dưỡng và dùng cho hoạt động sống.</p>
+ <p><b>Chất dinh dưỡng:</b> carbohydrate (tinh bột, đường), protein, lipid, vitamin, muối khoáng, nước (và chất xơ).</p>
+ <p><b>Tiêu hóa</b> biến thức ăn thành chất đơn giản để hấp thụ. Tiêu hóa tốt → dinh dưỡng tốt.</p>`,
+  chk:{q:'Cơ quan nào KHÔNG thuộc hệ tiêu hóa?', o:['Thực quản','Dạ dày','Khí quản','Ruột non'], a:2, why:'Khí quản thuộc hô hấp.'}},
+ {h:'Tiêu hóa ở các bộ phận', html:`<table class="tb"><tr><th>Nơi</th><th>Hoạt động</th></tr>
+ <tr><td>Miệng</td><td>Nhai (cơ học); <b>amylase</b> biến tinh bột chín → đường maltose (hóa học). Enzyme nước bọt tốt nhất ở <b>pH 7,2 và 37 °C</b></td></tr>
+ <tr><td>Dạ dày</td><td>Co bóp; <b>pepsin + HCl</b> tiêu hóa protein</td></tr>
+ <tr><td>Ruột non</td><td>Tiêu hóa mạnh nhất (dịch mật, tụy, ruột); <b>hấp thụ</b> hầu hết chất dinh dưỡng</td></tr>
+ <tr><td>Ruột già</td><td>Hấp thụ nước, tạo phân</td></tr></table>`,
+  chk:{q:'Chất nào được tiêu hóa hóa học đầu tiên ở khoang miệng?', o:['Lipid','Protein','Tinh bột','Vitamin'], a:2, why:'Amylase biến đổi tinh bột.'}},
+ {h:'Bệnh tiêu hóa và cách phòng', html:`<ul><li><b>Răng, miệng:</b> sâu răng, viêm lợi → đánh răng sau ăn, ăn ít đồ ngọt, khám răng định kì.</li>
+ <li><b>Dạ dày:</b> viêm loét dạ dày (vi khuẩn HP) → ăn đúng giờ, tránh cay, rượu bia, giảm stress.</li>
+ <li><b>Đường ruột:</b> tiêu chảy, táo bón, ngộ độc → <b>ăn chín uống sôi</b>, rửa tay, thực phẩm sạch, ăn rau xanh, uống đủ nước.</li></ul>`,
+  chk:{q:'Cách phòng bệnh đường ruột?', o:['Ăn đồ sống','Ăn chín, uống sôi, rửa tay','Uống nước lã','Ăn thức ăn ôi'], a:1, why:'Ăn chín uống sôi.'}}
+ ],
+ video:[{t:'title',big:'Dinh dưỡng & tiêu hóa',sub:'Bài 32',say:'Thức ăn đi qua ống tiêu hóa và được biến đổi thành chất dinh dưỡng.'},
+ {t:'list',items:['Miệng: amylase biến tinh bột','Dạ dày: pepsin, HCl tiêu hóa protein','Ruột non: hấp thụ chất dinh dưỡng','Ruột già: hấp thụ nước, tạo phân'],say:'Ở miệng, amylase biến đổi tinh bột. Dạ dày tiêu hóa protein. Ruột non hấp thụ chất dinh dưỡng. Ruột già hấp thụ nước và tạo phân.'},
+ {t:'list',items:['Đánh răng sau ăn','Ăn đúng giờ, tránh cay','Ăn chín, uống sôi, rửa tay'],say:'Phòng bệnh: đánh răng sau ăn, ăn đúng giờ, ăn chín uống sôi và rửa tay.'}]},
+
+{id:'s33', s:'sinh', n:'Bài 33', title:'Máu và hệ tuần hoàn', goal:'Thành phần máu, chức năng; hệ tuần hoàn; hiến máu.',
+ steps:[
+ {h:'Thành phần của máu', html:`<table class="tb"><tr><th>Thành phần</th><th>Chức năng</th></tr>
+ <tr><td><b>Huyết tương</b> (~55%, 90% nước)</td><td>Vận chuyển chất dinh dưỡng, hormone, chất thải; duy trì máu ở trạng thái lỏng</td></tr>
+ <tr><td><b>Hồng cầu</b> (chứa hemoglobin)</td><td>Vận chuyển <b>O₂ và CO₂</b></td></tr>
+ <tr><td><b>Bạch cầu</b></td><td><b>Bảo vệ cơ thể</b> (thực bào, tạo kháng thể)</td></tr>
+ <tr><td><b>Tiểu cầu</b></td><td>Tham gia <b>đông máu</b></td></tr></table>`,
+  chk:{q:'Tế bào máu nào tham gia đông máu?', o:['Hồng cầu','Bạch cầu','Tiểu cầu','Huyết tương'], a:2, why:'Tiểu cầu.'}},
+ {h:'Hệ tuần hoàn', html:`<p>Gồm <b>tim</b> và <b>hệ mạch</b> (động mạch, tĩnh mạch, mao mạch). Máu chảy trong mạch kín nhờ tim co bóp.</p>
+ <ul><li><b>Vòng tuần hoàn lớn:</b> tim → cơ thể → tim (nuôi cơ thể).</li><li><b>Vòng nhỏ:</b> tim → phổi → tim (trao đổi khí).</li></ul>
+ <p><b>Chức năng máu và hệ tuần hoàn:</b> vận chuyển O₂, CO₂, chất dinh dưỡng, chất thải; bảo vệ cơ thể; điều hòa thân nhiệt.</p>`,
+  chk:{q:'Hồng cầu có chức năng gì?', o:['Bảo vệ','Đông máu','Vận chuyển O₂ và CO₂','Tạo nước tiểu'], a:2, why:'Hồng cầu chứa hemoglobin.'}},
+ {h:'Truyền máu, hiến máu nhân đạo', html:`<p>Nhóm máu: A, B, AB, O. Truyền máu phải <b>đúng nhóm</b>. O cho được mọi nhóm; AB nhận được mọi nhóm.</p>
+ <p><b>Ý nghĩa:</b> cứu người mất máu, bệnh nhân phẫu thuật, tai nạn. Hiến máu an toàn, cơ thể nhanh phục hồi → nên <b>tuyên truyền</b> cùng tham gia hiến máu nhân đạo.</p>`,
+  chk:{q:'Vì sao hiến máu nhân đạo có ý nghĩa?', o:['Để lấy tiền','Cứu sống người cần máu','Làm giảm cân','Không có ý nghĩa'], a:1, why:'Hiến máu cứu người.'}}
+ ],
+ video:[{t:'title',big:'Máu & tuần hoàn',sub:'Bài 33',say:'Máu gồm huyết tương và các tế bào máu.'},
+ {t:'svg',key:'blood',say:'Hồng cầu vận chuyển oxygen và carbon dioxide. Bạch cầu bảo vệ cơ thể. Tiểu cầu giúp đông máu. Huyết tương vận chuyển chất dinh dưỡng và chất thải.'},
+ {t:'list',items:['Tim + hệ mạch','Vòng lớn: nuôi cơ thể','Vòng nhỏ: qua phổi trao đổi khí'],say:'Hệ tuần hoàn gồm tim và mạch máu, có vòng tuần hoàn lớn và vòng tuần hoàn nhỏ.'},
+ {t:'list',items:['Truyền máu đúng nhóm','Hiến máu cứu sống người bệnh','Tuyên truyền hiến máu nhân đạo'],say:'Hiến máu nhân đạo cứu sống nhiều người. Em hãy cùng tuyên truyền nhé.'}]},
+
+{id:'s34', s:'sinh', n:'Bài 34', title:'Hô hấp ở người', goal:'Chức năng hô hấp, bệnh hô hấp, vận dụng bảo vệ bản thân.',
+ steps:[
+ {h:'Hệ hô hấp và chức năng', html:`<p>Gồm <b>đường dẫn khí</b> (mũi → hầu → thanh quản → khí quản → phế quản) và <b>hai lá phổi</b> (phế nang).</p>
+ <p><b>Chức năng:</b> <b>trao đổi khí</b> – lấy O₂ từ môi trường vào máu, thải CO₂ ra ngoài. Hít vào: cơ liên sườn và cơ hoành co → lồng ngực mở rộng.</p>`,
+  chk:{q:'Chức năng chính của hệ hô hấp?', o:['Tiêu hóa thức ăn','Trao đổi khí O₂ và CO₂','Lọc máu','Dẫn truyền xung thần kinh'], a:1, why:'Trao đổi khí.'}},
+ {h:'Bệnh về hô hấp & cách phòng', html:`<ul><li>Viêm phổi, lao phổi, hen suyễn, viêm phế quản, ung thư phổi, COVID-19, cúm…</li></ul>
+ <p><b>Phòng tránh:</b> <b>không hút thuốc lá</b>, tránh bụi, khói; đeo khẩu trang; giữ ấm; vệ sinh mũi họng; tiêm vaccine; tập thở, thể dục; trồng cây xanh; nhà thoáng khí.</p>`,
+  chk:{q:'Việc làm nào bảo vệ hệ hô hấp?', o:['Hút thuốc lá','Đeo khẩu trang nơi nhiều bụi','Ở nơi kín nhiều khói','Thở bằng miệng'], a:1, why:'Đeo khẩu trang tránh bụi khói.'}}
+ ],
+ video:[{t:'title',big:'Hô hấp ở người',sub:'Bài 34',say:'Hô hấp giúp cơ thể lấy oxygen và thải carbon dioxide.'},
+ {t:'list',items:['Mũi → hầu → thanh quản','→ khí quản → phế quản → phổi','Phế nang: nơi trao đổi khí'],say:'Không khí đi qua mũi, hầu, thanh quản, khí quản, phế quản rồi đến phổi, nơi phế nang trao đổi khí.'},
+ {t:'list',items:['Không hút thuốc lá','Đeo khẩu trang, tránh bụi khói','Giữ ấm, vệ sinh mũi họng, tập thể dục'],say:'Để bảo vệ phổi, em không hút thuốc, đeo khẩu trang, giữ ấm, vệ sinh mũi họng và tập thể dục.'}]},
+
+{id:'s35', s:'sinh', n:'Bài 35', title:'Hệ bài tiết ở người', goal:'Chức năng hệ bài tiết, bệnh và cách phòng.',
+ steps:[
+ {h:'Cấu tạo và chức năng', html:`<p>Hệ bài tiết nước tiểu: <b>thận</b> (lọc máu, tạo nước tiểu) → <b>ống dẫn nước tiểu</b> → <b>bóng đái</b> (chứa) → <b>ống đái</b> (thải).</p>
+ <p><b>Chức năng:</b> lọc máu, thải chất thải (urea, uric acid, thừa nước, muối) → <b>giữ ổn định môi trường trong</b>. Phổi (CO₂) và da (mồ hôi) cũng tham gia bài tiết.</p>`,
+  chk:{q:'Cơ quan lọc máu và tạo nước tiểu?', o:['Bóng đái','Thận','Ống đái','Phổi'], a:1, why:'Thận.'}},
+ {h:'Bệnh hệ bài tiết', html:`<ul><li><b>Sỏi thận, viêm cầu thận, suy thận, viêm đường tiết niệu.</b></li></ul>
+ <p><b>Phòng chống:</b> uống đủ nước; <b>không nhịn tiểu</b>; ăn hợp lí (giảm muối, đạm, tránh chất bảo quản); vệ sinh cơ quan sinh dục; không dùng thuốc bừa bãi; khám định kì.</p>`,
+  chk:{q:'Biện pháp phòng bệnh thận?', o:['Nhịn tiểu','Uống đủ nước','Ăn quá mặn','Dùng thuốc bừa'], a:1, why:'Uống đủ nước.'}}
+ ],
+ video:[{t:'title',big:'Hệ bài tiết',sub:'Bài 35',say:'Thận lọc máu và tạo nước tiểu.'},
+ {t:'list',items:['Thận lọc máu → nước tiểu','Ống dẫn nước tiểu','Bóng đái chứa','Ống đái thải ra ngoài'],say:'Nước tiểu đi từ thận qua ống dẫn nước tiểu đến bóng đái, rồi thải ra ngoài qua ống đái.'},
+ {t:'list',items:['Uống đủ nước','Không nhịn tiểu','Ăn ít muối, vệ sinh sạch sẽ'],say:'Phòng bệnh: uống đủ nước, không nhịn tiểu, ăn ít muối và giữ vệ sinh.'}]},
+
+{id:'s36', s:'sinh', n:'Bài 36', title:'Điều hòa môi trường trong', goal:'Môi trường trong, vai trò ổn định glucose, muối, urea, pH.',
+ steps:[
+ {h:'Môi trường trong của cơ thể', html:`<p><b>Môi trường trong</b> gồm <b>máu, nước mô, bạch huyết</b> – bao quanh các tế bào. Tế bào trao đổi chất với môi trường trong.</p>`,
+  chk:{q:'Môi trường trong gồm:', o:['Máu, nước mô, bạch huyết','Không khí','Nước tiểu','Dịch vị'], a:0, why:'Máu, nước mô, bạch huyết.'}},
+ {h:'Vì sao phải ổn định?', html:`<p>Các chỉ số phải ổn định để tế bào hoạt động bình thường:</p>
+ <ul><li><b>Glucose máu</b> ≈ 0,1% (insulin làm giảm; glucagon làm tăng). Cao kéo dài → tiểu đường.</li><li><b>Muối</b> (NaCl ≈ 0,9%) giữ cân bằng nước.</li><li><b>pH máu</b> 7,35–7,45.</li><li><b>Urea, uric acid</b>: do thận thải; tăng cao → suy thận, bệnh gút.</li><li>Thân nhiệt ≈ 37 °C.</li></ul>
+ <p>Duy trì nhờ <b>thận, gan, phổi, hệ thần kinh, hormone</b>.</p>`,
+  chk:{q:'Nếu glucose máu tăng cao kéo dài thì dễ mắc?', o:['Còi xương','Tiểu đường','Cận thị','Loãng xương'], a:1, why:'Tiểu đường.'}}
+ ],
+ video:[{t:'title',big:'Môi trường trong',sub:'Bài 36',say:'Môi trường trong gồm máu, nước mô và bạch huyết.'},
+ {t:'list',items:['Glucose máu ≈ 0,1%','Muối NaCl ≈ 0,9%','pH máu 7,35 – 7,45','Urea, uric acid được thận thải'],say:'Cơ thể giữ ổn định glucose, muối, pH và các chất thải như urea, uric acid để tế bào hoạt động bình thường.'}]},
+
+{id:'s37', s:'sinh', n:'Bài 37', title:'Thần kinh và các giác quan', goal:'Hệ thần kinh, thị giác, thính giác, tật khúc xạ.',
+ steps:[
+ {h:'Hệ thần kinh', html:`<p>Hai bộ phận:</p><ul><li><b>Trung ương:</b> <b>não, tủy sống</b></li><li><b>Ngoại biên:</b> <b>dây thần kinh, hạch thần kinh</b></li></ul>
+ <p><b>Chức năng:</b> tiếp nhận, xử lí thông tin; điều khiển, điều hòa hoạt động cơ thể; giúp thích nghi với môi trường. Giác quan (mắt, tai, mũi, lưỡi, da) <b>thu nhận kích thích</b>.</p>`,
+  chk:{q:'Bộ phận trung ương của hệ thần kinh gồm:', o:['Dây thần kinh, hạch','Não, tủy sống','Mắt, tai','Tim, phổi'], a:1, why:'Não và tủy sống.'}},
+ {h:'Thị giác và thính giác', html:`<p><b>Mắt:</b> ánh sáng qua giác mạc → thể thủy tinh → hội tụ trên <b>võng mạc</b> (tế bào nón, que) → dây thị giác → não. <b>Chức năng thị giác:</b> thu nhận hình ảnh, màu sắc.</p>
+ <p><b>Tai:</b> tai ngoài (hứng âm) → tai giữa (<b>màng nhĩ</b>, chuỗi xương) → tai trong (<b>ốc tai</b> chuyển thành xung thần kinh). <b>Chức năng thính giác:</b> thu nhận âm thanh.</p>`,
+  chk:{q:'Ảnh của vật hiện trên bộ phận nào của mắt?', o:['Giác mạc','Võng mạc','Màng nhĩ','Ốc tai'], a:1, why:'Võng mạc.'}},
+ {h:'Tật về mắt và bảo vệ mắt', html:`<table class="tb"><tr><th></th><th>Cận thị</th><th>Viễn thị</th></tr><tr><td>Nhìn</td><td>Gần rõ, xa mờ</td><td>Xa rõ, gần mờ</td></tr><tr><td>Kính</td><td>Phân kì (kính lõm)</td><td>Hội tụ (kính lồi)</td></tr></table>
+ <p><b>Bảo vệ mắt:</b> đọc sách đủ sáng, cách mắt ~30 cm, ngồi thẳng; hạn chế điện thoại, tivi; nghỉ mắt (quy tắc 20-20-20); không dụi mắt; ăn đủ vitamin A; khám mắt định kì.</p>`,
+  chk:{q:'Bạn bị cận thị cần đeo kính:', o:['Hội tụ','Phân kì','Râm','Không cần'], a:1, why:'Phân kì.'}}
+ ],
+ video:[{t:'title',big:'Thần kinh & giác quan',sub:'Bài 37',say:'Hệ thần kinh điều khiển mọi hoạt động của cơ thể.'},
+ {t:'compare',a:{h:'Trung ương',l:['Não','Tủy sống']},b:{h:'Ngoại biên',l:['Dây thần kinh','Hạch thần kinh']},say:'Trung ương gồm não và tủy sống. Ngoại biên gồm dây thần kinh và hạch thần kinh.'},
+ {t:'list',items:['Ánh sáng → giác mạc → thể thủy tinh','Ảnh hiện trên võng mạc','Tai: màng nhĩ → ốc tai → não'],say:'Ánh sáng đi qua giác mạc, thể thủy tinh, tạo ảnh trên võng mạc. Âm thanh làm rung màng nhĩ, đến ốc tai rồi truyền lên não.'},
+ {t:'compare',a:{h:'Cận thị',l:['Nhìn gần rõ','Kính phân kì']},b:{h:'Viễn thị',l:['Nhìn xa rõ','Kính hội tụ']},say:'Cận thị nhìn gần rõ, đeo kính phân kì. Viễn thị nhìn xa rõ, đeo kính hội tụ. Hãy giữ gìn đôi mắt nhé.'}]},
+
+/* ================= LÝ ================= */
+{id:'l1', s:'ly', n:'Vật lí', title:'Khối lượng riêng', goal:'Dùng D = m/V, đổi đơn vị, nhận biết chất.',
+ steps:[
+ {h:'Khái niệm và công thức', html:`<div class="eq">D = m / V &nbsp;&nbsp;⇒&nbsp;&nbsp; m = D·V &nbsp;&nbsp;⇒&nbsp;&nbsp; V = m / D</div>
+ <p><b>Khối lượng riêng</b> là khối lượng của <b>1 đơn vị thể tích</b>. Đơn vị <b>kg/m³</b> hoặc <b>g/cm³</b>: 1 g/cm³ = 1000 kg/m³.</p>
+ <p>Mỗi chất có D <b>riêng</b>, không phụ thuộc kích thước vật. Hai khối nhôm to nhỏ khác nhau vẫn có D bằng nhau.</p>`,
+  chk:{q:'Hai khối nhôm, khối 1 thể tích gấp đôi khối 2. D của chúng?', o:['D₁ = 2D₂','D₂ = 2D₁','Bằng nhau','Không so sánh được'], a:2, why:'Cùng chất thì D bằng nhau.'}},
+ {h:'Bảng D và nhận biết chất', html:`<table class="tb"><tr><th>Chất</th><th>D (kg/m³)</th></tr><tr><td>Nước</td><td>1000</td></tr><tr><td>Nhôm</td><td>2700</td></tr><tr><td>Sắt</td><td>7800</td></tr><tr><td>Đồng</td><td>8900</td></tr><tr><td>Chì</td><td>11300</td></tr></table>
+ <p><b>Ví dụ:</b> khối đồng chất 300 cm³, nặng 810 g → D = 810/300 = 2,7 g/cm³ = 2700 kg/m³ → <b>nhôm</b>.</p>
+ <p><b>Đo D của vật bất kì:</b> dùng <b>cân</b> (đo m) và <b>bình chia độ</b> (đo V).</p>`,
+  chk:{q:'D = 7,8 g/cm³ là kim loại nào?', o:['Nhôm','Sắt','Đồng','Chì'], a:1, why:'7,8 g/cm³ = 7800 kg/m³ = sắt.'}},
+ {h:'Bài mẫu: đổi đơn vị', html:`<p>Gỗ D = 800 kg/m³, V = 500 cm³.</p><ol><li>Đổi: 500 cm³ = 5·10⁻⁴ m³ (chia cho 1 000 000).</li><li>m = D·V = 800 × 5·10⁻⁴ = <b>0,4 kg</b>.</li><li>P = 10m = <b>4 N</b>.</li></ol>`,
+  chk:{q:'Khối lượng 0,4 kg ứng với trọng lượng:', o:['0,4 N','4 N','40 N','400 N'], a:1, why:'P = 10m = 4 N.'}}
+ ],
+ video:[{t:'title',big:'Khối lượng riêng',sub:'Vật lí 8',say:'Khối lượng riêng cho biết một đơn vị thể tích của chất nặng bao nhiêu.'},
+ {t:'formula',lines:['D = m / V','m = D × V','V = m / D'],say:'D bằng m chia V. Từ đó m bằng D nhân V, và V bằng m chia D.'},
+ {t:'calc',title:'Gỗ: D = 800 kg/m³, V = 500 cm³',lines:['V = 500 cm³ = 5·10⁻⁴ m³','m = 800 × 5·10⁻⁴ = 0,4 kg','P = 10 × 0,4 = 4 N'],say:'Đổi năm trăm xăng ti mét khối ra năm nhân mười mũ trừ bốn mét khối. Khối lượng bằng tám trăm nhân năm nhân mười mũ trừ bốn, là không phẩy bốn ki lô gam. Trọng lượng là bốn niu tơn.'},
+ {t:'list',items:['1 g/cm³ = 1000 kg/m³','Đo D: cân + bình chia độ','Cùng chất → cùng D'],say:'Nhớ: một gam trên xăng ti mét khối bằng một nghìn ki lô gam trên mét khối. Muốn đo D, dùng cân và bình chia độ.'}]},
+
+{id:'l2', s:'ly', n:'Vật lí', title:'Áp suất', goal:'Áp lực, p = F/S, áp suất chất lỏng p = d·h.',
+ steps:[
+ {h:'Áp lực và áp suất chất rắn', html:`<p><b>Áp lực</b>: lực ép có phương <b>vuông góc</b> với mặt bị ép.</p>
+ <div class="eq">p = F / S &nbsp;&nbsp; (Pa = N/m²)</div>
+ <p>p phụ thuộc <b>áp lực F</b> và <b>diện tích bị ép S</b>. F tăng → p tăng; S giảm → p tăng.</p>
+ <p><b>Ứng dụng:</b> dao sắc, mũi kim nhọn (S nhỏ → p lớn, dễ cắt/đâm); bánh xích xe tăng, đế rộng (S lớn → p nhỏ, không lún).</p>`,
+  chk:{q:'Vì sao lưỡi dao mài sắc dễ cắt?', o:['F nhỏ','Diện tích bị ép nhỏ nên áp suất lớn','Dao nặng','Dao nhẹ'], a:1, why:'S nhỏ → p = F/S lớn.'}},
+ {h:'Bài mẫu: người đứng trên sàn', html:`<p>Người 60 kg, mỗi bàn chân 0,015 m², đứng bằng hai chân.</p><ol><li>F = P = 10 × 60 = 600 N.</li><li>S = 2 × 0,015 = 0,03 m².</li><li>p = 600 / 0,03 = <b>20 000 Pa</b>.</li></ol>
+ <p class="tip">Đứng một chân: S = 0,015 → p = 40 000 Pa (gấp đôi).</p>`,
+  chk:{q:'Đứng bằng 1 chân thì áp suất so với hai chân:', o:['Giảm một nửa','Không đổi','Gấp đôi','Gấp bốn'], a:2, why:'S giảm một nửa, p tăng gấp đôi.'}},
+ {h:'Áp suất chất lỏng', html:`<div class="eq">p = d · h</div>
+ <p>d: trọng lượng riêng (d = 10D), h: <b>độ sâu</b>. Trong cùng một chất lỏng đứng yên, <b>điểm càng sâu áp suất càng lớn</b>; các điểm cùng độ sâu có áp suất bằng nhau.</p>
+ <p>Chất lỏng gây áp suất theo <b>mọi phương</b>.</p>`,
+  chk:{q:'Trong cùng chất lỏng, điểm nào áp suất lớn nhất?', o:['Điểm nông nhất','Điểm sâu nhất','Điểm giữa','Như nhau'], a:1, why:'p = d·h, h lớn thì p lớn.'}}
+ ],
+ video:[{t:'title',big:'Áp suất',sub:'Vật lí 8',say:'Áp suất cho biết áp lực tác dụng trên mỗi mét vuông diện tích bị ép.'},
+ {t:'svg',key:'pressure',say:'Cùng một áp lực, diện tích bị ép càng nhỏ thì áp suất càng lớn, như mũi kim đâm dễ hơn đầu ngón tay.'},
+ {t:'formula',lines:['p = F / S  (Pa)','Chất lỏng: p = d × h'],say:'Áp suất bằng áp lực chia diện tích. Trong chất lỏng, áp suất bằng trọng lượng riêng nhân độ sâu.'},
+ {t:'calc',title:'Người 60 kg, mỗi chân 0,015 m²',lines:['F = P = 600 N','S = 2 × 0,015 = 0,03 m²','p = 600 / 0,03 = 20 000 Pa'],say:'Áp lực bằng trọng lượng, sáu trăm niu tơn. Hai chân nên diện tích là không phẩy không ba mét vuông. Áp suất bằng hai mươi nghìn pascal.'}]},
+
+{id:'l3', s:'ly', n:'Vật lí', title:'Lực đẩy Archimedes', goal:'F_A = d·V, số chỉ lực kế, điều kiện nổi chìm.',
+ steps:[
+ {h:'Lực đẩy Archimedes', html:`<p>Vật nhúng trong chất lỏng bị đẩy <b>thẳng đứng từ dưới lên</b>.</p>
+ <div class="eq">F<sub>A</sub> = d · V = 10·D·V</div>
+ <p>V: <b>thể tích phần chất lỏng bị vật chiếm chỗ</b>; d, D: của chất lỏng. F<sub>A</sub> <b>không phụ thuộc độ sâu</b>, không phụ thuộc khối lượng vật.</p>`,
+  chk:{q:'Lực đẩy Archimedes phụ thuộc vào:', o:['Độ sâu của vật','Thể tích chất lỏng bị chiếm chỗ và chất lỏng','Khối lượng vật','Hình dạng bình'], a:1, why:'F_A = d·V.'}},
+ {h:'Số chỉ lực kế', html:`<p>Ngoài không khí lực kế chỉ <b>P</b>. Nhúng chìm vào nước: <b>P′ = P − F<sub>A</sub></b>, nhỏ hơn P. VD: P = 30 N, F<sub>A</sub> = 10 N → lực kế chỉ 20 N.</p>`,
+  chk:{q:'Nhúng quả nặng vào nước, số chỉ lực kế:', o:['Tăng','Giảm','Không đổi','Bằng 0 luôn'], a:1, why:'Có thêm lực đẩy hướng lên.'}},
+ {h:'Điều kiện nổi – chìm', html:`<table class="tb"><tr><th>So sánh</th><th>Kết quả</th></tr><tr><td>D vật &gt; D chất lỏng</td><td>Chìm</td></tr><tr><td>D vật = D chất lỏng</td><td>Lơ lửng</td></tr><tr><td>D vật &lt; D chất lỏng</td><td>Nổi</td></tr></table>
+ <p>Áo phao nổi vì <b>khối lượng riêng nhỏ hơn nước</b>. Vật nổi yên: F<sub>A</sub> = P.</p>`,
+  chk:{q:'Vì sao áo phao không chìm?', o:['Khối lượng nhỏ','Khối lượng riêng nhỏ hơn nước','Thể tích lớn','Màu sáng'], a:1, why:'D áo phao < D nước.'}}
+ ],
+ video:[{t:'title',big:'Lực đẩy Archimedes',sub:'Vật lí 8',say:'Vì sao ta nổi được trong nước? Nhờ lực đẩy Archimedes.'},
+ {t:'svg',key:'archimedes',say:'Chất lỏng đẩy vật thẳng đứng từ dưới lên với độ lớn bằng trọng lượng phần chất lỏng bị vật chiếm chỗ.'},
+ {t:'formula',lines:['F_A = d × V = 10·D·V','Lực kế: P′ = P − F_A'],say:'F A bằng d nhân V. Khi nhúng vào chất lỏng, số chỉ lực kế bằng P trừ F A, nên giảm.'},
+ {t:'list',items:['D vật > D lỏng: chìm','D vật = D lỏng: lơ lửng','D vật < D lỏng: nổi'],say:'Nếu khối lượng riêng của vật lớn hơn chất lỏng thì chìm, bằng thì lơ lửng, nhỏ hơn thì nổi.'}]},
+
+{id:'l4', s:'ly', n:'Vật lí', title:'Máy thủy lực', goal:'Nguyên lí Pascal, F/f = S/s, lợi lực thiệt đường.',
+ steps:[
+ {h:'Nguyên lí Pascal', html:`<p>Áp suất tác dụng lên chất lỏng đựng trong bình kín được chất lỏng <b>truyền nguyên vẹn theo mọi hướng</b>.</p>
+ <p>Kích thủy lực, máy ép thủy lực, phanh thủy lực hoạt động dựa trên nguyên lí này.</p>`,
+  chk:{q:'Máy thủy lực dựa trên tính chất nào?', o:['Chất lỏng truyền nguyên vẹn áp suất','Chất lỏng không có áp suất','Chất lỏng chỉ đẩy xuống','Chất lỏng nén được'], a:0, why:'Nguyên lí Pascal.'}},
+ {h:'Công thức máy thủy lực', html:`<div class="eq">F / f = S / s</div>
+ <p>f: lực tác dụng lên pit-tông nhỏ (diện tích s); F: lực nâng ở pit-tông lớn (diện tích S). Pit-tông lớn có S lớn gấp bao nhiêu lần thì <b>lực lớn gấp bấy nhiêu lần</b> (<b>lợi về lực</b>), nhưng pit-tông nhỏ phải đi quãng đường dài gấp bấy nhiêu lần (<b>thiệt về đường đi</b>) → <b>không lợi về công</b>.</p>`,
+  chk:{q:'Máy thủy lực cho lợi về:', o:['Công','Lực','Đường đi','Thời gian'], a:1, why:'Lợi lực, thiệt đường, không lợi công.'}},
+ {h:'Bài mẫu', html:`<p>Pit-tông nhỏ đường kính 2,5 cm; f = 100 N; nâng ô tô 35 000 N. Tìm S tối thiểu.</p><ol><li>s = π·d²/4 = 3,14 × 2,5²/4 ≈ 4,9 cm².</li><li>S = s × F/f = 4,9 × 350 ≈ <b>1 715 cm²</b>.</li></ol>`,
+  chk:{q:'F/f = 350 nghĩa là S lớn hơn s:', o:['35 lần','350 lần','3,5 lần','100 lần'], a:1, why:'F/f = S/s.'}}
+ ],
+ video:[{t:'title',big:'Máy thủy lực',sub:'Vật lí 8',say:'Máy thủy lực giúp ta nâng vật rất nặng bằng một lực nhỏ.'},
+ {t:'formula',lines:['F / f = S / s','Lợi lực, thiệt đường đi','Không lợi về công'],say:'Lực chia lực bằng diện tích chia diện tích. Lợi về lực, thiệt về đường đi, nên không lợi về công.'},
+ {t:'calc',title:'d = 2,5 cm, f = 100 N, F = 35 000 N',lines:['s = 3,14 × 2,5² / 4 ≈ 4,9 cm²','S = s × F/f = 4,9 × 350','S ≈ 1 715 cm²'],say:'Diện tích pit-tông nhỏ khoảng bốn phẩy chín xăng ti mét vuông. Nhân ba trăm năm mươi, ra một nghìn bảy trăm mười lăm xăng ti mét vuông.'}]}
+];
+
+/* ===================== TIỆN ÍCH ===================== */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const el = (h) => { const t=document.createElement('template'); t.innerHTML=h.trim(); return t.content.firstChild; };
+const rnd = (a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const fmt = (x,d=2)=>{ const v=+(+x).toFixed(d); return String(v).replace('.',','); };
+const SUBS={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','²':'2','³':'3'};
+function norm(s){ return String(s).toLowerCase().replace(/[₀-₉²³]/g,c=>SUBS[c]).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/\s+/g,' ').trim(); }
+function nums(s){
+  let t=String(s).replace(/(\d)\s(?=\d{3}(?!\d))/g,'$1').replace(/,/g,'.');
+  return (t.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);
+}
+const numOK=(have,want)=>have.some(h=>Math.abs(h-want)<=Math.max(Math.abs(want)*0.015,0.011));
+function hasKw(t,alt){
+  alt=norm(alt);
+  if(/^\w{1,3}$/.test(alt)) return new RegExp('(^|[^a-z0-9])'+alt+'([^a-z0-9]|$)').test(t);
+  return t.includes(alt);
+}
+/* Chấm tự luận: trả về {score 0..1, miss:[...]} hoặc null nếu không có khóa chấm */
+function gradeSub(sub, input){
+  const t=norm(input), ns=nums(input);
+  if(!t) return {score:0,empty:true};
+  const gN=(sub.nums||[]), gK=(sub.kw||[]);
+  const nHit=gN.filter(g=>g.some(w=>numOK(ns,w))).length;
+  const kHit=gK.filter(g=>g.some(a=>hasKw(t,a))).length;
+  const total=gN.length+gK.length;
+  if(!total) return null;
+  if(sub.anyOf){ const ok=(gN.length&&nHit===gN.length)||(gK.length&&kHit===gK.length); return {score:ok?1:Math.max(nHit,kHit)/Math.max(gN.length,gK.length)*0.5}; }
+  return {score:(nHit+kHit)/total, nMiss:gN.length-nHit, kMiss:gK.length-kHit};
+}
+const PRAISE=['Giỏi lắm!','Chính xác! Em làm tốt lắm!','Tuyệt vời! Cứ phát huy nhé!','Đúng rồi! Em giỏi quá!','Xuất sắc! Em nắm bài chắc rồi!','Quá đỉnh! Tiếp tục nào!','Hoàn toàn đúng! Em thật chăm chỉ!'];
+const COMFORT=['Chưa đúng, không sao đâu! Đọc lời giải rồi nhớ nhé.','Gần rồi! Xem lại lời giải một chút nhé.','Sai một lần là nhớ lâu hơn. Cùng xem lời giải nào.'];
+
+/* ===================== LƯU TIẾN ĐỘ ===================== */
+const KEY='khtn8-giuaki1';
+let S={xp:0,lessons:{},tests:{},prac:{ok:0,total:0,byType:{}},days:{},seen:{}};
+try{ const r=localStorage.getItem(KEY); if(r) S=Object.assign(S,JSON.parse(r)); }catch(e){}
+function save(){ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} refreshChip(); }
+function addXP(n){ S.xp+=n; const d=new Date().toISOString().slice(0,10); S.days[d]=(S.days[d]||0)+n; save(); }
+function streak(){ let n=0; const d=new Date(); for(;;){ const k=d.toISOString().slice(0,10); if(S.days[k]) n++; else if(n>0||k!==new Date().toISOString().slice(0,10)) break; d.setDate(d.getDate()-1); } return n; }
+function refreshChip(){ const c=$('#xp'); if(c) c.textContent=S.xp+' điểm · '+streak()+' ngày'; }
+function toast(m){ const t=el(`<div class="toast" role="status">${m}</div>`); document.body.appendChild(t); setTimeout(()=>t.remove(),2600); }
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const c=el('<div class="confetti" aria-hidden="true"></div>'); const cols=['#FFD84D','#2A62D0','#128A5C','#D9481F','#E8508F'];
+  for(let i=0;i<70;i++){ const p=document.createElement('i'); p.style.left=Math.random()*100+'%'; p.style.background=pick(cols); p.style.animationDelay=Math.random()*.8+'s'; p.style.transform='rotate('+rnd(0,90)+'deg)'; c.appendChild(p); }
+  document.body.appendChild(c); setTimeout(()=>c.remove(),3600);
+}
+const app=()=>$('#app');
+const lessonById=id=>LESSONS.find(l=>l.id===id);
+const testById=id=>TESTS.find(t=>t.id===id);
+
+/* ===================== HÌNH MINH HỌA (SVG động) ===================== */
+const VIS={
+reaction:()=>`<svg class="vis" viewBox="0 0 640 300"><defs><marker id="ar" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M0 0L16 8L0 16z" fill="currentColor"/></marker></defs>
+<g class="fi" style="animation-delay:.2s"><text x="40" y="40" font-size="26" font-weight="700">Chất tham gia</text>
+<circle cx="70" cy="110" r="22" fill="#2A62D0"/><circle cx="116" cy="110" r="22" fill="#2A62D0"/><text x="60" y="165" font-size="20">H₂</text>
+<circle cx="70" cy="215" r="22" fill="#2A62D0"/><circle cx="116" cy="215" r="22" fill="#2A62D0"/>
+<circle cx="200" cy="165" r="30" fill="#D9481F"/><circle cx="262" cy="165" r="30" fill="#D9481F"/><text x="205" y="225" font-size="20">O₂</text></g>
+<g class="fi" style="animation-delay:1.6s" color="#14213D"><line x1="305" y1="150" x2="385" y2="150" stroke="currentColor" stroke-width="5" marker-end="url(#ar)"/><text x="296" y="132" font-size="18">phá liên kết</text><text x="296" y="185" font-size="18">tạo liên kết mới</text></g>
+<g class="fi" style="animation-delay:3s"><text x="430" y="40" font-size="26" font-weight="700">Sản phẩm</text>
+<circle cx="470" cy="130" r="28" fill="#D9481F"/><circle cx="510" cy="100" r="16" fill="#2A62D0"/><circle cx="510" cy="160" r="16" fill="#2A62D0"/>
+<circle cx="560" cy="215" r="28" fill="#D9481F"/><circle cx="600" cy="185" r="16" fill="#2A62D0"/><circle cx="600" cy="245" r="16" fill="#2A62D0"/><text x="480" y="270" font-size="20">H₂O (chất mới)</text></g></svg>`,
+mol:()=>{let d='';for(let r=0;r<6;r++)for(let c=0;c<14;c++)d+=`<circle class="fi" style="animation-delay:${(r*14+c)*0.03}s" cx="${40+c*30}" cy="${40+r*30}" r="10" fill="${(r+c)%2?'#2A62D0':'#128A5C'}"/>`;
+ return `<svg class="vis" viewBox="0 0 640 300">${d}<text x="40" y="258" font-size="30" font-weight="800">1 mol = 6,022·10²³ hạt</text><text x="40" y="290" font-size="20">V = 24,79 L (khí, đkc)</text></svg>`},
+balloon:()=>`<svg class="vis" viewBox="0 0 640 300"><line x1="0" y1="262" x2="640" y2="262" stroke="#56637E" stroke-width="4"/>
+<g class="fl"><ellipse cx="170" cy="130" rx="55" ry="66" fill="#E8508F"/><line x1="170" y1="196" x2="170" y2="250" stroke="#14213D" stroke-width="3"/><text x="140" y="140" font-size="30" font-weight="800" fill="#fff" style="fill:#fff">He</text></g>
+<text x="95" y="290" font-size="20">M = 4 → nhẹ hơn (bay lên)</text>
+<g class="sk"><ellipse cx="470" cy="130" rx="55" ry="66" fill="#2A62D0"/><line x1="470" y1="196" x2="470" y2="236" stroke="#14213D" stroke-width="3"/><text x="430" y="140" font-size="26" font-weight="800" style="fill:#fff">CO₂</text></g>
+<text x="380" y="290" font-size="20">M = 44 → nặng hơn (chìm)</text><text x="230" y="30" font-size="22">không khí M ≈ 29</text></svg>`,
+blood:()=>{let c='';const R=[[90,90],[190,60],[300,110],[150,170],[260,200],[60,220],[360,40],[390,170]];R.forEach((p,i)=>c+=`<g class="fl" style="animation-duration:${3+i*.4}s"><ellipse cx="${p[0]}" cy="${p[1]}" rx="30" ry="22" fill="#D9382F"/><ellipse cx="${p[0]}" cy="${p[1]}" rx="12" ry="8" fill="#9E1F18"/></g>`);
+ return `<svg class="vis" viewBox="0 0 640 300">${c}<circle class="fl" cx="470" cy="80" r="36" fill="#EEF3FB" stroke="#2A62D0" stroke-width="4"/><circle cx="470" cy="80" r="14" fill="#7A63D8"/><circle class="fl" cx="540" cy="190" r="9" fill="#FFB020"/><circle class="fl" cx="575" cy="215" r="9" fill="#FFB020"/>
+ <text x="410" y="145" font-size="20">Bạch cầu: bảo vệ</text><text x="440" y="250" font-size="20">Tiểu cầu: đông máu</text><text x="30" y="285" font-size="20">Hồng cầu: vận chuyển O₂, CO₂</text></svg>`},
+pressure:()=>`<svg class="vis" viewBox="0 0 640 300"><rect x="0" y="240" width="640" height="60" fill="#C8B58A"/>
+<g class="fi"><rect x="60" y="130" width="170" height="110" fill="#2A62D0"/><text x="80" y="195" font-size="26" style="fill:#fff">F, S lớn</text><text x="60" y="110" font-size="24">p nhỏ</text></g>
+<g class="fi" style="animation-delay:1.5s"><rect x="360" y="130" width="170" height="110" fill="#2A62D0"/><polygon points="360,240 530,240 445,262" fill="#C8B58A"/><rect x="430" y="240" width="30" height="40" fill="#2A62D0"/><text x="380" y="195" font-size="26" style="fill:#fff">F như nhau</text><text x="380" y="110" font-size="24">S nhỏ → p lớn</text></g>
+<text x="230" y="30" font-size="26" font-weight="800">p = F / S</text></svg>`,
+archimedes:()=>`<svg class="vis" viewBox="0 0 640 300"><rect x="170" y="70" width="300" height="200" fill="#BFE3F5" stroke="#14213D" stroke-width="4"/><rect x="170" y="70" width="300" height="12" fill="#8CCBEA"/>
+<rect x="270" y="130" width="100" height="90" fill="#8C6D4F" stroke="#14213D" stroke-width="3"/>
+<g class="fi" style="animation-delay:.8s"><line x1="320" y1="130" x2="320" y2="62" stroke="#128A5C" stroke-width="8"/><polygon points="305,70 320,40 335,70" fill="#128A5C"/><text x="340" y="70" font-size="26" style="fill:#128A5C">F_A (đẩy lên)</text></g>
+<g class="fi" style="animation-delay:1.8s"><line x1="320" y1="220" x2="320" y2="285" stroke="#C92F45" stroke-width="8"/><polygon points="305,275 320,298 335,275" fill="#C92F45"/><text x="340" y="278" font-size="26" style="fill:#C92F45">P (trọng lực)</text></g></svg>`
+};
+
+/* ===================== ĐIỀU HƯỚNG ===================== */
+const NAV=[['home','Trang chủ'],['learn','Bài học'],['practice','Dạng toán'],['tests','Đề kiểm tra'],['progress','Tiến độ']];
+function shell(route){
+  return `<div class="top"><div class="wrap"><a class="brand" href="#home"><i>8</i>KHTN 8 · Ôn giữa kì I</a>
+  <nav aria-label="Chính">${NAV.map(([k,t])=>`<a href="#${k}" ${route===k?'aria-current="page"':''}>${t}</a>`).join('')}</nav>
+  <span class="chip" id="xp"></span><button class="iconbtn" id="theme" aria-label="Đổi giao diện sáng tối">Sáng/Tối</button></div></div><main class="wrap" id="main"></main>`;
+}
+let current=null;
+function route(){
+  stopVideo();
+  const h=(location.hash||'#home').slice(1); const [name,arg]=[h.split('-')[0], h.split('-').slice(1).join('-')];
+  const r=['home','learn','lesson','practice','tests','test','progress'].includes(name)?name:'home';
+  const top={home:'home',learn:'learn',lesson:'learn',practice:'practice',tests:'tests',test:'tests',progress:'progress'}[r];
+  app().innerHTML=shell(top); refreshChip();
+  $('#theme').onclick=()=>{ const d=document.documentElement; const dark=(d.dataset.theme==='dark')||(!d.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches); d.dataset.theme=dark?'light':'dark'; };
+  const m=$('#main');
+  ({home:vHome,learn:vLearn,lesson:vLesson,practice:vPractice,tests:vTests,test:vTest,progress:vProgress})[r](m,arg);
+  window.scrollTo(0,0);
+  document.title='KHTN 8 – Ôn giữa kì I';
+}
+addEventListener('hashchange',route);
+
+/* ===================== TRANG CHỦ ===================== */
+function lessonPct(s){ const L=LESSONS.filter(l=>!s||l.s===s); return Math.round(100*L.filter(l=>S.lessons[l.id]).length/L.length); }
+function vHome(m){
+  const done=LESSONS.filter(l=>S.lessons[l.id]).length;
+  const next=LESSONS.find(l=>!S.lessons[l.id]);
+  const tdone=Object.keys(S.tests).length;
+  m.innerHTML=`<section class="hero"><div><span class="tag t-ly">Khoa học tự nhiên 8 · 2026–2027</span>
+   <h1>Ôn giữa kì I,<br><span class="hl">học chắc rồi mới thi</span></h1>
+   <p class="muted" style="font-size:18px">Cô giáo AI giảng lại từng bước, có video minh họa. Làm đề xong máy chấm ngay và khen khi em làm đúng. Bám sát đề cương Hóa, Sinh và các đề em đã có.</p>
+   <div class="row"><a class="btn pri" href="#${next?'lesson-'+next.id:'tests'}">${done?'Học tiếp':'Bắt đầu học'}${next?': '+next.title:''}</a><a class="btn" href="#tests">Vào làm đề</a></div></div>
+   <div class="card"><h3>Em đang ở đâu?</h3>
+    <p class="muted" style="margin-top:0">${done}/${LESSONS.length} bài đã học · ${tdone}/${TESTS.length} đề đã làm</p>
+    ${['hoa','sinh','ly'].map(s=>`<p style="margin:10px 0 4px;font-weight:600"><span class="t-${s}">${SUBJ[s].name}</span> <span class="muted num">${lessonPct(s)}%</span></p><div class="bar"><i style="width:${lessonPct(s)}%"></i></div>`).join('')}</div></section>
+  <section class="grid g3">
+   <div class="card"><h3>Cách học 3 bước</h3><ul class="plain steps3">
+     <li><b class="n">1</b><span><b>Học</b>: đọc từng bước, trả lời câu kiểm tra nhanh, xem video ngắn.</span></li>
+     <li><b class="n">2</b><span><b>Luyện dạng toán</b>: đề số ngẫu nhiên, máy chấm và chỉ cách giải.</span></li>
+     <li><b class="n">3</b><span><b>Làm đề</b>: ${TESTS.length} đề nguyên văn, chấm tự động.</span></li></ul></div>
+   <div class="card"><h3>Nội dung ôn</h3><p><span class="tag t-hoa">Hóa</span> Bài 1, 2, 3: dụng cụ, phản ứng, mol, tỉ khối.</p><p><span class="tag t-sinh">Sinh</span> Bài 30 đến 37: cơ thể người đến thần kinh.</p><p><span class="tag t-ly">Lý</span> Khối lượng riêng, áp suất, lực đẩy Archimedes, máy thủy lực (có trong các đề).</p></div>
+   <div class="card"><h3>Mẹo nhớ nhanh</h3><div class="eq" style="font-size:17px">n = m/M<br>V = n × 24,79<br>d = M<sub>A</sub>/29<br>p = F/S &nbsp; D = m/V</div></div>
+  </section>`;
+}
+
+/* ===================== DANH SÁCH BÀI ===================== */
+function vLearn(m){
+  m.innerHTML=`<h2>Bài học</h2><p class="muted">Mỗi bài có: học từng bước, video, tóm tắt. Làm hết câu kiểm tra nhanh để tính là đã học.</p>`+
+  ['hoa','sinh','ly'].map(s=>`<div class="subjhead t-${s}"><h3 style="margin:0">${SUBJ[s].name}</h3><span class="muted num">${lessonPct(s)}% hoàn thành</span></div>
+   <div class="grid g3">${LESSONS.filter(l=>l.s===s).map(l=>`<a class="card lcard" href="#lesson-${l.id}"><span class="tag t-${s}" style="align-self:flex-start">${l.n}</span>${S.lessons[l.id]?'<span class="done">Đã học</span>':''}<h3 style="margin:2px 0">${l.title}</h3><span class="muted" style="font-size:14px">${l.goal}</span></a>`).join('')}</div>`).join('');
+}
+
+/* ===================== MỘT BÀI HỌC ===================== */
+let tabState='learn';
+function vLesson(m,id){
+  const L=lessonById(id); if(!L){ m.innerHTML='<p>Không tìm thấy bài.</p>'; return; }
+  const idx=LESSONS.indexOf(L), nx=LESSONS[idx+1], pv=LESSONS[idx-1];
+  m.innerHTML=`<p class="crumb"><a href="#learn">Bài học</a> / <span class="t-${L.s}">${SUBJ[L.s].name}</span></p>
+  <h2>${L.n}: ${L.title}</h2><p class="muted">Mục tiêu: ${L.goal}</p>
+  <div class="tabs" role="tablist"><button role="tab" data-tab="learn">Học từng bước</button><button role="tab" data-tab="video">Xem video</button><button role="tab" data-tab="sum">Tóm tắt &amp; đề liên quan</button></div>
+  <div id="pane"></div>
+  <div class="row" style="margin-top:22px;justify-content:space-between">${pv?`<a class="btn sm" href="#lesson-${pv.id}">← ${pv.title}</a>`:'<span></span>'}${nx?`<a class="btn sm" href="#lesson-${nx.id}">${nx.title} →</a>`:''}</div>`;
+  const show=t=>{ tabState=t; stopVideo(); $$('.tabs button',m).forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t)); const p=$('#pane'); ({learn:paneSteps,video:paneVideo,sum:paneSum})[t](p,L); };
+  $$('.tabs button',m).forEach(b=>b.onclick=()=>show(b.dataset.tab));
+  show(tabState);
+}
+function mcBlock(chk, onDone){
+  const b=el(`<div class="chk"><div class="q">Kiểm tra nhanh: ${chk.q}</div><div class="opts">${chk.o.map((t,i)=>`<button class="opt" data-i="${i}"><span class="k">${'ABCD'[i]}</span><span>${t}</span></button>`).join('')}</div><div class="fbw" aria-live="polite"></div></div>`);
+  let tries=0;
+  $$('.opt',b).forEach(o=>o.onclick=()=>{
+    if(o.disabled) return; const i=+o.dataset.i; tries++;
+    if(i===chk.a){ o.classList.add('ok'); $$('.opt',b).forEach(x=>x.disabled=true); $('.fbw',b).innerHTML=`<div class="fb ok"><b class="big">${pick(PRAISE)}</b>${chk.why}</div>`; if(tries===1) addXP(5); onDone&&onDone(tries===1); }
+    else { o.classList.add('bad'); o.disabled=true; $('.fbw',b).innerHTML=`<div class="fb bad"><b class="big">Thử lại nhé!</b>Đọc lại phần trên rồi chọn đáp án khác. Em làm được mà.</div>`; if(tries>=2 && $$('.opt:not([disabled])',b).length===1){} }
+  });
+  return b;
+}
+function paneSteps(p,L){
+  p.innerHTML=''; let unlocked=0;
+  const render=(i)=>{
+    const st=L.steps[i];
+    const box=el(`<section class="card step"><div class="sh"><b>${i+1}/${L.steps.length}</b><h3 style="margin:0">${st.h}</h3></div><div class="body">${st.html}</div></section>`);
+    p.appendChild(box);
+    const next=()=>{
+      if(i+1<L.steps.length){ const nb=el('<div class="row"><button class="btn pri">Bước tiếp theo →</button></div>'); box.appendChild(nb); $('button',nb).onclick=()=>{ nb.remove(); render(i+1); p.lastChild.scrollIntoView({behavior:'smooth',block:'start'}); }; }
+      else finish();
+    };
+    if(st.chk) box.appendChild(mcBlock(st.chk,()=>next()));
+    else next();
+  };
+  const finish=()=>{
+    const first=!S.lessons[L.id]; S.lessons[L.id]=true; if(first){ addXP(30); confetti(); } save();
+    const rel=TESTS.map(t=>({t,n:t.mc.filter(q=>q.lesson===L.id).length+t.tl.reduce((a,q)=>a+q.subs.filter(s=>s.lesson===L.id).length,0)})).filter(x=>x.n);
+    p.appendChild(el(`<div class="card" style="background:var(--okbg);margin-top:14px"><h3>${first?'Hoàn thành bài! Giỏi lắm, em nhận 30 điểm!':'Em đã học xong bài này rồi, giỏi lắm!'}</h3><p>Tiếp theo: xem video để khắc sâu, rồi làm đề.</p><div class="row"><button class="btn" id="gv">Xem video</button><a class="btn pri" href="#practice">Luyện dạng toán</a>${rel[0]?`<a class="btn" href="#test-${rel[0].t.id}">Làm ${rel[0].t.short}</a>`:''}</div></div>`));
+    $('#gv').onclick=()=>$('[data-tab=video]').click();
+  };
+  p.appendChild(el(`<p class="muted">Cô sẽ dạy từng bước. Em đọc xong rồi trả lời câu kiểm tra để mở bước tiếp theo.</p>`));
+  render(0);
+}
+function paneSum(p,L){
+  const rel=TESTS.map(t=>{ const mc=t.mc.map((q,i)=>({q,i})).filter(x=>x.q.lesson===L.id); const tl=t.tl.flatMap(q=>q.subs).filter(s=>s.lesson===L.id).length; return {t,mc:mc.length,tl}; }).filter(x=>x.mc||x.tl);
+  p.innerHTML=`<div class="card"><h3>Tóm tắt</h3>${L.steps.map(s=>`<h4>${s.h}</h4>${s.html}`).join('')}</div>
+  <div class="card" style="margin-top:14px"><h3>Câu hỏi về bài này trong các đề</h3>${rel.length?rel.map(x=>`<p><a href="#test-${x.t.id}"><b>${x.t.short}</b></a>: ${x.mc} trắc nghiệm, ${x.tl} ý tự luận</p>`).join(''):'<p class="muted">Chưa có câu trực tiếp.</p>'}</div>`;
+}
+
+/* ===================== VIDEO (hoạt hình + giọng đọc) ===================== */
+let VP=null;
+function stopVideo(){ if(VP){ VP.dead=true; clearTimeout(VP.timer); } VP=null; try{speechSynthesis.cancel();}catch(e){} }
+function paneVideo(p,L){
+  const sc=L.video; let i=0, playing=false, speed=1, mute=false;
+  p.innerHTML=`<div class="screen" id="scr"></div><div class="cap" id="cap" aria-live="polite"></div>
+  <div class="ctl"><button class="btn sm" id="pv" aria-label="Cảnh trước">⏮</button><button class="btn sm pri" id="pp" style="min-width:110px">Phát</button><button class="btn sm" id="nv" aria-label="Cảnh sau">⏭</button>
+  <button class="btn sm" id="sp">Tốc độ 1×</button><button class="btn sm" id="mu">Giọng đọc: Bật</button><select id="vs" hidden aria-label="Chọn giọng đọc" style="padding:6px;border-radius:10px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);max-width:220px"></select><div class="dots" id="dots">${sc.map((_,k)=>`<i data-k="${k}"></i>`).join('')}</div></div>
+  <p class="muted" id="vn" style="font-size:14px"></p>`;
+  const ctx={dead:false,timer:null}; VP=ctx;
+  let voice=null; const score=v=>(/natural|online|hoaimy|google|neural/i.test(v.name)?4:0)+(/female|nu|hoai|linh|mai|my/i.test(v.name)?2:0)+(/^vi/i.test(v.lang)?1:0);
+  const pickVoice=()=>{ try{ const vs=speechSynthesis.getVoices().filter(v=>/^vi/i.test(v.lang)); vs.sort((a,b)=>score(b)-score(a)); const sel=$('#vs'); if(sel&&vs.length){ sel.innerHTML=vs.map((v,k)=>`<option value="${k}">${v.name}</option>`).join(''); sel.hidden=false; sel.onchange=()=>{voice=vs[+sel.value]; if(playing) go(i);}; } voice=vs[0]||null; }catch(e){} };
+  try{ speechSynthesis.onvoiceschanged=pickVoice; }catch(e){} pickVoice();
+  const scene=s=>{
+    if(s.t==='title') return `<div class="scene"><div class="big">${s.big}</div><div class="sub">${s.sub||''}</div></div>`;
+    if(s.t==='list') return `<div class="scene"><ul>${s.items.map((x,k)=>`<li style="animation-delay:${k*0.9}s">${x}</li>`).join('')}</ul></div>`;
+    if(s.t==='formula') return `<div class="scene">${s.lines.map((x,k)=>`<div class="f" style="animation-delay:${k*1.1}s">${x}</div>`).join('')}</div>`;
+    if(s.t==='calc') return `<div class="scene"><div class="ct">${s.title}</div>${s.lines.map((x,k)=>`<div class="f" style="animation-delay:${.8+k*1.5}s">${x}</div>`).join('')}</div>`;
+    if(s.t==='compare') return `<div class="scene"><div class="cmp"><div style="animation-delay:.2s"><h4>${s.a.h}</h4>${s.a.l.map(x=>`<p>${x}</p>`).join('')}</div><div style="animation-delay:1.4s"><h4>${s.b.h}</h4>${s.b.l.map(x=>`<p>${x}</p>`).join('')}</div></div></div>`;
+    if(s.t==='svg') return `<div class="scene" style="padding:2%">${VIS[s.key]()}</div>`;
+    return '';
+  };
+  const go=(k,auto)=>{
+    clearTimeout(ctx.timer); try{speechSynthesis.cancel();}catch(e){}
+    i=Math.max(0,Math.min(sc.length-1,k));
+    $('#scr').innerHTML=scene(sc[i]); $('#cap').textContent=sc[i].say;
+    $$('#dots i').forEach((d,j)=>{ d.className=j===i?'on':(j<i?'past':''); });
+    if(playing) speakThen();
+  };
+  const speakThen=()=>{
+    const s=sc[i]; const est=Math.max(4200,s.say.length*(mute||!voice?85:70)/speed);
+    let fired=false; const adv=()=>{ if(fired||ctx.dead||!playing) return; fired=true; clearTimeout(ctx.timer); if(i<sc.length-1) go(i+1,true); else { playing=false; $('#pp').textContent='Xem lại'; i=-1; if(!S.seen[L.id]){ S.seen[L.id]=1; addXP(10); toast('Em đã xem hết video, +10 điểm!'); } } };
+    ctx.timer=setTimeout(adv, est*1.6+1500);
+    if(!mute && voice){ try{ const u=new SpeechSynthesisUtterance(s.say); u.lang='vi-VN'; u.voice=voice; u.rate=speed*0.92; u.pitch=1.08; u.onend=()=>setTimeout(adv,500); u.onerror=()=>{}; speechSynthesis.speak(u);}catch(e){ ctx.timer=setTimeout(adv,est); } }
+    else { clearTimeout(ctx.timer); ctx.timer=setTimeout(adv,est); }
+  };
+  $('#pp').onclick=()=>{ if(playing){ playing=false; clearTimeout(ctx.timer); try{speechSynthesis.cancel();}catch(e){} $('#pp').textContent='Tiếp tục'; } else { playing=true; $('#pp').textContent='Tạm dừng'; if(i<0) i=0; go(i); } };
+  $('#pv').onclick=()=>go(i-1); $('#nv').onclick=()=>go(i+1);
+  $('#sp').onclick=e=>{ speed=speed===1?1.25:speed===1.25?0.8:1; e.target.textContent='Tốc độ '+speed+'×'; if(playing) go(i); };
+  $('#mu').onclick=e=>{ mute=!mute; e.target.textContent='Giọng đọc: '+(mute?'Tắt':'Bật'); if(playing) go(i); };
+  $$('#dots i').forEach(d=>d.onclick=()=>go(+d.dataset.k));
+  setTimeout(()=>{ $('#vn').textContent= voice?'Giọng đọc tiếng Việt đang bật. Nhấn Phát để xem.':'Thiết bị chưa có giọng đọc tiếng Việt, video chạy kèm phụ đề. Nhấn Phát để xem.'; },400);
+  go(0);
+}
+
+/* ===================== DẠNG TOÁN (đề số ngẫu nhiên) ===================== */
+const GAS=[['H₂',2],['He',4],['CH₄',16],['N₂',28],['O₂',32],['CO₂',44],['SO₂',64],['Cl₂',71],['NO₂',46],['H₂S',34]];
+const SOL=[['NaOH',40],['NaCl',58.5],['H₂SO₄',98],['CaCO₃',100],['Cu',64],['Fe',56],['Al',27],['CuSO₄',160],['CaO',56],['Mg',24]];
+const POOL_PH=[['Hòa tan đường vào nước','vl'],['Cháy rừng','hh'],['Băng tan','vl'],['Thanh sắt để lâu bị gỉ','hh'],['Cồn bay hơi','vl'],['Thức ăn ôi thiu','hh'],['Sương tan khi mặt trời lên','vl'],['Nung đá vôi tạo vôi sống và CO₂','hh'],['Cắt dây sắt nhỏ, tán thành đinh','vl'],['Rượu để lâu bị chua','hh'],['Hòa tan muối ăn vào nước','vl'],['Đun nóng đường chuyển thành than','hh'],['Vôi sống tác dụng với nước','hh'],['Thủy tinh nóng chảy được thổi thành bình cầu','vl']];
+const POOL_NH=[['Đốt cháy khí gas','toa'],['Nung đá vôi','thu'],['Vôi sống + nước','toa'],['Nhiệt phân đường','thu'],['Đốt than trong không khí','toa'],['Magnesium cháy sáng chói','toa'],['Sản xuất vôi (phân hủy đá vôi)','thu'],['Hô hấp tế bào','toa']];
+const GEN=[
+ {id:'n2v',s:'hoa',name:'Số mol → thể tích khí (đkc)',lesson:'h3',make(){const g=pick(GAS),n=pick([0.1,0.15,0.2,0.25,0.3,0.5,1,1.2,1.5,2]);return{q:`Tính thể tích của <b>${fmt(n)} mol</b> khí ${g[0]} ở điều kiện chuẩn (25 °C, 1 bar).`,unit:'L',ans:n*24.79,steps:`V = n × 24,79 = ${fmt(n)} × 24,79 = <b>${fmt(n*24.79,3)} L</b>.`,hint:'Dùng V = n × 24,79.'}}},
+ {id:'m2n',s:'hoa',name:'Khối lượng → số mol',lesson:'h3',make(){const c=pick(SOL),n=pick([0.1,0.2,0.25,0.4,0.5,1,2]),m=n*c[1];return{q:`Tính số mol của <b>${fmt(m,1)} g</b> ${c[0]} (M = ${fmt(c[1],1)} g/mol).`,unit:'mol',ans:n,steps:`n = m/M = ${fmt(m,1)} / ${fmt(c[1],1)} = <b>${fmt(n)} mol</b>.`,hint:'n = m / M.'}}},
+ {id:'n2m',s:'hoa',name:'Số mol → khối lượng',lesson:'h3',make(){const c=pick(SOL),n=pick([0.1,0.2,0.25,0.3,0.5,1.5,2.5]);return{q:`Tính khối lượng của <b>${fmt(n)} mol</b> ${c[0]} (M = ${fmt(c[1],1)} g/mol).`,unit:'g',ans:n*c[1],steps:`m = n × M = ${fmt(n)} × ${fmt(c[1],1)} = <b>${fmt(n*c[1],2)} g</b>.`,hint:'m = n × M.'}}},
+ {id:'v2m',s:'hoa',name:'Thể tích khí → khối lượng',lesson:'h3',make(){const g=pick(GAS.slice(2)),n=pick([0.1,0.2,0.25,0.3,0.5,1]),V=n*24.79;return{q:`Tính khối lượng của <b>${fmt(V,3)} L</b> khí ${g[0]} ở đkc (M = ${g[1]} g/mol).`,unit:'g',ans:n*g[1],steps:`n = ${fmt(V,3)}/24,79 = ${fmt(n)} mol.<br>m = ${fmt(n)} × ${g[1]} = <b>${fmt(n*g[1],2)} g</b>.`,hint:'Tính n = V/24,79 trước.'}}},
+ {id:'m2v',s:'hoa',name:'Khối lượng khí → thể tích',lesson:'h3',make(){const g=pick(GAS.slice(2,8)),n=pick([0.1,0.2,0.25,0.5,1]),m=n*g[1];return{q:`Tính thể tích (đkc) của <b>${fmt(m,1)} g</b> khí ${g[0]} (M = ${g[1]} g/mol).`,unit:'L',ans:n*24.79,steps:`n = ${fmt(m,1)}/${g[1]} = ${fmt(n)} mol.<br>V = ${fmt(n)} × 24,79 = <b>${fmt(n*24.79,3)} L</b>.`,hint:'n = m/M rồi V = n×24,79.'}}},
+ {id:'hat',s:'hoa',name:'Số mol ↔ số hạt',lesson:'h3',make(){const k=pick([0.5,1,1.5,2,3]);return{q:`Có <b>${fmt(k*6.022,3)}·10²³</b> phân tử. Hỏi bằng bao nhiêu mol?`,unit:'mol',ans:k,steps:`n = ${fmt(k*6.022,3)}·10²³ / 6,022·10²³ = <b>${fmt(k)} mol</b>.`,hint:'Chia cho 6,022·10²³.'}}},
+ {id:'dkk',s:'hoa',name:'Tỉ khối so với không khí',lesson:'h4',make(){const g=pick(GAS);return{q:`Tính tỉ khối của khí ${g[0]} (M = ${g[1]}) so với không khí (M ≈ 29). Làm tròn 2 chữ số thập phân.`,unit:'(lần)',ans:g[1]/29,steps:`d = ${g[1]}/29 = <b>${fmt(g[1]/29)}</b>. ${g[1]>29?'Lớn hơn 1: nặng hơn không khí.':'Nhỏ hơn 1: nhẹ hơn không khí.'}`,hint:'d = M/29.'}}},
+ {id:'mA',s:'hoa',name:'Tìm khối lượng mol từ tỉ khối',lesson:'h4',make(){const d=pick([1.8,2.5,5,0.5,3.2]),B=pick([30,32,16,28,44]);return{q:`Khí A có tỉ khối so với khí B là <b>${fmt(d,1)}</b>, M<sub>B</sub> = <b>${B}</b>. Tìm M<sub>A</sub> (g/mol).`,unit:'g/mol',ans:d*B,steps:`d = M_A/M_B ⇒ M_A = ${fmt(d,1)} × ${B} = <b>${fmt(d*B,1)}</b>.`,hint:'M_A = d × M_B.'}}},
+ {id:'ph',s:'hoa',name:'Phân loại vật lí / hóa học',lesson:'h2',mc:true,make(){const x=pick(POOL_PH);return{q:`<b>${x[0]}</b> là biến đổi gì?`,o:['Biến đổi vật lí','Biến đổi hóa học'],a:x[1]==='vl'?0:1,steps:x[1]==='vl'?'Không tạo chất mới → vật lí.':'Có chất mới → hóa học.'}}},
+ {id:'nh',s:'hoa',name:'Tỏa nhiệt / thu nhiệt',lesson:'h2',mc:true,make(){const x=pick(POOL_NH);return{q:`<b>${x[0]}</b> là phản ứng:`,o:['Tỏa nhiệt','Thu nhiệt'],a:x[1]==='toa'?0:1,steps:x[1]==='toa'?'Giải phóng nhiệt → tỏa nhiệt.':'Cần cung cấp nhiệt liên tục → thu nhiệt.'}}},
+ {id:'D',s:'ly',name:'Khối lượng riêng D = m/V',lesson:'l1',make(){const D=pick([800,1000,2700,7800,8900,11300]),V=pick([50,100,200,300,500]);const m=D*V/1e6;return{q:`Một vật có khối lượng <b>${fmt(m*1000,1)} g</b> và thể tích <b>${V} cm³</b>. Tính khối lượng riêng theo kg/m³.`,unit:'kg/m³',ans:D,steps:`D = m/V = ${fmt(m*1000,1)} g / ${V} cm³ = ${fmt(D/1000,3)} g/cm³ = <b>${D} kg/m³</b>.`,hint:'1 g/cm³ = 1000 kg/m³.'}}},
+ {id:'mDV',s:'ly',name:'Tính khối lượng m = D·V',lesson:'l1',make(){const D=pick([800,1000,2700,7800]),V=pick([100,200,500,1000]);return{q:`Vật có D = <b>${D} kg/m³</b>, V = <b>${V} cm³</b>. Tính khối lượng (kg).`,unit:'kg',ans:D*V/1e6,steps:`V = ${V} cm³ = ${V/1e6} m³.<br>m = D·V = ${D} × ${V/1e6} = <b>${fmt(D*V/1e6,4)} kg</b>.`,hint:'Đổi V ra m³ trước (÷ 1 000 000).'}}},
+ {id:'p',s:'ly',name:'Áp suất p = F/S',lesson:'l2',make(){const m=pick([40,45,50,60,70]),a=pick([0.01,0.015,0.02,0.025]),two=pick([1,2]);return{q:`Người nặng <b>${m} kg</b> đứng bằng <b>${two===2?'hai':'một'} chân</b>, diện tích một bàn chân là <b>${fmt(a,3)} m²</b>. Tính áp suất lên sàn (Pa).`,unit:'Pa',ans:10*m/(a*two),steps:`F = 10 × ${m} = ${10*m} N. S = ${two} × ${fmt(a,3)} = ${fmt(a*two,3)} m².<br>p = F/S = <b>${fmt(10*m/(a*two),0)} Pa</b>.`,hint:'F = 10m; chú ý số chân.'}}},
+ {id:'FA',s:'ly',name:'Lực đẩy Archimedes',lesson:'l3',make(){const V=pick([100,200,300,500,1000]),P=pick([5,8,10,12]);const F=10000*V/1e6;return{q:`Vật có thể tích <b>${V} cm³</b> nhúng chìm hoàn toàn trong nước (d = 10 000 N/m³). Tính lực đẩy Archimedes (N).`,unit:'N',ans:F,steps:`V = ${V/1e6} m³. F_A = d·V = 10 000 × ${V/1e6} = <b>${fmt(F,2)} N</b>.`,hint:'F_A = d × V (V đổi ra m³).'}}},
+ {id:'lk',s:'ly',name:'Số chỉ lực kế khi nhúng nước',lesson:'l3',make(){const V=pick([100,200,300,500]),P=pick([4,5,6,8,10]);const F=10000*V/1e6;return{q:`Quả nặng có trọng lượng <b>${P} N</b> (ngoài không khí), thể tích <b>${V} cm³</b>. Nhúng chìm trong nước (d = 10 000 N/m³) thì lực kế chỉ bao nhiêu N?`,unit:'N',ans:P-F,steps:`F_A = 10 000 × ${V/1e6} = ${fmt(F,2)} N.<br>P′ = P − F_A = ${P} − ${fmt(F,2)} = <b>${fmt(P-F,2)} N</b>.`,hint:'P′ = P − F_A.'}}},
+ {id:'tl',s:'ly',name:'Máy thủy lực F/f = S/s',lesson:'l4',make(){const f=pick([50,100,200]),k=pick([20,50,100,200]),s=pick([2,5,10]);return{q:`Pit-tông nhỏ có diện tích <b>${s} cm²</b>, tác dụng lực <b>${f} N</b>. Pit-tông lớn có diện tích <b>${s*k} cm²</b>. Tính lực nâng ở pit-tông lớn (N).`,unit:'N',ans:f*k,steps:`F/f = S/s ⇒ F = f × S/s = ${f} × ${s*k}/${s} = <b>${f*k} N</b>.`,hint:'F = f × S/s.'}}}
+];
+let pcur=null;
+function vPractice(m){
+  const by=S.prac.byType||{};
+  const grp=s=>`<div class="subjhead t-${s}"><h3 style="margin:0">${SUBJ[s].name}</h3></div><div class="grid g3">${GEN.filter(g=>g.s===s).map(g=>`<button class="card lcard" data-g="${g.id}" style="text-align:left"><span class="tag t-${s}" style="align-self:flex-start">Dạng</span><h3 style="margin:2px 0">${g.name}</h3><span class="muted" style="font-size:14px">Đã đúng ${(by[g.id]||{ok:0}).ok}/${(by[g.id]||{n:0}).n} câu</span></button>`).join('')}</div>`;
+  m.innerHTML=`<h2>Luyện theo dạng toán</h2><p class="muted">Mỗi lần ra một đề số khác nhau. Em nhập kết quả, máy chấm ngay và hiện cách giải. (Dùng dấu phẩy hoặc dấu chấm đều được.)</p><div id="pbox"></div>`+grp('hoa')+grp('ly');
+  $$('[data-g]',m).forEach(b=>b.onclick=()=>{ pcur=GEN.find(g=>g.id===b.dataset.g); runPractice(); $('#pbox').scrollIntoView({behavior:'smooth',block:'start'}); });
+  if(pcur) runPractice();
+}
+function runPractice(){
+  const g=pcur, P=g.make(), box=$('#pbox');
+  box.innerHTML=`<div class="card" style="margin-bottom:10px"><span class="tag t-${g.s}">${g.name}</span><p style="font-size:18px;margin:10px 0">${P.q}</p><div id="ans"></div><div id="fbp" aria-live="polite"></div></div>`;
+  const rec=ok=>{ const t=(S.prac.byType[g.id]=S.prac.byType[g.id]||{ok:0,n:0}); t.n++; if(ok) t.ok++; S.prac.total++; if(ok){ S.prac.ok++; addXP(5);} else save(); };
+  const next=()=>`<div class="row"><button class="btn pri" id="nxt">Câu tiếp theo</button></div>`;
+  if(g.mc){
+    const a=$('#ans'); a.innerHTML=`<div class="opts">${P.o.map((t,i)=>`<button class="opt" data-i="${i}"><span class="k">${'AB'[i]}</span><span>${t}</span></button>`).join('')}</div>`;
+    $$('.opt',a).forEach(b=>b.onclick=()=>{ const ok=+b.dataset.i===P.a; $$('.opt',a).forEach(x=>x.disabled=true); b.classList.add(ok?'ok':'bad'); $$('.opt',a)[P.a].classList.add('ok'); rec(ok); $('#fbp').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><b class="big">${ok?pick(PRAISE):pick(COMFORT)}</b>${P.steps}</div>`+next(); $('#nxt').onclick=runPractice; });
+  } else {
+    $('#ans').innerHTML=`<div class="row"><input type="text" id="pin" inputmode="decimal" placeholder="Nhập kết quả (${P.unit})" style="max-width:260px" aria-label="Kết quả"><button class="btn pri" id="chk">Chấm</button><button class="btn" id="hn">Gợi ý</button></div>`;
+    const submit=()=>{ const v=nums($('#pin').value)[0]; if(v===undefined){ toast('Em hãy nhập một số nhé'); return; } const ok=numOK([v],P.ans); $('#pin').disabled=true; $('#chk').disabled=true; rec(ok); if(ok&&S.prac.ok%10===0) confetti();
+      $('#fbp').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><b class="big">${ok?pick(PRAISE):pick(COMFORT)}</b>${ok?'':'Đáp án đúng: <b>'+fmt(P.ans,3)+' '+P.unit+'</b>.<br>'}${P.steps}</div>`+next(); $('#nxt').onclick=runPractice; };
+    $('#chk').onclick=submit; $('#pin').onkeydown=e=>{ if(e.key==='Enter') submit(); }; $('#hn').onclick=()=>{ $('#fbp').innerHTML=`<div class="fb ok"><b class="big">Gợi ý</b>${P.hint}</div>`; }; $('#pin').focus();
+  }
+}
+
+/* ===================== DANH SÁCH ĐỀ ===================== */
+function vTests(m){
+  m.innerHTML=`<h2>Đề kiểm tra</h2><p class="muted">${TESTS.length} đề, chép nguyên văn từ tài liệu của em. Trắc nghiệm chấm ngay khi chọn. Tự luận gõ đáp án rồi bấm Chấm, máy so với đáp án chuẩn và cho điểm từng ý.</p>
+  <div class="grid">${TESTS.map(t=>{const r=S.tests[t.id];return `<a class="card testrow lcard" href="#test-${t.id}" style="flex-direction:row"><div class="info"><span class="tag t-${t.tag==='Lý'?'ly':t.tag==='Hóa'?'hoa':'sinh'}">${t.tag}</span><h3 style="margin:4px 0">${t.title}</h3><span class="muted" style="font-size:14px">${t.sub}</span></div><div style="text-align:right">${r?`<div class="muted" style="font-size:13px">Điểm cao nhất</div><b style="font-family:var(--fd);font-size:30px">${fmt(r.best,2)}</b><span class="muted">/10</span>`:'<span class="btn sm pri">Làm bài</span>'}</div></a>`}).join('')}</div>`;
+}
+
+/* ===================== LÀM ĐỀ ===================== */
+let RUN=null;
+function weights(t){ // điểm tối đa từng ý tự luận
+  const tw=t.tl.reduce((a,q)=>a+q.w,0), out=[];
+  t.tl.forEach((q,qi)=>q.subs.forEach((s,si)=>out.push({qi,si,max:t.tlPts*(q.w/tw)/q.subs.length})));
+  return out;
+}
+function vTest(m,id){
+  const t=testById(id); if(!t){ m.innerHTML='<p>Không tìm thấy đề.</p>'; return; }
+  RUN={t,mc:t.mc.map(()=>null),sub:{},W:weights(t)};
+  const tot=t.tnPts+t.tlPts;
+  let h=`<p class="crumb"><a href="#tests">Đề kiểm tra</a></p><h2>${t.title}</h2><p class="muted">${t.sub} · Thời gian gợi ý ${t.time} phút · Thang điểm gốc ${fmt(tot,1)}${tot!==10?' (quy đổi ra /10)':''}</p>
+  <h3 style="margin-top:20px">Phần I. Trắc nghiệm (${fmt(t.tnPts,2)} điểm)</h3>`;
+  t.mc.forEach((q,i)=>{ h+=`<div class="qblock" id="mc${i}"><div class="qt"><span class="q-num">Câu ${i+1}.</span> ${q.q}</div>${q.fig?`<div class="fig">${FIG[q.fig]}</div>`:''}<div class="opts">${q.o.map((o,k)=>`<button class="opt" data-q="${i}" data-k="${k}"><span class="k">${'ABCD'[k]}</span><span>${o}</span></button>`).join('')}</div><div class="fbw" aria-live="polite"></div></div>`; });
+  h+=`<h3 style="margin-top:26px">Phần II. Tự luận (${fmt(t.tlPts,2)} điểm)</h3><p class="muted">Gõ đáp án ngắn gọn (kết quả số có thể dùng dấu phẩy). Có thể xem gợi ý trước khi chấm.</p>`;
+  t.tl.forEach((q,qi)=>{ h+=`<div class="qblock"><div class="qt"><span class="q-num">Câu ${t.mc.length+qi+1}.</span> ${q.q||''}</div>${q.fig?`<div class="fig">${FIG[q.fig]}</div>`:''}`+q.subs.map((s,si)=>`<div class="subq" id="sb${qi}_${si}"><label for="in${qi}_${si}">${s.l?`<b>${s.l})</b> `:''}${s.q}</label><textarea id="in${qi}_${si}" rows="${/tính|viết|giải thích|nêu/i.test(s.q)?3:2}" placeholder="Em viết đáp án vào đây"></textarea><div class="row"><button class="btn sm pri" data-chk="${qi}_${si}">Chấm</button><button class="btn sm" data-hint="${qi}_${si}">Gợi ý</button></div><div class="fbw" aria-live="polite"></div></div>`).join('')+`</div>`; });
+  h+=`<div class="sticky"><div class="score" id="sc"></div></div><div id="final"></div>`;
+  m.innerHTML=h;
+  $$('.opt[data-q]',m).forEach(b=>b.onclick=()=>answerMC(+b.dataset.q,+b.dataset.k));
+  $$('[data-chk]',m).forEach(b=>b.onclick=()=>answerSub(b.dataset.chk));
+  $$('[data-hint]',m).forEach(b=>b.onclick=()=>{ const [qi,si]=b.dataset.hint.split('_'); const s=t.tl[qi].subs[si]; const w=$('#sb'+b.dataset.hint+' .fbw'); w.innerHTML=`<div class="fb ok"><b class="big">Gợi ý</b>${s.hint||'Xem lại bài học tương ứng.'}${s.lesson?` <a href="#lesson-${s.lesson}">Mở bài học</a>`:''}</div>`; });
+  updateScore();
+}
+function answerMC(i,k){
+  const {t}=RUN; if(RUN.mc[i]!==null) return; RUN.mc[i]=k; const q=t.mc[i], ok=k===q.a, blk=$('#mc'+i);
+  $$('.opt',blk).forEach((b,j)=>{ b.disabled=true; if(j===k) b.classList.add(ok?'ok':'bad'); if(j===q.a&&!ok) b.classList.add('reveal','ok'); });
+  $('.fbw',blk).innerHTML=`<div class="fb ${ok?'ok':'bad'}"><b class="big">${ok?pick(PRAISE):pick(COMFORT)}</b>Đáp án đúng: <b>${'ABCD'[q.a]}</b>. ${q.why}${q.lesson?` <a href="#lesson-${q.lesson}">Học lại: ${lessonById(q.lesson).title}</a>`:''}${q.note?`<br><i>${q.note}</i>`:''}</div>`;
+  if(ok) addXP(2); updateScore();
+}
+function answerSub(key){
+  const [qi,si]=key.split('_').map(Number), s=RUN.t.tl[qi].subs[si], inp=$('#in'+key), w=$('#sb'+key+' .fbw');
+  const val=inp.value.trim(); if(!val){ toast('Em hãy viết đáp án trước khi chấm nhé'); return; }
+  const g=gradeSub(s,val); const auto=g?g.score:0;
+  RUN.sub[key]={val,score:auto,manual:!g};
+  paintSub(key,s,w,g);
+  updateScore();
+}
+function paintSub(key,s,w,g){
+  const r=RUN.sub[key], sc=r.score, ok=sc>=0.99, part=!ok&&sc>=0.5;
+  const head=ok?pick(PRAISE):part?'Gần đúng rồi, em thiếu một ý!':(g?pick(COMFORT):'Em so với đáp án mẫu rồi tự chấm nhé.');
+  w.innerHTML=`<div class="fb ${ok?'ok':'bad'}"><b class="big">${head}</b>${g?`Máy chấm: <b>${Math.round(sc*100)}%</b> ý này.<br>`:''}<b>Đáp án mẫu:</b><div style="margin:4px 0 6px">${s.a}</div>${ok?'':`<div class="row"><button class="btn sm" data-over="${key}">Em đã làm đúng ý này (tự chấm)</button><button class="btn sm" data-retry="${key}">Làm lại</button></div>`}${s.lesson&&!ok?`<a href="#lesson-${s.lesson}">Học lại: ${lessonById(s.lesson).title}</a>`:''}</div>`;
+  const o=$('[data-over]',w); if(o) o.onclick=()=>{ r.score=1; r.manual=true; paintSub(key,s,w,g); w.querySelector('.fb').insertAdjacentHTML('afterbegin','<b class="big">Ghi nhận em đã làm đúng!</b>'); updateScore(); };
+  const rt=$('[data-retry]',w); if(rt) rt.onclick=()=>{ delete RUN.sub[key]; w.innerHTML=''; updateScore(); $('#in'+key).focus(); };
+  if(ok) addXP(3);
+}
+function calc(){
+  const {t,mc,sub,W}=RUN; const c=mc.filter((a,i)=>a===t.mc[i].a).length, d=mc.filter(a=>a!==null).length;
+  const tn=t.tnPts*c/t.mc.length; let tl=0, done=0; W.forEach(x=>{ const r=sub[x.qi+'_'+x.si]; if(r){ done++; tl+=x.max*r.score; } });
+  const tot=t.tnPts+t.tlPts; return {c,d,tn,tl,done,tot,total:tn+tl,ten:(tn+tl)/tot*10,allDone:d===t.mc.length&&done===W.length};
+}
+function updateScore(){
+  const r=calc(), t=RUN.t;
+  $('#sc').innerHTML=`<span>Trắc nghiệm <b class="num">${r.c}/${t.mc.length}</b></span><span>Tự luận đã chấm <b class="num">${r.done}/${RUN.W.length}</b></span><span>Điểm tạm tính <b class="num">${fmt(r.ten,2)}</b>/10</span><button class="btn sm pri" id="fin" style="margin-left:auto">Xem kết quả</button>`;
+  $('#fin').onclick=finish;
+}
+function finish(){
+  const r=calc(), t=RUN.t; const un=(r.d<t.mc.length||r.done<RUN.W.length);
+  const first=!S.tests[t.id]; const prev=S.tests[t.id]; S.tests[t.id]={best:Math.max(prev?prev.best:0,r.ten),last:r.ten,n:(prev?prev.n:0)+1,at:Date.now()}; if(first) addXP(40); save();
+  const band=r.ten>=9?['Xuất sắc! Em giỏi lắm, cứ thế phát huy nhé!','Em nắm bài rất chắc. Cô tự hào về em!']:r.ten>=8?['Giỏi lắm! Chỉ sai một chút xíu thôi.','Em làm rất tốt. Xem lại vài chỗ sai là hoàn hảo.']:r.ten>=6.5?['Khá tốt! Em đang tiến bộ.','Xem lại các câu sai, làm lại đề này sẽ cao hơn.']:['Đừng nản nhé, em làm được mà!','Học lại bài ở các liên kết bên dưới rồi làm lại, em sẽ tiến bộ ngay.'];
+  if(r.ten>=8) confetti();
+  const wrong=[]; t.mc.forEach((q,i)=>{ if(RUN.mc[i]!==q.a&&q.lesson) wrong.push(q.lesson); }); t.tl.forEach((q,qi)=>q.subs.forEach((s,si)=>{ const x=RUN.sub[qi+'_'+si]; if((!x||x.score<0.99)&&s.lesson) wrong.push(s.lesson); }));
+  const uniq=[...new Set(wrong)];
+  $('#final').innerHTML=`<div class="card" style="margin-top:18px;text-align:center"><p class="muted" style="margin:0">Điểm của em</p><div class="bigscore num">${fmt(r.ten,2)}</div><p class="muted">/10 ${t.tnPts+t.tlPts!==10?`(đề gốc ${fmt(r.total,2)}/${fmt(t.tnPts+t.tlPts,1)})`:''} · Trắc nghiệm ${fmt(r.tn,2)}/${t.tnPts} · Tự luận ${fmt(r.tl,2)}/${t.tlPts}</p>
+  <h3>${band[0]}</h3><p>${band[1]}</p>${un?'<p class="muted">Còn câu chưa làm nên điểm có thể thấp hơn thực tế.</p>':''}
+  ${uniq.length?`<p><b>Nên học lại:</b></p><div class="row" style="justify-content:center">${uniq.map(id=>`<a class="btn sm" href="#lesson-${id}">${lessonById(id).title}</a>`).join('')}</div>`:'<p><b>Không còn chỗ nào cần học lại. Tuyệt vời!</b></p>'}
+  <div class="row" style="justify-content:center;margin-top:14px"><a class="btn pri" href="#test-${t.id}" onclick="setTimeout(route,0)">Làm lại đề này</a><a class="btn" href="#tests">Chọn đề khác</a></div></div>`;
+  $('#final').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ===================== TIẾN ĐỘ ===================== */
+const BADGES=[['Khởi động','Học xong bài đầu tiên',()=>Object.keys(S.lessons).length>=1],['Chăm học','Học xong 8 bài',()=>Object.keys(S.lessons).length>=8],['Học bá','Học xong cả 16 bài',()=>Object.keys(S.lessons).length>=LESSONS.length],['Thợ luyện toán','Đúng 25 câu dạng toán',()=>S.prac.ok>=25],['Chiến binh đề','Làm xong 3 đề',()=>Object.keys(S.tests).length>=3],['Điểm 8+','Có đề đạt từ 8 điểm',()=>Object.values(S.tests).some(x=>x.best>=8)],['Điểm 10','Có đề đạt 10 điểm',()=>Object.values(S.tests).some(x=>x.best>=9.99)],['Đủ bộ','Làm xong tất cả đề',()=>Object.keys(S.tests).length>=TESTS.length]];
+function vProgress(m){
+  m.innerHTML=`<h2>Tiến độ của em</h2><div class="grid g3"><div class="card"><div class="muted">Điểm tích lũy</div><div class="bigscore num">${S.xp}</div></div><div class="card"><div class="muted">Chuỗi ngày học</div><div class="bigscore num">${streak()}</div></div><div class="card"><div class="muted">Dạng toán đã đúng</div><div class="bigscore num">${S.prac.ok}<span class="muted" style="font-size:24px">/${S.prac.total}</span></div></div></div>
+  <h3 style="margin-top:24px">Huy hiệu</h3><div>${BADGES.map(b=>`<span class="badge ${b[2]()?'':'lock'}" title="${b[1]}">${b[2]()?'✓':'○'} ${b[0]} <span class="muted" style="font-weight:400">· ${b[1]}</span></span>`).join('')}</div>
+  <h3 style="margin-top:24px">Kết quả các đề</h3><div class="card"><table class="tb"><tr><th>Đề</th><th>Điểm cao nhất</th><th>Lần gần nhất</th><th>Số lần</th></tr>${TESTS.map(t=>{const r=S.tests[t.id];return `<tr><td><a href="#test-${t.id}">${t.short}</a></td><td class="num">${r?fmt(r.best,2):'–'}</td><td class="num">${r?fmt(r.last,2):'–'}</td><td>${r?r.n:0}</td></tr>`}).join('')}</table></div>
+  <p style="margin-top:20px"><button class="btn sm" id="rs">Xóa toàn bộ tiến độ</button></p>`;
+  $('#rs').onclick=function(){ if(this.dataset.s){ S={xp:0,lessons:{},tests:{},prac:{ok:0,total:0,byType:{}},days:{},seen:{}}; save(); route(); } else { this.dataset.s=1; this.textContent='Bấm lần nữa để xác nhận xóa'; } };
+}
+route();
+</script>
+
+</body>
+</html>
