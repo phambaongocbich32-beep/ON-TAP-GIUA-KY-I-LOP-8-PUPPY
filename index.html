@@ -792,7 +792,7 @@ archimedes:()=>`<svg class="vis" viewBox="0 0 640 300"><rect x="170" y="70" widt
 };
 
 /* ===================== ĐIỀU HƯỚNG ===================== */
-const NAV=[['home','Trang chủ'],['learn','Bài học'],['practice','Dạng toán'],['tests','Đề kiểm tra'],['progress','Tiến độ']];
+const NAV=[['home','Trang chủ'],['learn','Bài học'],['practice','Dạng toán'],['tests','Đề kiểm tra'],['extra','Mở rộng & Sơ cứu'],['progress','Tiến độ']];
 function shell(route){
   return `<div class="top"><div class="wrap"><a class="brand" href="#home"><i>8</i>KHTN 8 · Ôn giữa kì I</a>
   <nav aria-label="Chính">${NAV.map(([k,t])=>`<a href="#${k}" ${route===k?'aria-current="page"':''}>${t}</a>`).join('')}</nav>
@@ -802,12 +802,12 @@ let current=null;
 function route(){
   stopVideo();
   const h=(location.hash||'#home').slice(1); const [name,arg]=[h.split('-')[0], h.split('-').slice(1).join('-')];
-  const r=['home','learn','lesson','practice','tests','test','progress'].includes(name)?name:'home';
-  const top={home:'home',learn:'learn',lesson:'learn',practice:'practice',tests:'tests',test:'tests',progress:'progress'}[r];
+  const r=['home','learn','lesson','practice','tests','test','extra','progress'].includes(name)?name:'home';
+  const top={home:'home',learn:'learn',lesson:'learn',practice:'practice',tests:'tests',test:'tests',extra:'extra',progress:'progress'}[r];
   app().innerHTML=shell(top); refreshChip();
   $('#theme').onclick=()=>{ const d=document.documentElement; const dark=(d.dataset.theme==='dark')||(!d.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches); d.dataset.theme=dark?'light':'dark'; };
   const m=$('#main');
-  ({home:vHome,learn:vLearn,lesson:vLesson,practice:vPractice,tests:vTests,test:vTest,progress:vProgress})[r](m,arg);
+  ({home:vHome,learn:vLearn,lesson:vLesson,practice:vPractice,tests:vTests,test:vTest,extra:vExtra,progress:vProgress})[r](m,arg);
   window.scrollTo(0,0);
   document.title='KHTN 8 – Ôn giữa kì I';
 }
@@ -1071,6 +1071,154 @@ function vProgress(m){
   <p style="margin-top:20px"><button class="btn sm" id="rs">Xóa toàn bộ tiến độ</button></p>`;
   $('#rs').onclick=function(){ if(this.dataset.s){ S={xp:0,lessons:{},tests:{},prac:{ok:0,total:0,byType:{}},days:{},seen:{}}; save(); route(); } else { this.dataset.s=1; this.textContent='Bấm lần nữa để xác nhận xóa'; } };
 }
+/* ===================== MỞ RỘNG & BÀI TẬP BỔ SUNG ===================== */
+const X_MC = `Bài 30::Hệ cơ quan nào vận chuyển oxygen và chất dinh dưỡng đến các tế bào?::Hệ hô hấp::Hệ tuần hoàn::Hệ tiêu hóa::Hệ bài tiết::1
+Bài 30::Cơ quan nào sau đây không thuộc hệ bài tiết?::Thận::Da::Phổi::Tuyến tụy::3
+Bài 30::Từ ngoài vào trong, cơ thể người được cấu tạo theo thứ tự nào?::Da – lớp mỡ – cơ và xương::Lớp mỡ – da – cơ và xương::Cơ – lớp mỡ – da::Xương – cơ – da::0
+Bài 31::Bộ xương người trưởng thành có khoảng bao nhiêu xương?::106::206::306::600::1
+Bài 31::Bệnh loãng xương xảy ra do cơ thể thiếu chất nào?::Sắt và iodine::Calcium và phosphorus::Vitamin C::Protein và lipid::1
+Bài 31::Cơ bám vào xương nhờ các mô liên kết nào?::Dây thần kinh::Mạch máu::Dây chằng, gân::Khớp xương::2
+Bài 32::Ở khoang miệng, tinh bột chín được biến đổi một phần thành đường maltose nhờ enzyme nào?::Pepsin::Amylase::Lipase::Hydrochloric acid::1
+Bài 32::Sự hấp thụ chất dinh dưỡng diễn ra chủ yếu ở đâu?::Dạ dày::Ruột non::Ruột già::Thực quản::1
+Bài 32::Tác nhân chính gây bệnh viêm loét dạ dày – tá tràng là gì?::Helicobacter pylori::Virus Adeno::Staphylococcus::Mycobacterium tuberculosis::0
+Bài 33::Thành phần nào chiếm khoảng 55% thể tích máu?::Hồng cầu::Huyết tương::Bạch cầu::Tiểu cầu::1
+Bài 33::Người có nhóm máu O có kháng thể nào trong huyết tương?::Không có kháng thể::Chỉ có β::Chỉ có α::Có cả α và β::3
+Bài 33::Cholesterol trong máu tăng cao, kết hợp Ca²⁺ ngấm vào thành mạch gây bệnh nào?::Thiếu máu::Xơ vữa động mạch::Suy thận::Loãng xương::1
+Bài 34::Nơi diễn ra sự trao đổi khí ở phổi là:::Khí quản::Phế quản::Phế nang::Tiểu phế quản::2
+Bài 34::Khi hít vào, hoạt động của cơ và xương là:::Cơ hoành dãn, xương sườn hạ xuống::Cơ hoành co, xương sườn nâng lên, thể tích lồng ngực tăng::Cơ hoành co, xương sườn hạ xuống, thể tích lồng ngực giảm::Cơ hoành dãn, xương sườn nâng lên::1
+Bài 34::Chất nào trong khói thuốc lá làm tê liệt lớp lông rung ở phế quản?::CO::NOₓ::Nicotine::CO₂::2
+Bài 35::Cơ quan nào thải khoảng 90% sản phẩm bài tiết?::Phổi::Da::Thận::Bóng đái::2
+Bài 35::Mỗi đơn vị chức năng của thận gồm:::Cầu thận, nang cầu thận, ống thận::Bể thận, ống dẫn nước tiểu, bóng đái::Phần vỏ, phần tủy, bể thận::Động mạch, tĩnh mạch, mao mạch::0
+Bài 35::Bệnh nào do liên cầu khuẩn gây nên?::Sỏi thận::Viêm cầu thận::Suy thận::Đái tháo đường::1
+Bài 36::Môi trường trong của cơ thể gồm:::Máu, nước mô, bạch huyết::Máu, nước bọt, mồ hôi::Nước mô, dịch vị, bạch huyết::Huyết tương, nước tiểu, dịch mật::0
+Bài 36::Glucose máu (lúc đói) cao hơn 7 mmol/L trong thời gian dài là dấu hiệu của bệnh:::Gout::Tiểu đường::Suy thận::Thiếu máu::1
+Bài 36::Uric acid trong máu cao hơn bình thường kéo dài có nguy cơ gây bệnh nào?::Viêm khớp, gout::Loãng xương::Cận thị::Sâu răng::0
+Bài 37::Bộ phận trung ương của hệ thần kinh gồm:::Dây thần kinh và hạch thần kinh::Não và tủy sống::Não và hạch thần kinh::Tủy sống và dây thần kinh::1
+Bài 37::Tật cận thị được khắc phục bằng cách đeo:::Kính lão::Kính hội tụ::Kính cận (kính phân kì)::Không cần đeo kính::2
+Bài 37::Chuỗi xương tai nằm ở bộ phận nào của tai?::Tai ngoài::Tai giữa::Tai trong::Ốc tai::1
+Hóa – Bài 1::Khi đun nóng hóa chất trong ống nghiệm, cần kẹp ống nghiệm ở vị trí nào?::Khoảng 1/3 ống tính từ miệng ống::Giữa ống nghiệm::Sát đáy ống nghiệm::Khoảng 2/3 ống tính từ miệng ống::0
+Hóa – Bài 1::Trên biến áp nguồn (đầu ra một chiều DC), chốt màu đỏ là:::Cực âm::Cực dương::Chốt nối đất::Chốt điện xoay chiều::1
+Hóa – Bài 1::Dụng cụ nào dùng để lấy lượng nhỏ chất lỏng theo từng giọt?::Ống nghiệm::Phễu lọc::Ống hút nhỏ giọt::Kẹp gỗ::2
+Hóa – Bài 2::Quá trình nào sau đây là biến đổi hóa học?::Nước đá nóng chảy::Hòa tan đường vào nước::Nung đá vôi::Hơi nước ngưng tụ::2
+Hóa – Bài 2::Dấu hiệu nào cho biết có chất mới tạo thành?::Thay đổi trạng thái::Thay đổi hình dạng::Xuất hiện chất khí hoặc chất kết tủa::Thay đổi kích thước::2
+Hóa – Bài 2::Phản ứng nung CaCO₃ thành CaO và CO₂ cần cung cấp nhiệt liên tục. Đây là phản ứng:::Tỏa nhiệt::Thu nhiệt::Không có trao đổi năng lượng::Phản ứng cháy::1
+Hóa – Bài 3::Số Avogadro (N_A) có giá trị bằng:::6,022·10²²::6,022·10²³::6,022·10²⁴::24,79::1
+Hóa – Bài 3::Số mol phân tử trong 9 gam nước (M = 18 g/mol) là:::0,25 mol::0,5 mol::1 mol::2 mol::1
+Hóa – Bài 3::Ở 25 °C và 1 bar, 1,5 mol khí chiếm thể tích bao nhiêu?::24,79 L::37,185 L::16,53 L::49,58 L::1
+Hóa – Bài 3::Tỉ khối của khí CO₂ (M = 44) đối với không khí xấp xỉ:::0,55::1,00::1,52::2,00::2
+Mở rộng::Khi nghi bếp gas bị rò rỉ, việc làm đúng trước tiên là:::Bật quạt hút bằng công tắc điện::Khóa van bình gas và mở cửa thông gió::Bật đèn lên để kiểm tra::Châm lửa để thử::1
+Mở rộng::Vì sao khí gas (propane, butane) bị rò rỉ thường tích tụ gần sàn nhà?::Chúng nhẹ hơn không khí::Chúng nặng hơn không khí (tỉ khối so với không khí lớn hơn 1)::Chúng tan nhiều trong nước::Chúng không có màu::1
+Mở rộng::Bị bỏng nước sôi ở bàn tay, cách sơ cứu đúng là:::Bôi kem đánh răng lên vết bỏng::Xả dưới nước sạch mát chảy nhẹ khoảng 10–20 phút rồi che gạc sạch::Chườm đá trực tiếp lên vết bỏng::Chọc vỡ bọng nước cho nhanh lành::1
+Mở rộng::Gặp người bị điện giật, dây điện còn dính vào người, việc cần làm đầu tiên là:::Kéo nạn nhân ra bằng tay trần::Ngắt nguồn điện (cầu dao, phích cắm)::Tạt nước vào nạn nhân::Ép tim ngay lập tức::1
+Mở rộng::Người lớn bị hóc dị vật, không ho và không nói được. Cách sơ cứu phù hợp là:::Vỗ lưng 5 lần và ép bụng 5 lần, luân phiên::Cho uống thật nhiều nước::Cho ăn cơm để đẩy dị vật xuống::Dùng tay móc sâu vào họng::0
+Mở rộng::Khi bị chảy máu cam, tư thế đúng là:::Ngửa đầu ra sau::Ngồi, cúi đầu nhẹ ra trước, bóp chặt cánh mũi khoảng 10 phút::Nằm ngửa::Nhét giấy thật sâu vào mũi::1
+Mở rộng::Khi gặp người đang co giật do động kinh, nên:::Nhét thìa vào miệng để tránh cắn lưỡi::Giữ chặt tay chân::Dọn vật nguy hiểm xung quanh, kê gối mềm dưới đầu::Tạt nước lạnh vào mặt::2
+Mở rộng::Nhịp ép tim ngoại lồng ngực ở người lớn khoảng:::30–40 lần/phút::60–80 lần/phút::100–120 lần/phút::150–180 lần/phút::2
+Mở rộng::Học sinh cao 1,6 m, nặng 64 kg có BMI = 64 / 1,6² = 25. Theo WHO, em đó thuộc nhóm:::Thiếu cân::Bình thường::Thừa cân::Gầy độ 1::2
+Mở rộng::Quy tắc 20-20-20 để bảo vệ mắt là:::Cứ 20 phút nhìn màn hình thì nhìn xa khoảng 6 m trong 20 giây::Nhìn màn hình 20 giờ, nghỉ 20 phút::Đặt màn hình cách mắt 20 cm::Giảm độ sáng màn hình 20%::0
+Mở rộng::Trong dấu hiệu nhận biết đột quỵ FAST, chữ S là viết tắt của:::Speech – nói khó, nói ngọng::Sugar – đường huyết::Sleep – ngủ gật::Sweat – đổ mồ hôi::0
+Mở rộng::Đốt bếp than trong phòng kín có thể gây ngộ độc khí nào?::O₂::CO::N₂::H₂::1`.split('\n').map(l=>{const p=l.split('::');return{g:p[0],q:p[1],o:p.slice(2,6),a:+p[6]};});
+
+const X_KNOW = [
+ {t:'Hóa học trong đời sống', li:[
+  '<b>Rò rỉ khí gas (Bài 3, tỉ khối):</b> gas đun nấu (LPG) chủ yếu là propane (M = 44) và butane (M = 58), tỉ khối so với không khí 44/29 ≈ 1,52 và 58/29 = 2, nên tích tụ sát sàn nhà. Khi nghi rò gas: khóa van bình, mở cửa thông gió, không bật/tắt công tắc điện, không dùng lửa. CH₄ (d ≈ 0,55) nhẹ hơn không khí nên bay lên trên.',
+  '<b>Hầm, giếng sâu, hầm biogas:</b> CO₂ nặng hơn không khí, tích tụ ở đáy gây ngạt; phải thông gió và kiểm tra không khí trước khi xuống.',
+  '<b>Khí CO (Bài 2):</b> sinh ra khi nhiên liệu cháy thiếu oxygen (bếp than trong phòng kín, máy nước nóng đặt nơi kín, xe nổ máy trong gara đóng cửa). Không màu, không mùi, gây ngộ độc. Luôn giữ thông thoáng khi đốt nhiên liệu.',
+  '<b>Tỏa nhiệt / thu nhiệt:</b> đốt gas, đốt than, miếng dán giữ nhiệt (sắt bị oxi hóa) là tỏa nhiệt. Túi chườm lạnh dùng một lần (hòa tan muối như ammonium nitrate) là quá trình thu nhiệt.',
+  '<b>Dấu hiệu phản ứng quanh ta:</b> sắt gỉ (đổi màu), thức ăn ôi thiu (mùi, khí), bánh nở khi nướng (sinh khí), sữa chua lên men.',
+  '<b>Mol trong thực tế:</b> 1 mol nước = 18 g ≈ 18 mL; cân 58,5 g muối ăn NaCl ≈ 1 mol.',
+  '<b>An toàn phòng thí nghiệm (Bài 1):</b> hóa chất dính vào mắt phải rửa ngay bằng nhiều nước sạch và báo giáo viên; không ngửi trực tiếp, không nếm; đeo kính bảo hộ, găng tay; ống thủy tinh vỡ phải báo giáo viên, không nhặt bằng tay.']},
+ {t:'Sinh học: kiến thức mở rộng', li:[
+  '<b>Bài 31:</b> xương cần calcium và vitamin D (tắm nắng sớm, ăn cá, trứng, sữa). Ngồi học thẳng lưng, cặp sách không quá nặng (thường khuyến cáo khoảng 10% trọng lượng cơ thể) để phòng cong vẹo cột sống. Khởi động trước khi tập thể thao để tránh bong gân, chuột rút.',
+  '<b>Bài 32:</b> BMI = cân nặng (kg) / [chiều cao (m)]². Theo WHO: dưới 18,5 thiếu cân; 18,5 đến dưới 25 bình thường; từ 25 thừa cân; từ 30 béo phì (người châu Á ngưỡng thừa cân thường từ 23). Năm nguyên tắc vàng của WHO về thực phẩm an toàn: giữ sạch; tách riêng sống và chín; nấu chín kĩ; giữ ở nhiệt độ an toàn; dùng nước và nguyên liệu an toàn.',
+  '<b>Bài 33:</b> nhịp tim người lớn khoảng 60–100 lần/phút. Nhóm O thường gọi là “người cho chung”, nhóm AB là “người nhận chung” (chỉ trong trường hợp khẩn cấp; thực tế vẫn định nhóm máu và thử hòa hợp). Hiến máu nhân đạo an toàn, cơ thể tái tạo lượng máu đã hiến. Dấu hiệu đột quỵ theo <b>FAST</b>: Face (mặt méo), Arm (yếu liệt tay), Speech (nói khó), Time (gọi 115 ngay).',
+  '<b>Bài 34:</b> nhịp thở người lớn khoảng 12–20 lần/phút. Bụi mịn PM2.5 xâm nhập sâu tới phế nang; nên đeo khẩu trang khi ô nhiễm cao. Thở bằng mũi tốt hơn thở bằng miệng vì mũi lọc bụi, làm ẩm, làm ấm.',
+  '<b>Bài 35:</b> uống đủ nước (thường khoảng 1,5–2 lít/ngày tùy thể trạng, hoạt động, thời tiết); nước tiểu vàng nhạt là dấu hiệu đủ nước; không nhịn tiểu lâu.',
+  '<b>Bài 36:</b> hạn chế đồ uống nhiều đường để phòng tiểu đường; người có nguy cơ gout nên hạn chế bia rượu, nội tạng động vật, hải sản nhiều purine. Hạ đường huyết (run, vã mồ hôi, đói cồn cào, chóng mặt): nếu còn tỉnh cho uống nước đường hoặc ăn kẹo.',
+  '<b>Bài 37:</b> quy tắc 20-20-20 bảo vệ mắt: cứ 20 phút nhìn màn hình thì nhìn xa khoảng 6 m trong 20 giây; đọc sách đủ sáng, cách khoảng 30 cm. Quy tắc 60/60 cho tai nghe: âm lượng không quá khoảng 60%, nghe không quá 60 phút liên tục. Tiếng ồn lớn lâu ngày có thể làm giảm thính lực không hồi phục.']}
+];
+
+const X_AID = [
+ ['Bỏng nhiệt (nước sôi, lửa)','Đưa nạn nhân ra khỏi nguồn nhiệt; ngâm hoặc xả vùng bỏng dưới nước sạch mát chảy nhẹ 10–20 phút; tháo nhẫn, đồng hồ trước khi sưng; che bằng gạc hoặc vải sạch, không dính.','Không bôi kem đánh răng, nước mắm, mỡ, bơ; không chọc vỡ bọng nước; không chườm đá trực tiếp. Bỏng rộng, sâu, ở mặt, bàn tay, trẻ nhỏ thì đi cấp cứu.'],
+ ['Hóa chất dính da, mắt (Bài 1)','Cởi quần áo dính hóa chất; rửa da bằng nhiều nước sạch ít nhất 20 phút. Mắt: rửa liên tục ít nhất 15 phút, mở mi mắt; báo giáo viên và đến cơ sở y tế.','Không dụi mắt; không tự trung hòa bằng hóa chất khác.'],
+ ['Điện giật','Ngắt nguồn điện (cầu dao, rút phích) trước; nếu chưa ngắt được, dùng vật cách điện khô (gậy gỗ, nhựa khô) gạt dây điện ra; gọi 115; kiểm tra hô hấp, ép tim nếu ngừng thở.','Không chạm tay vào nạn nhân khi còn điện; không dùng vật ẩm ướt, kim loại.'],
+ ['Hóc dị vật đường thở (Heimlich)','Người lớn/trẻ lớn: khuyến khích ho. Nếu không ho, không nói được: nghiêng người nạn nhân ra trước, vỗ mạnh 5 cái vào lưng giữa hai bả vai; rồi ép bụng 5 lần (nắm tay đặt trên rốn, dưới mũi ức, ấn vào trong và lên trên). Luân phiên đến khi dị vật ra. Nếu bất tỉnh: gọi 115, ép tim. Trẻ dưới 1 tuổi: vỗ lưng 5 lần và ép ngực 5 lần (không ép bụng).','Không móc họng mù quáng; không cho uống nước hay ăn thêm.'],
+ ['Ngừng tim, ngừng thở (ép tim)','Gọi 115, nhờ lấy máy AED nếu có; đặt nạn nhân nằm ngửa trên mặt phẳng cứng; ép giữa ngực (nửa dưới xương ức) sâu khoảng 5–6 cm, nhịp 100–120 lần/phút; người được huấn luyện kết hợp 30 lần ép : 2 lần thổi ngạt.','Không ngừng ép khi chưa có người chuyên môn tiếp quản.'],
+ ['Chảy máu cam','Ngồi, cúi đầu nhẹ ra trước, thở bằng miệng; bóp chặt phần mềm hai cánh mũi khoảng 10 phút; có thể chườm lạnh sống mũi.','Không ngửa đầu ra sau; chảy trên 20 phút hoặc sau chấn thương thì đi khám.'],
+ ['Ngất','Đặt nằm ngửa nơi thoáng, nâng cao hai chân khoảng 30 cm, nới lỏng quần áo; nếu không tỉnh sau khoảng 1 phút thì gọi 115.','Không bóp, bấm mạnh vào người; không cho ăn uống khi chưa tỉnh.'],
+ ['Co giật (động kinh)','Giữ bình tĩnh, dọn vật nguy hiểm xung quanh, kê gối mềm dưới đầu, nới cổ áo; khi hết cơn đặt nằm nghiêng; bấm giờ; gọi 115 nếu co giật quá 5 phút, lặp lại hoặc lần đầu.','Không nhét vật vào miệng, không giữ chặt tay chân.'],
+ ['Ngộ độc thực phẩm (Bài 32)','Ngừng ăn thực phẩm nghi ngờ, giữ lại mẫu; uống nước hoặc oresol bù nước; đi khám nếu nôn nhiều, sốt cao, đi ngoài ra máu, lơ mơ.','Không tự gây nôn khi nạn nhân lơ mơ hoặc co giật; không tự dùng thuốc cầm tiêu chảy bừa bãi.'],
+ ['Bong gân, chấn thương khớp (Bài 31)','Nguyên tắc <b>RICE</b>: Rest (nghỉ, bất động), Ice (chườm lạnh bọc khăn 15–20 phút), Compression (băng ép vừa phải), Elevation (kê cao chi).','Không xoa bóp mạnh, không cố đi lại khi đau nhiều; nghi gãy xương thì nẹp cố định rồi đến cơ sở y tế.'],
+ ['Hạ đường huyết (Bài 36)','Nếu còn tỉnh: cho uống nước đường, ăn kẹo, nghỉ ngơi, kiểm tra lại sau 15 phút.','Không đút thức ăn, nước cho người đã lơ mơ; bất tỉnh thì gọi 115.']
+];
+const X_RULES = ['Đảm bảo an toàn cho bản thân và nạn nhân (quan sát điện, lửa, giao thông).','Kiểm tra ý thức, nhịp thở của nạn nhân.','Gọi cấp cứu 115 và nhờ người xung quanh trợ giúp.','Thực hiện sơ cứu phù hợp, theo dõi liên tục đến khi nhân viên y tế đến.','Không di chuyển nạn nhân nghi chấn thương cột sống, trừ khi có nguy hiểm trực tiếp.'];
+
+const X_TL = [
+ ['Phân biệt biến đổi vật lí và biến đổi hóa học. Cho mỗi loại hai ví dụ.','Biến đổi vật lí không tạo chất mới (nước đá tan, hòa tan muối); biến đổi hóa học có chất mới (đốt cháy nhiên liệu, nung đá vôi, sắt gỉ).'],
+ ['Nêu ba quy tắc sử dụng hóa chất an toàn trong phòng thí nghiệm.','Không dùng hóa chất không nhãn hoặc nhãn mờ; không dùng tay trực tiếp lấy hóa chất (dùng thìa, panh, ống hút); hóa chất dính vào người, đổ tràn hoặc còn thừa phải báo giáo viên, không đổ trở lại chai.'],
+ ['Tính khối lượng của 0,25 mol CaCO₃ (Ca = 40, C = 12, O = 16) và thể tích của 0,5 mol khí ở 25 °C, 1 bar.','M(CaCO₃) = 100 g/mol, m = 0,25 × 100 = 25 g. V = 0,5 × 24,79 = 12,395 L.'],
+ ['Tính tỉ khối của CH₄ đối với không khí. Khí này nhẹ hay nặng hơn không khí? Vì sao CH₄ tích tụ ở trên cao còn CO₂ tích tụ ở nền hầm?','d = 16/29 ≈ 0,55 < 1 nên CH₄ nhẹ hơn không khí, bay lên trên; CO₂ có d = 44/29 ≈ 1,52 > 1 nên nặng hơn, lắng xuống nền hầm.'],
+ ['Nêu chức năng của xương và cơ. Vì sao người cao tuổi dễ bị gãy xương?','Xương tạo khung, nâng đỡ và bảo vệ nội quan; cơ co dãn làm xương cử động. Người cao tuổi bị loãng xương do thiếu calcium, phosphorus, mật độ chất khoáng thưa nên xương dễ gãy.'],
+ ['Vì sao ruột non là nơi hấp thụ chất dinh dưỡng chủ yếu? Nêu các dịch tiêu hóa có ở ruột non.','Ruột non dài, có mạng mao mạch máu và bạch huyết dày đặc ở lông ruột nên hấp thụ tốt. Dịch tiêu hóa: dịch tụy, dịch mật, dịch ruột.'],
+ ['Phân biệt kháng nguyên và kháng thể. Vaccine có vai trò gì trong phòng bệnh?','Kháng nguyên là chất lạ kích thích cơ thể tạo kháng thể; kháng thể là protein do tế bào lympho B tạo ra để chống kháng nguyên. Vaccine (mầm bệnh chết hoặc suy yếu) kích thích tạo kháng thể và tế bào nhớ, giúp cơ thể miễn dịch với bệnh.'],
+ ['Nêu tác hại của khói thuốc lá đối với hệ hô hấp (ít nhất ba chất độc).','CO chiếm chỗ O₂ trong hồng cầu gây thiếu oxygen; NOₓ gây viêm, sưng niêm mạc, cản trở trao đổi khí; nicotine làm tê liệt lớp lông rung, giảm lọc bụi và tăng nguy cơ ung thư phổi.'],
+ ['Vì sao cần uống đủ nước? Nhịn tiểu lâu ngày có thể dẫn đến nguy cơ gì?','Nước giúp thận lọc và thải chất cặn bã, giảm nguy cơ sỏi thận. Nhịn tiểu làm ứ đọng nước tiểu, tăng nguy cơ lắng sỏi, viêm nhiễm đường tiết niệu.'],
+ ['Môi trường trong gồm những thành phần nào? Vì sao cần duy trì cân bằng môi trường trong?','Máu, nước mô, bạch huyết. Môi trường trong ổn định giúp tế bào, cơ quan hoạt động bình thường; mất cân bằng dễ gây bệnh (tiểu đường, gout...).'],
+ ['Phân biệt cận thị và viễn thị về nguyên nhân, đặc điểm ảnh và cách khắc phục.','Cận thị: cầu mắt dài hoặc thể thủy tinh quá phồng, ảnh nằm trước màng lưới, chỉ nhìn rõ vật gần, đeo kính cận (phân kì). Viễn thị: cầu mắt ngắn hoặc thể thủy tinh xẹp, ảnh sau màng lưới, chỉ nhìn rõ vật xa, đeo kính lão (hội tụ).']
+];
+const X_FILL = [
+ ['Mol là lượng chất có chứa ______ nguyên tử hoặc phân tử của chất đó.','6,022·10²³'],
+ ['Ở 25 °C và 1 bar, 1 mol khí bất kì chiếm thể tích ______ lít.','24,79'],
+ ['Phản ứng ______ giải phóng năng lượng dưới dạng nhiệt ra môi trường.','tỏa nhiệt'],
+ ['Bộ xương người trưởng thành có khoảng ______ xương.','206'],
+ ['Enzyme ______ trong nước bọt biến đổi một phần tinh bột chín thành đường maltose.','amylase'],
+ ['Hồng cầu vận chuyển khí ______ và khí ______ trong máu.','oxygen; carbon dioxide'],
+ ['Mỗi đơn vị chức năng của thận gồm cầu thận, nang cầu thận và ______.','ống thận'],
+ ['Bộ phận trung ương của hệ thần kinh gồm ______ và ______.','não; tủy sống']
+];
+const X_MATCH = {A:['Loãng xương','Sâu răng','Thiếu máu','Lao phổi','Sỏi thận','Gout','Parkinson'],
+ B:['Do vi khuẩn Mycobacterium tuberculosis','Thiếu calcium và phosphorus, mật độ chất khoáng giảm','Calcium oxalate, muối urate tích tụ trong thận','Giảm số lượng hồng cầu hoặc huyết sắc tố','Vi khuẩn làm tổn thương phần mô cứng của răng','Nồng độ uric acid trong máu cao kéo dài','Thoái hóa tế bào thần kinh, run tay, mất thăng bằng'],
+ key:[1,4,3,0,2,5,6]};
+const X_SC = [
+ ['<b>Bỏng:</b> bạn Nam bị nước sôi đổ vào cánh tay. Mẹ định bôi kem đánh răng lên chỗ bỏng. Em nhận xét và hướng dẫn cách xử lí đúng.','Không bôi kem đánh răng; xả nước sạch mát 10–20 phút, che gạc sạch, không chọc bọng nước; bỏng rộng, sâu thì đi cấp cứu.'],
+ ['<b>Mùi gas:</b> em vào bếp nghe mùi gas nồng. Phải làm gì, không được làm gì? Giải thích bằng tỉ khối.','Khóa van gas, mở cửa thông gió, không bật công tắc điện hoặc lửa. Gas (propane, butane) có d > 1 nên nặng hơn không khí, tích tụ sát sàn.'],
+ ['<b>Gãy xương:</b> chơi bóng đá, bạn Lan ngã, cẳng chân đau dữ dội và biến dạng. Nêu các bước sơ cứu và băng bó cố định.','Chuẩn bị 2 nẹp, dây vải rộng bản, bông/gạc. Đặt nạn nhân nằm, chân duỗi; đặt hai nẹp phía trong và ngoài chân, lót bông chỗ tiếp giáp xương; buộc cố định ở trên và dưới vùng gãy; gọi cấp cứu.'],
+ ['<b>Ngộ độc thực phẩm:</b> sau bữa hải sản để ngoài nắng, một người nôn, đau bụng, tiêu chảy. Nêu cách xử lí, việc không nên làm và cách phòng tránh.','Ngừng ăn, giữ mẫu thức ăn, bù nước hoặc oresol, đi khám nếu nặng; không tự gây nôn khi lơ mơ. Phòng tránh: nấu chín, bảo quản lạnh, không ăn đồ ôi thiu.'],
+ ['<b>Đột quỵ:</b> ông em (70 tuổi) đột ngột méo miệng, nói ngọng, yếu tay phải. Nhận biết theo FAST và xử lí ra sao?','Mặt méo, yếu tay, nói ngọng là dấu hiệu đột quỵ. Gọi 115 ngay, đặt nằm nghiêng, nới quần áo, ghi lại thời điểm khởi phát; không cho ăn uống.'],
+ ['<b>Hóa chất:</b> trong giờ thực hành, dung dịch HCl loãng bắn vào tay bạn em. Em và bạn cần làm gì?','Rửa da dưới nhiều nước sạch ít nhất 20 phút, báo giáo viên ngay, đưa đi y tế nếu đau, đỏ rát nhiều.'],
+ ['<b>Dinh dưỡng:</b> học sinh cao 1,55 m, nặng 38 kg. Tính BMI, nhận xét theo WHO và đề xuất chế độ ăn, sinh hoạt.','BMI = 38 / 1,55² ≈ 15,8 < 18,5 nên thiếu cân. Tăng bữa ăn đủ nhóm chất (protein, carbohydrate, lipid, vitamin, khoáng), ngủ đủ, tập thể dục vừa phải, khám dinh dưỡng nếu cần.'],
+ ['<b>Truyền máu:</b> bạn Hà nhóm máu A cần truyền máu. Dựa vào Bảng 33.1, bạn nhận được nhóm nào? Vì sao không nên truyền nhóm B?','Nhận nhóm A (cùng nhóm), hoặc O khi khẩn cấp. Máu nhóm B có kháng nguyên B bị kháng thể β trong huyết tương người nhóm A gây kết dính.'],
+ ['<b>Hầm kín:</b> hầm biogas lâu ngày không dùng, một người định xuống kiểm tra ngay. Em khuyên gì?','Phải thông gió, kiểm tra khí, có người giám sát, dùng thiết bị bảo hộ. CO₂ nặng hơn không khí tích tụ ở đáy gây ngạt; CO độc, không màu, không mùi.'],
+ ['<b>Bảo vệ mắt, tai:</b> em học bằng điện thoại 2–3 giờ và nghe nhạc tai nghe âm lượng lớn. Lập kế hoạch thay đổi thói quen.','Cứ 20 phút nhìn xa ~6 m trong 20 giây, giảm dùng điện thoại, học nơi đủ sáng; tai nghe âm lượng không quá ~60%, nghe không quá 60 phút rồi nghỉ.']
+];
+
+function vExtra(m){
+  const mcDone=S.xmc||(S.xmc={});
+  const groups=[...new Set(X_MC.map(q=>q.g))];
+  m.innerHTML=`<h2>Mở rộng &amp; bài tập bổ sung</h2>
+  <p class="muted">Kiến thức ngoài sách, các cách sơ cứu, và ${X_MC.length} câu trắc nghiệm, tự luận, điền khuyết, ghép đôi, tình huống thực tế. Trắc nghiệm chấm ngay; các phần còn lại bấm “Xem đáp án” để tự đối chiếu.</p>
+  <div class="row" style="gap:8px;flex-wrap:wrap;margin:12px 0">${[['know','Kiến thức mở rộng'],['aid','Sơ cứu'],['mc','Trắc nghiệm'],['tl','Tự luận ngắn'],['fill','Điền khuyết'],['match','Ghép đôi'],['sc','Tình huống']].map(([k,t])=>`<a class="btn sm" href="#extra" data-go="${k}">${t}</a>`).join('')}</div>
+  <section id="x-know">${X_KNOW.map(b=>`<div class="card" style="margin-bottom:14px"><h3>${b.t}</h3><ul>${b.li.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</section>
+  <section id="x-aid"><h3>Các cách sơ cứu bổ sung</h3><p class="muted">Kiến thức phổ thông. Trường hợp nghiêm trọng phải gọi cấp cứu <b>115</b> hoặc đưa nạn nhân đến cơ sở y tế gần nhất.</p>
+   <div class="grid g2">${X_AID.map(a=>`<div class="card"><h4>${a[0]}</h4><p><b style="color:var(--ok)">Nên làm:</b> ${a[1]}</p><p><b style="color:var(--bad)">Không nên:</b> ${a[2]}</p></div>`).join('')}</div>
+   <div class="card" style="margin-top:14px"><h4>Nguyên tắc chung khi sơ cứu</h4><ol>${X_RULES.map(r=>`<li>${r}</li>`).join('')}</ol></div></section>
+  <section id="x-mc" style="margin-top:26px"><h3>Trắc nghiệm <span class="chip" id="x-score"></span></h3>
+   ${groups.map(g=>`<h4 style="margin-top:16px">${g}</h4>${X_MC.map((q,i)=>({q,i})).filter(x=>x.q.g===g).map(({q,i})=>`<div class="card" data-q="${i}" style="margin:8px 0"><p><b>Câu ${i+1}.</b> ${q.q}</p><div class="opts">${q.o.map((o,j)=>`<button class="opt" data-j="${j}"><span class="k">${'ABCD'[j]}</span><span>${o}</span></button>`).join('')}</div><div class="fbw"></div></div>`).join('')}`).join('')}</section>
+  <section id="x-tl" style="margin-top:26px"><h3>Tự luận ngắn</h3>${X_TL.map((t,i)=>`<div class="card" style="margin:8px 0"><p><b>${i+1}.</b> ${t[0]}</p><details><summary>Xem đáp án</summary><p>${t[1]}</p></details></div>`).join('')}</section>
+  <section id="x-fill" style="margin-top:26px"><h3>Điền khuyết</h3>${X_FILL.map((t,i)=>`<div class="card" style="margin:8px 0"><p><b>${i+1}.</b> ${t[0]}</p><details><summary>Xem đáp án</summary><p>${t[1]}</p></details></div>`).join('')}</section>
+  <section id="x-match" style="margin-top:26px"><h3>Ghép đôi</h3><div class="card"><div class="grid g2"><div><b>Cột A (bệnh)</b><ol>${X_MATCH.A.map(a=>`<li>${a}</li>`).join('')}</ol></div><div><b>Cột B (nguyên nhân / đặc điểm)</b><ol type="a">${X_MATCH.B.map(b=>`<li>${b}</li>`).join('')}</ol></div></div>
+   <details><summary>Xem đáp án</summary><p>${X_MATCH.key.map((k,i)=>`${i+1}–${'abcdefg'[k]}`).join(' · ')}</p></details></div></section>
+  <section id="x-sc" style="margin-top:26px"><h3>Tình huống thực tế</h3>${X_SC.map((t,i)=>`<div class="card" style="margin:8px 0"><p><b>${i+1}.</b> ${t[0]}</p><details><summary>Xem gợi ý</summary><p>${t[1]}</p></details></div>`).join('')}</section>`;
+  const upd=()=>{ const n=Object.keys(mcDone).length, ok=Object.values(mcDone).filter(Boolean).length; $('#x-score').textContent=`${ok}/${X_MC.length} đúng · đã làm ${n}`; };
+  $$('[data-q]',m).forEach(b=>{ const i=+b.dataset.q, q=X_MC[i];
+    $$('.opt',b).forEach(o=>o.onclick=()=>{ if(i in mcDone) return; const j=+o.dataset.j, ok=j===q.a; mcDone[i]=ok;
+      $$('.opt',b).forEach((x,k)=>{ x.disabled=true; if(k===q.a) x.classList.add('ok'); else if(k===j) x.classList.add('bad'); });
+      $('.fbw',b).innerHTML=`<div class="fb ${ok?'ok':'bad'}"><b class="big">${ok?pick(PRAISE):'Chưa đúng'}</b>${ok?'':'Đáp án đúng: '+'ABCD'[q.a]+'. '+q.o[q.a]}</div>`;
+      if(ok) addXP(2); else save(); upd(); }); });
+  $$('[data-go]',m).forEach(a=>a.onclick=e=>{ e.preventDefault(); const t=$('#x-'+a.dataset.go); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); });
+  upd();
+}
+
 route();
 </script>
 
